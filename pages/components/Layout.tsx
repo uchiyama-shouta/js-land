@@ -16,7 +16,7 @@ const Layout: VFC<Props> = ({ children }) => {
 	return (
 		<>
 			<Header state={state} setState={setState} />
-			<>{children}</>
+         <div>{children}</div>
 		</>
 	);
 };
