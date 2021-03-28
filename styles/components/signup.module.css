@@ -1,0 +1,18 @@
+.title {
+	text-align: center;
+	margin-top: 20px;
+	font-size: 30px;
+}
+
+.textInput {
+	text-align: center;
+	margin: 30px auto;
+	max-width: 400px;
+	padding: 1rem;
+	height: auto;
+	width: calc(100% - 2rem);
+}
+
+.center {
+   text-align: center;
+}

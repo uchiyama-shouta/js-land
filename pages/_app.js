@@ -6,6 +6,7 @@ import CssBaseline from "@material-ui/core/CssBaseline";
 import theme from "../src/theme";
 
 import "../styles/globals.css";
+import AuthProvider from "../src/auth/AuthProvider";
 
 export default function MyApp({ Component, pageProps }) {
 	useEffect(() => {
@@ -24,10 +25,12 @@ export default function MyApp({ Component, pageProps }) {
 					content="minimum-scale=1, initial-scale=1, width=device-width"
 				/>
 			</Head>
-			<ThemeProvider theme={theme}>
-				<CssBaseline />
-				<Component {...pageProps} />
-			</ThemeProvider>
+			<AuthProvider>
+				<ThemeProvider theme={theme}>
+					<CssBaseline />
+					<Component {...pageProps} />
+				</ThemeProvider>
+			</AuthProvider>
 		</>
 	);
 }

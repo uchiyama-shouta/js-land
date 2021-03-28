@@ -1,4 +1,4 @@
-import { MouseEventHandler, ReactEventHandler } from "react";
+import Link from "next/link";
 import AppBar from "@material-ui/core/AppBar";
 import Button from "@material-ui/core/Button";
 import Toolbar from "@material-ui/core/Toolbar";
@@ -8,7 +8,9 @@ import MenuIcon from "@material-ui/icons/Menu";
 import { createStyles, makeStyles, Theme } from "@material-ui/core/styles";
 import { SwipeableDrawer } from "@material-ui/core";
 
-import DrawerList from "./DrawerList";
+import DrawerList from "../templates/layout/DrawerList";
+import { useContext } from "react";
+import { AuthContext } from "../../src/auth/AuthProvider";
 
 const useStyles = makeStyles((theme: Theme) =>
 	createStyles({
@@ -33,19 +35,20 @@ const useStyles = makeStyles((theme: Theme) =>
 
 type Anchor = "top" | "left" | "bottom" | "right";
 
-export default function Header(props) {
+const Header = (props) => {
 	const classes = useStyles();
 	const { state, setState } = props;
-	const toggleDrawer = (anchor: Anchor, open: boolean) => (
-      e
-		// e: ReactEventHandler | MouseEventHandler<HTMLButtonElement> | React.KeyboardEvent | React.MouseEvent,
-	) => {
+	const toggleDrawer = (anchor: Anchor, open: boolean) => (e) => {
 		if (e.type === "keydown" && (e.key === "Tab" || e.key === "Shift")) {
 			return;
 		}
 
 		setState({ ...state, [anchor]: open });
 	};
+
+	const { currentUser } = useContext(AuthContext);
+
+	console.log(!!currentUser);
 
 	return (
 		<div className={classes.root}>
@@ -65,14 +68,24 @@ export default function Header(props) {
 						className={classes.title}
 						color="textPrimary"
 					>
-						Logo
+						<Link href="/">
+							<a>Logo</a>
+						</Link>
 					</Typography>
-					<Button color="default" className={classes.menuButton}>
-						ログイン
-					</Button>
-					<Button color="default" className={classes.menuButton}>
-						新規登録
-					</Button>
+					{currentUser ? null : (
+						<>
+							<Button color="default" className={classes.menuButton}>
+								<Link href="/login">
+									<a>ログイン</a>
+								</Link>
+							</Button>
+							<Button color="default" className={classes.menuButton}>
+								<Link href="/signUp">
+									<a>新規登録</a>
+								</Link>
+							</Button>
+						</>
+					)}
 				</Toolbar>
 			</AppBar>
 			<SwipeableDrawer
@@ -85,4 +98,6 @@ export default function Header(props) {
 			</SwipeableDrawer>
 		</div>
 	);
-}
+};
+
+export default Header;

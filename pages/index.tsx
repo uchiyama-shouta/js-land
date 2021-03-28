@@ -1,28 +1,24 @@
+import { useRouter } from "next/router";
 import { useEffect, useState, VFC } from "react";
 
-import { db } from "../src/firebase";
-import Layout from "./components/Layout";
+import Layout from "../components/templates/layout/Layout";
+import { auth } from "../src/firebase";
 
 const Home: VFC = () => {
-	const [tasks, setTasks] = useState([{ id: "", title: "" }]);
+	const router = useRouter();
+	const [currentUser, setCurrentUser] = useState(null);
 
 	useEffect(() => {
-		const unSub = db.collection("tasks").onSnapshot((snapshot) => {
-			setTasks(
-				snapshot.docs.map((doc) => ({ id: doc.id, title: doc.data().title }))
-			);
+		auth.onAuthStateChanged((user) => {
+			user ? setCurrentUser(user) : router.push("/login");
 		});
-		return () => unSub();
 	}, []);
+
+
 	return (
 		<>
 			<Layout>
 				<p>Hello World</p>
-				<ul>
-          {tasks.map(task => (
-            <li key={task.id}>{task.title}</li>
-          ))}
-        </ul>
 			</Layout>
 		</>
 	);
