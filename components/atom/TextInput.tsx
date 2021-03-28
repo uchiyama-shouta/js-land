@@ -1,5 +1,5 @@
 import TextField from "@material-ui/core/TextField";
-import { VFC } from "react";
+import { memo, VFC } from "react";
 
 type Props = {
 	label: string;
@@ -10,7 +10,7 @@ type Props = {
 	onChange: (any) => void;
 };
 
-const BasicTextFields: VFC<Props> = (props) => {
+const BasicTextFields: VFC<Props> = memo((props) => {
 	const { label, type, multiline, value, onChange } = props;
 	return (
 		<TextField
@@ -23,6 +23,6 @@ const BasicTextFields: VFC<Props> = (props) => {
 			onChange={onChange}
 		/>
 	);
-};
+});
 
 export default BasicTextFields;

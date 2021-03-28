@@ -1,3 +1,11 @@
+import {
+	Dispatch,
+	memo,
+	ReactNode,
+	SetStateAction,
+	useContext,
+	VFC,
+} from "react";
 import Link from "next/link";
 import AppBar from "@material-ui/core/AppBar";
 import Button from "@material-ui/core/Button";
@@ -9,7 +17,6 @@ import { createStyles, makeStyles, Theme } from "@material-ui/core/styles";
 import { SwipeableDrawer } from "@material-ui/core";
 
 import DrawerList from "../templates/layout/DrawerList";
-import { useContext } from "react";
 import { AuthContext } from "../../src/auth/AuthProvider";
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -35,7 +42,19 @@ const useStyles = makeStyles((theme: Theme) =>
 
 type Anchor = "top" | "left" | "bottom" | "right";
 
-const Header = (props) => {
+type stateType = {
+	top: boolean;
+	left: boolean;
+	bottom: boolean;
+	right: boolean;
+};
+
+type Props = {
+	state: stateType;
+	setState: Dispatch<SetStateAction<stateType>>;
+};
+
+const Header: VFC<Props> = memo((props) => {
 	const classes = useStyles();
 	const { state, setState } = props;
 	const toggleDrawer = (anchor: Anchor, open: boolean) => (e) => {
@@ -98,6 +117,6 @@ const Header = (props) => {
 			</SwipeableDrawer>
 		</div>
 	);
-};
+});
 
 export default Header;

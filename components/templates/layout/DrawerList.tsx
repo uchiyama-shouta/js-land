@@ -1,4 +1,4 @@
-import React, { VFC } from "react";
+import React, { memo, VFC } from "react";
 import clsx from "clsx";
 import { makeStyles } from "@material-ui/core/styles";
 import List from "@material-ui/core/List";
@@ -23,7 +23,7 @@ type Props = {
 	anchor?: "top" | "left" | "bottom" | "right";
 };
 
-const DrawerList: VFC<Props> = (props) => {
+const DrawerList: VFC<Props> = memo((props) => {
 	const classes = useStyles();
 	const { anchor } = props;
 	const router = useRouter();
@@ -56,6 +56,6 @@ const DrawerList: VFC<Props> = (props) => {
 			</List>
 		</div>
 	);
-};
+});
 
 export default DrawerList;

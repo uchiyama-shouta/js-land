@@ -1,4 +1,4 @@
-import { ReactNode, VFC } from "react";
+import { memo, ReactNode, VFC } from "react";
 import { Button } from "@material-ui/core";
 import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
 
@@ -26,7 +26,7 @@ const useStyles = makeStyles((theme: Theme) =>
 	})
 );
 
-const PrimaryButton: VFC<Props> = (props) => {
+const PrimaryButton: VFC<Props> = memo((props) => {
 	const {
 		children,
 		disabled = false,
@@ -48,6 +48,6 @@ const PrimaryButton: VFC<Props> = (props) => {
 			{children}
 		</Button>
 	);
-};
+});
 
 export default PrimaryButton;
