@@ -1,16 +1,16 @@
 import React, { useEffect } from "react";
-import PropTypes from "prop-types";
+import { RecoilRoot } from "recoil";
 import Head from "next/head";
+import type {AppProps} from 'next/app'
+import PropTypes from "prop-types";
 import { ThemeProvider } from "@material-ui/core/styles";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import theme from "../src/theme";
 
-import "../styles/globals.css";
-import AuthProvider from "../src/auth/AuthProvider";
-import { RecoilRoot } from "recoil";
 import Auth from "../src/auth/Auth";
+import "../styles/globals.css";
 
-export default function MyApp({ Component, pageProps }) {
+export default function MyApp({ Component, pageProps }: AppProps) {
 	useEffect(() => {
 		const jssStyles = document.querySelector("#jss-server-side");
 		if (jssStyles) {
@@ -28,14 +28,12 @@ export default function MyApp({ Component, pageProps }) {
 				/>
 			</Head>
 			<RecoilRoot>
-				<AuthProvider>
-					<Auth>
-						<ThemeProvider theme={theme}>
-							<CssBaseline />
-							<Component {...pageProps} />
-						</ThemeProvider>
-					</Auth>
-				</AuthProvider>
+				<Auth>
+					<ThemeProvider theme={theme}>
+						<CssBaseline />
+						<Component {...pageProps} />
+					</ThemeProvider>
+				</Auth>
 			</RecoilRoot>
 		</>
 	);

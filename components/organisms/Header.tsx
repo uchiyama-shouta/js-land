@@ -6,6 +6,7 @@ import {
 	VFC,
 } from "react";
 import Link from "next/link";
+import {useRecoilValue} from 'recoil'
 import AppBar from "@material-ui/core/AppBar";
 import Button from "@material-ui/core/Button";
 import Toolbar from "@material-ui/core/Toolbar";
@@ -16,7 +17,8 @@ import { createStyles, makeStyles, Theme } from "@material-ui/core/styles";
 import { SwipeableDrawer } from "@material-ui/core";
 
 import DrawerList from "../templates/layout/DrawerList";
-import { AuthContext } from "../../src/auth/AuthProvider";
+import { userState, UserStateType } from "../../src/store/userState";
+
 
 const useStyles = makeStyles((theme: Theme) =>
 	createStyles({
@@ -56,6 +58,7 @@ type Props = {
 const Header: VFC<Props> = memo((props) => {
 	const classes = useStyles();
 	const { state, setState } = props;
+	const user = useRecoilValue<UserStateType>(userState)
 	const toggleDrawer = (anchor: Anchor, open: boolean) => (e) => {
 		if (e.type === "keydown" && (e.key === "Tab" || e.key === "Shift")) {
 			return;
@@ -64,7 +67,6 @@ const Header: VFC<Props> = memo((props) => {
 		setState({ ...state, [anchor]: open });
 	};
 
-	const { currentUser } = useContext(AuthContext);
 
 	return (
 		<div className={classes.root}>
@@ -88,7 +90,7 @@ const Header: VFC<Props> = memo((props) => {
 							<a>Logo</a>
 						</Link>
 					</Typography>
-					{currentUser ? null : (
+					{ user.isSignedIn ? null : (
 						<>
 							<Button color="default" className={classes.menuButton}>
 								<Link href="/login">
