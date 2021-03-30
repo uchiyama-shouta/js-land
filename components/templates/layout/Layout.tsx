@@ -12,7 +12,6 @@ const Layout: VFC<Props> = memo(({ children }) => {
 		bottom: false,
 		right: false,
 	});
-	console.log(state);
 
 	return (
 		<>

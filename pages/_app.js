@@ -7,6 +7,7 @@ import theme from "../src/theme";
 
 import "../styles/globals.css";
 import AuthProvider from "../src/auth/AuthProvider";
+import { RecoilRoot } from "recoil";
 
 export default function MyApp({ Component, pageProps }) {
 	useEffect(() => {
@@ -25,12 +26,14 @@ export default function MyApp({ Component, pageProps }) {
 					content="minimum-scale=1, initial-scale=1, width=device-width"
 				/>
 			</Head>
-			<AuthProvider>
-				<ThemeProvider theme={theme}>
-					<CssBaseline />
-					<Component {...pageProps} />
-				</ThemeProvider>
-			</AuthProvider>
+			<RecoilRoot>
+				<AuthProvider>
+					<ThemeProvider theme={theme}>
+						<CssBaseline />
+						<Component {...pageProps} />
+					</ThemeProvider>
+				</AuthProvider>
+			</RecoilRoot>
 		</>
 	);
 }

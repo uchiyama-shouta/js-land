@@ -6,9 +6,14 @@ import styles from "../styles/components/signup.module.css";
 import TextInput from "../components/atom/TextInput";
 import PrimaryButton from "../components/atom/button/PrimaryButton";
 import { auth } from "../src/firebase";
+import { createUser } from "../lib/user/createUser";
 
 const signUp = () => {
 	const router = useRouter();
+	const [name, setName] = useState("");
+	const inputName = useCallback((e) => {
+		setName(e.target.value);
+	}, []);
 	const [email, setEmail] = useState("");
 	const inputEmail = useCallback((e) => {
 		setEmail(e.target.value);
@@ -25,21 +30,22 @@ const signUp = () => {
 		});
 	}, []);
 
-	const createUser = async (e) => {
+	const signUp = async (e) => {
 		e.preventDefault();
-		try {
-			await auth.createUserWithEmailAndPassword(email, password);
-			router.push("/login");
-		} catch (err) {
-			alert(err.message);
-		}
+		createUser(router, name, email, password);
 	};
 	return (
 		<>
 			<Layout>
 				<h2 className={styles.title}>Sign Up</h2>
 				<div className={styles.textInput}>
-					<form onSubmit={createUser}>
+					<form onSubmit={signUp}>
+						<TextInput
+							value={name}
+							label="名前"
+							onChange={inputName}
+							type="text"
+						/>
 						<TextInput
 							value={email}
 							label="メールアドレス"
@@ -57,7 +63,7 @@ const signUp = () => {
 							<PrimaryButton
 								disabled={(!email || !password) && true}
 								type="submit"
-                        onClick={() => console.log('sigiup')}
+								onClick={() => console.log("sigiup")}
 							>
 								新規登録
 							</PrimaryButton>

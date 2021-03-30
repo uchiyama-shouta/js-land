@@ -1,7 +1,6 @@
 import {
 	Dispatch,
 	memo,
-	ReactNode,
 	SetStateAction,
 	useContext,
 	VFC,
@@ -52,7 +51,7 @@ type stateType = {
 type Props = {
 	state: stateType;
 	setState: Dispatch<SetStateAction<stateType>>;
-};
+}
 
 const Header: VFC<Props> = memo((props) => {
 	const classes = useStyles();
@@ -66,8 +65,6 @@ const Header: VFC<Props> = memo((props) => {
 	};
 
 	const { currentUser } = useContext(AuthContext);
-
-	console.log(!!currentUser);
 
 	return (
 		<div className={classes.root}>

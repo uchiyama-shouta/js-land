@@ -1,14 +1,18 @@
 import React, { useCallback, useEffect, useState, VFC } from "react";
 import { useRouter } from "next/router";
+import { useSetRecoilState } from "recoil";
+import { userState } from "../src/store/userState";
 import Layout from "../components/templates/layout/Layout";
 import TextInput from "../components/atom/TextInput";
 
 import styles from "../styles/components/login.module.css";
 import PrimaryButton from "../components/atom/button/PrimaryButton";
 import { auth } from "../src/firebase";
+import { login } from "../lib/user/login";
 
 const Login: VFC = () => {
 	const router = useRouter();
+	const setUsers = useSetRecoilState(userState);
 	const [email, setEmail] = useState("");
 	const inputEmail = useCallback((e) => {
 		setEmail(e.target.value);
@@ -25,14 +29,9 @@ const Login: VFC = () => {
 		});
 	}, []);
 
-	const login = async (e) => {
+	const onSubmitlogin = async (e) => {
 		e.preventDefault();
-		try {
-			await auth.signInWithEmailAndPassword(email, password);
-			router.push("/");
-		} catch (err) {
-			alert(err.message);
-		}
+		login(email, password, router, setUsers);
 	};
 
 	return (
@@ -40,7 +39,7 @@ const Login: VFC = () => {
 			<Layout>
 				<h2 className={styles.title}>Login</h2>
 				<div className={styles.textInput}>
-					<form onSubmit={login}>
+					<form onSubmit={onSubmitlogin}>
 						<TextInput
 							value={email}
 							label="メールアドレス"
@@ -58,7 +57,7 @@ const Login: VFC = () => {
 							<PrimaryButton
 								disabled={(!email || !password) && true}
 								type="submit"
-								onClick={() => console.log('login')}
+								onClick={() => console.log("login")}
 							>
 								ログイン
 							</PrimaryButton>
