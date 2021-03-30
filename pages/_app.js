@@ -8,6 +8,7 @@ import theme from "../src/theme";
 import "../styles/globals.css";
 import AuthProvider from "../src/auth/AuthProvider";
 import { RecoilRoot } from "recoil";
+import Auth from "../src/auth/Auth";
 
 export default function MyApp({ Component, pageProps }) {
 	useEffect(() => {
@@ -28,10 +29,12 @@ export default function MyApp({ Component, pageProps }) {
 			</Head>
 			<RecoilRoot>
 				<AuthProvider>
-					<ThemeProvider theme={theme}>
-						<CssBaseline />
-						<Component {...pageProps} />
-					</ThemeProvider>
+					<Auth>
+						<ThemeProvider theme={theme}>
+							<CssBaseline />
+							<Component {...pageProps} />
+						</ThemeProvider>
+					</Auth>
 				</AuthProvider>
 			</RecoilRoot>
 		</>

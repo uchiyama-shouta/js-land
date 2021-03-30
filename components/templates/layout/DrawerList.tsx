@@ -1,4 +1,5 @@
 import React, { memo, VFC } from "react";
+import { useRecoilState } from "recoil";
 import clsx from "clsx";
 import { makeStyles } from "@material-ui/core/styles";
 import List from "@material-ui/core/List";
@@ -7,6 +8,7 @@ import ListItemText from "@material-ui/core/ListItemText";
 import { Divider } from "@material-ui/core";
 import { auth } from "../../../src/firebase";
 import { useRouter } from "next/router";
+import { initialState, userState } from "../../../src/store/userState";
 
 const useStyles = makeStyles({
 	list: {
@@ -24,6 +26,7 @@ type Props = {
 };
 
 const DrawerList: VFC<Props> = memo((props) => {
+	const [user, setUser] = useRecoilState(userState)
 	const classes = useStyles();
 	const { anchor } = props;
 	const router = useRouter();
@@ -31,6 +34,7 @@ const DrawerList: VFC<Props> = memo((props) => {
 	const logOut = async () => {
 		try {
 			await auth.signOut();
+			setUser(initialState)
 			router.push("/login");
 		} catch (error) {
 			alert(error.message);

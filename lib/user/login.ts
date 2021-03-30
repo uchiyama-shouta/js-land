@@ -8,7 +8,7 @@ export const login = async (
 	email: string,
 	password: string,
 	router: NextRouter,
-	setUsers: SetterOrUpdater<any>,
+	setUsers: SetterOrUpdater<any>
 ) => {
 	try {
 		const result = await auth.signInWithEmailAndPassword(email, password);
@@ -19,11 +19,17 @@ export const login = async (
 		await usersRef
 			.doc(uid)
 			.get()
-			.then((doc) => {
-				doc.exists && setUsers(doc.data());
+			.then((snapshot) => {
+				const data = snapshot.data();
+				setUsers({
+					isSignedIn: true,
+					role: data.role,
+					uid,
+					username: data.username,
+					email: email,
+				});
+				router.push("/");
 			});
-
-		router.push("/");
 	} catch (err) {
 		alert(err.message);
 	}

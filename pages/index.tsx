@@ -1,32 +1,19 @@
-import { useEffect, useState, VFC } from "react";
-import { useRouter } from "next/router";
-import { useRecoilValue } from "recoil";
-
+import { useEffect, VFC } from "react";
+import { useRecoilState } from "recoil";
 import Layout from "../components/templates/layout/Layout";
-import { auth } from "../src/firebase";
-import { userState } from "../src/store/userState";
+import { userState, UserStateType } from "../src/store/userState";
 
 const Home: VFC = () => {
-	const router = useRouter();
-	const [currentUser, setCurrentUser] = useState(null);
-	const user = useRecoilValue(userState);
-
-	useEffect(() => {
-		auth.onAuthStateChanged((user) => {
-			user ? setCurrentUser(user) : router.push("/login");
-		});
-	}, []);
-
-	console.log(currentUser.uid)
+	const [userData, setUser] = useRecoilState<UserStateType>(userState);
 
 	return (
 		<>
 			<Layout>
 				<p>Hello World</p>
-				<p>name: {user ? user.username : null}</p>
-				<p>email: {user ? user.email : null}</p>
-				<p>id: {user ? user.uid : null}</p>
-				<p>isAdmin: {user ? user.uid : null}</p>
+				<p>name: {userData ? userData.username : null}</p>
+				<p>email: {userData ? userData.email : null}</p>
+				<p>id: {userData ? userData.uid : null}</p>
+				{userData.role === 'administrator' && <p>管理者はこの世の神</p>}
 			</Layout>
 		</>
 	);

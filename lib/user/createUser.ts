@@ -39,9 +39,9 @@ export const createUser = async (
 			})
 			.catch((err) => {
 				alert("アカウント登録に失敗しました。もう1度お試しください。");
-				throw new Error(err);
 			});
-	} catch (err) {
-		alert(err.message);
+      } catch (err) {
+         alert("アカウント登録に失敗しました。もう1度お試しください。");
+         throw new Error(err);
 	}
 };
