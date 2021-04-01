@@ -1,8 +1,8 @@
 import { NextRouter } from "next/router";
 import { SetterOrUpdater } from "recoil";
 import { auth } from "../../src/firebase";
+import { UserStateType } from "../../types/user/UserStateType";
 import { usersRef } from "./usersRef";
-import { UserStateType } from "../../src/store/userState";
 
 export const listenAuthState = async (
 	router: NextRouter,
@@ -33,7 +33,11 @@ export const listenAuthState = async (
 				});
 		} else {
 			console.log("ログイン出来てない");
-			router.push("/login");
+			if (router.pathname === "/") {
+				return;
+			} else {
+				router.push("/login");
+			}
 		}
 	});
 };

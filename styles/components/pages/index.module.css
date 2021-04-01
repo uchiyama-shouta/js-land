@@ -1,0 +1,40 @@
+.firstView {
+	width: 100vw;
+	height: 400px;
+	background-color: rgba(40, 180, 255, 0.6);
+	position: relative;
+}
+
+.copy {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	font-size: 1.6rem;
+	text-align: center;
+}
+
+.copy_span {
+	font-size: 2rem;
+	transform: rotate(10deg);
+	font-weight: 700;
+	color: red;
+}
+
+.section_title {
+	text-align: center;
+	margin: 0 0 50px;
+}
+
+.button {
+	text-align: center;
+	margin: 50px auto 16px;
+	background-color: #1976d2;
+	width: 230px;
+   border-radius: 5px;;
+	height: 48px;
+   line-height: 48px;
+	font-size: 16px;
+   color: #fff;
+   display: block;
+}

@@ -1,12 +1,7 @@
 import { atom } from "recoil";
+import { UserStateType } from "../../types/user/UserStateType";
 
-export type UserStateType = {
-	isSignedIn: boolean,
-	role: 'customer' | 'administrator',
-	uid: string,
-	username: string,
-	email: string,
-}
+
 
 export const initialState: UserStateType = {
 	isSignedIn: false,

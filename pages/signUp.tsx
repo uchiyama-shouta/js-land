@@ -2,7 +2,7 @@ import { useCallback, useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import Layout from "../components/templates/layout/Layout";
 
-import styles from "../styles/components/signup.module.css";
+import styles from "../styles/components/pages/signup.module.css";
 import TextInput from "../components/atom/TextInput";
 import PrimaryButton from "../components/atom/button/PrimaryButton";
 import { auth } from "../src/firebase";

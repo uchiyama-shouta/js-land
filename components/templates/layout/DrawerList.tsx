@@ -1,4 +1,5 @@
 import React, { memo, VFC } from "react";
+import Link from "next/link";
 import { useRecoilState } from "recoil";
 import clsx from "clsx";
 import { makeStyles } from "@material-ui/core/styles";
@@ -9,6 +10,7 @@ import { Divider } from "@material-ui/core";
 import { auth } from "../../../src/firebase";
 import { useRouter } from "next/router";
 import { initialState, userState } from "../../../src/store/userState";
+import { UserStateType } from "../../../types/user/UserStateType";
 
 const useStyles = makeStyles({
 	list: {
@@ -26,7 +28,7 @@ type Props = {
 };
 
 const DrawerList: VFC<Props> = memo((props) => {
-	const [user, setUser] = useRecoilState(userState)
+	const [user, setUser] = useRecoilState<UserStateType>(userState);
 	const classes = useStyles();
 	const { anchor } = props;
 	const router = useRouter();
@@ -34,7 +36,7 @@ const DrawerList: VFC<Props> = memo((props) => {
 	const logOut = async () => {
 		try {
 			await auth.signOut();
-			setUser(initialState)
+			setUser(initialState);
 			router.push("/login");
 		} catch (error) {
 			alert(error.message);
@@ -54,9 +56,22 @@ const DrawerList: VFC<Props> = memo((props) => {
 					</ListItem>
 				))}
 				<Divider />
-				<ListItem button>
-					<ListItemText primary="ログアウト" onClick={logOut} />
-				</ListItem>
+				{user.isSignedIn && (
+					<>
+						<ListItem button>
+							<ListItemText primary="ログアウト" onClick={logOut} />
+						</ListItem>
+						{user.role === "administrator" && (
+							<ListItem>
+								<Link href="/edit">
+									<a>
+										<ListItemText primary="編集" />
+									</a>
+								</Link>
+							</ListItem>
+						)}
+					</>
+				)}
 			</List>
 		</div>
 	);

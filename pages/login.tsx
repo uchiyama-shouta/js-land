@@ -5,7 +5,7 @@ import { userState } from "../src/store/userState";
 import Layout from "../components/templates/layout/Layout";
 import TextInput from "../components/atom/TextInput";
 
-import styles from "../styles/components/login.module.css";
+import styles from "../styles/components/pages/login.module.css";
 import PrimaryButton from "../components/atom/button/PrimaryButton";
 import { auth } from "../src/firebase";
 import { login } from "../lib/user/login";

@@ -2,7 +2,6 @@ import {
 	Dispatch,
 	memo,
 	SetStateAction,
-	useContext,
 	VFC,
 } from "react";
 import Link from "next/link";
@@ -17,14 +16,15 @@ import { createStyles, makeStyles, Theme } from "@material-ui/core/styles";
 import { SwipeableDrawer } from "@material-ui/core";
 
 import DrawerList from "../templates/layout/DrawerList";
-import { userState, UserStateType } from "../../src/store/userState";
+import { userState } from "../../src/store/userState";
+import { UserStateType } from "../../types/user/UserStateType";
 
 
 const useStyles = makeStyles((theme: Theme) =>
 	createStyles({
 		root: {
 			flexGrow: 1,
-			marginBottom: 10,
+			// marginBottom: 10,
 		},
 		appBar: {
 			backgroundColor: "#fff",

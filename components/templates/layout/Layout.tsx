@@ -19,7 +19,7 @@ const Layout: VFC<Props> = memo(({ children }) => {
 			<div>{children}</div>
 			<style jsx>{`
 				div {
-					padding-top: 65px;
+					padding-top: 64px;
 				}
 			`}</style>
 		</>
