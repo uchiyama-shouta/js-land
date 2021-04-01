@@ -12,7 +12,7 @@ import { NextApiRequest, NextApiResponse } from "next";
 const datas = [
 	{
 		thumbnailPath: "/image/lesson-image.jpg",
-		title: "タイトル",
+		title: "タイトル1",
 		copy:
 			"テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト",
 		price: 10000,
@@ -20,7 +20,7 @@ const datas = [
 	},
 	{
 		thumbnailPath: "/image/lesson-image.jpg",
-		title: "タイトル",
+		title: "タイトル2",
 		copy:
 			"テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト",
 		price: 10000,
@@ -28,7 +28,7 @@ const datas = [
 	},
 	{
 		thumbnailPath: "/image/lesson-image.jpg",
-		title: "タイトル",
+		title: "タイトル3",
 		copy:
 			"テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト",
 		price: 10000,
@@ -36,7 +36,7 @@ const datas = [
 	},
 	{
 		thumbnailPath: "/image/lesson-image.jpg",
-		title: "タイトル",
+		title: "タイトル4",
 		copy:
 			"テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト",
 		price: 10000,
@@ -44,7 +44,7 @@ const datas = [
 	},
 	{
 		thumbnailPath: "/image/lesson-image.jpg",
-		title: "タイトル",
+		title: "タイトル5",
 		copy:
 			"テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト",
 		price: 10000,
@@ -52,7 +52,7 @@ const datas = [
 	},
 	{
 		thumbnailPath: "/image/lesson-image.jpg",
-		title: "タイトル",
+		title: "タイトル6",
 		copy:
 			"テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト",
 		price: 10000,
@@ -60,7 +60,7 @@ const datas = [
 	},
 	{
 		thumbnailPath: "/image/lesson-image.jpg",
-		title: "タイトル",
+		title: "タイトル7",
 		copy:
 			"テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト",
 		price: 10000,
@@ -68,7 +68,7 @@ const datas = [
 	},
 	{
 		thumbnailPath: "/image/lesson-image.jpg",
-		title: "タイトル",
+		title: "タイトル8",
 		copy:
 			"テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト",
 		price: 10000,
@@ -76,7 +76,7 @@ const datas = [
 	},
 	{
 		thumbnailPath: "/image/lesson-image.jpg",
-		title: "タイトル",
+		title: "タイトル9",
 		copy:
 			"テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト",
 		price: 10000,
@@ -84,15 +84,13 @@ const datas = [
 	},
 	{
 		thumbnailPath: "/image/lesson-image.jpg",
-		title: "タイトル",
+		title: "タイトル10",
 		copy:
 			"テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト",
 		price: 10000,
 		id: "f9ylf0ZGj9lu9aax",
 	},
 ];
-
-// datas.map((d) => (d.id = createRondomId()));
 
 export default (req: NextApiRequest, res: NextApiResponse) => {
 	res.status(200).json(datas);
