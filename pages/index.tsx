@@ -5,6 +5,7 @@ import Layout from "../components/templates/layout/Layout";
 import LessonCardList from "../components/templates/layout/LessonCardList";
 import styles from "../styles/components/pages/index.module.css";
 import { LessonDataType } from "../types/lesson/lessonType";
+import { datas } from "../src/sample/lessonData";
 
 type Props = {
 	datas: LessonDataType[];
@@ -39,8 +40,6 @@ const Home: VFC<Props> = (props) => {
 };
 
 export const getStaticProps: GetStaticProps = async () => {
-	const url = "http://localhost:3000/api/lessonSampleData";
-	const datas = await fetch(url).then((res) => res.json());
 	return {
 		props: {
 			datas,

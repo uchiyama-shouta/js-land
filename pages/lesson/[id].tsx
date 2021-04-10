@@ -3,7 +3,7 @@ import Image from "next/image";
 import { GetStaticPaths, GetStaticProps } from "next";
 import { LessonDataType } from "../../types/lesson/lessonType";
 import Layout from "../../components/templates/layout/Layout";
-
+import { datas } from '../../src/sample/lessonData'
 type Props = {
 	propsData: LessonDataType;
 };
@@ -26,12 +26,12 @@ const LessonDetailPage: VFC<Props> = (props) => {
 
 export default LessonDetailPage;
 
-const url = "http://localhost:3000/api/lessonSampleData";
+// const url = "http://localhost:3000/api/lessonSampleData";
 export const getStaticProps: GetStaticProps = async (context) => {
 	const id = context.params.id;
-	const res = await fetch(url);
-	const data: LessonDataType[] = await res.json();
-	const propsData = data.find((data) => data.id === id);
+	// const res = await fetch(url);
+	// const data: LessonDataType[] = await res.json();
+	const propsData = datas.find((data) => data.id === id);
 
 	return {
 		props: {
@@ -41,8 +41,8 @@ export const getStaticProps: GetStaticProps = async (context) => {
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-	const data: LessonDataType[] = await fetch(url).then((res) => res.json());
-	const paths = data.map((data) => ({
+	// const data: LessonDataType[] = await fetch(url).then((res) => res.json());
+	const paths = datas.map((data) => ({
 		params: {
 			id: data.id,
 		},
