@@ -1,8 +1,6 @@
 import { atom } from "recoil";
 import { UserStateType } from "../../types/user/UserStateType";
 
-
-
 export const initialState: UserStateType = {
 	isSignedIn: false,
 	role: "customer",
