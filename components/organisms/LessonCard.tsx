@@ -38,7 +38,7 @@ const useStyles = makeStyles({
 		paddingBottom: 0,
 	},
 });
-type Props = LessonDataType & { className: any };
+type Props = LessonDataType & { className?: any };
 
 const LessonCard: VFC<Props> = memo((props) => {
 	const { thumbnailPath, title, copy, price, id } = props;
