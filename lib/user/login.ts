@@ -31,6 +31,6 @@ export const login = async (
 				router.push("/");
 			});
 	} catch (err) {
-		alert(err.message);
+		alert("ログイン出来ませんでした。");
 	}
 };
