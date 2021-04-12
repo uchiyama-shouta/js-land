@@ -11,12 +11,12 @@
 	left: 50%;
 	transform: translate(-50%, -50%);
 	width: 90%;
-	font-size: 1.6rem;
+	font-size: 1.3rem;
 	text-align: center;
 }
 
 .copy_span {
-	font-size: 2rem;
+	font-size: 1.7rem;
 	transform: rotate(10deg);
 	font-weight: 700;
 	color: red;
