@@ -13,8 +13,17 @@ const useStyles = makeStyles((theme: Theme) =>
 	createStyles({
 		root: {
 			width: "90%",
+			maxWidth: 1100,
+			[theme.breakpoints.down("md")]: {
+				maxWidth: 720,
+			},
 			margin: "0 auto",
 			flexGrow: 1,
+		},
+		flex: {
+			[theme.breakpoints.down("xs")]: {
+				display: "block",
+			},
 		},
 		card: {
 			padding: theme.spacing(5),
@@ -32,19 +41,21 @@ const LessonCardList: VFC<Props> = memo((props) => {
 	return (
 		<>
 			<div className={classes.root}>
-				<Grid container justify="center" spacing={4}>
-					{data.slice(0, max).map((data) => (
-						<Grid item xs key={data.id}>
-							<LessonCard
-								className={classes.card}
-								thumbnailPath={data.thumbnailPath}
-								title={data.title}
-								copy={data.copy}
-								price={data.price}
-                        id={data.id}
-							/>
-						</Grid>
-					))}
+				<Grid container justify="center" alignItems="center">
+					<Grid className={classes.flex} container spacing={4}>
+						{data.slice(0, max).map((data) => (
+							<Grid item key={data.id}>
+								<LessonCard
+									className={classes.card}
+									thumbnailPath={data.thumbnailPath}
+									title={data.title}
+									copy={data.copy}
+									price={data.price}
+									id={data.id}
+								/>
+							</Grid>
+						))}
+					</Grid>
 				</Grid>
 			</div>
 		</>
