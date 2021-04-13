@@ -38,8 +38,6 @@ const lesson: VFC<Props> = memo((props) => {
 export default lesson;
 
 export const getStaticProps: GetStaticProps = async () => {
-	// const url = "http://localhost:3000/api/lessonSampleData";
-	// const datas = await fetch(url).then((res) => res.json());
 	return {
 		props: {
 			datas,

@@ -26,11 +26,9 @@ const LessonDetailPage: VFC<Props> = (props) => {
 
 export default LessonDetailPage;
 
-// const url = "http://localhost:3000/api/lessonSampleData";
+
 export const getStaticProps: GetStaticProps = async (context) => {
 	const id = context.params.id;
-	// const res = await fetch(url);
-	// const data: LessonDataType[] = await res.json();
 	const propsData = datas.find((data) => data.id === id);
 
 	return {
@@ -41,7 +39,6 @@ export const getStaticProps: GetStaticProps = async (context) => {
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-	// const data: LessonDataType[] = await fetch(url).then((res) => res.json());
 	const paths = datas.map((data) => ({
 		params: {
 			id: data.id,
