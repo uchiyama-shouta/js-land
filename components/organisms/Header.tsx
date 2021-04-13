@@ -8,7 +8,7 @@ import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
-import SwipeableDrawer from "@material-ui/core/SwipeableDrawer";
+import Drawer from "@material-ui/core/Drawer";
 
 import DrawerList from "../templates/layout/DrawerList";
 import { userState } from "../../src/store/userState";
@@ -99,14 +99,14 @@ const Header: VFC<Props> = memo((props) => {
 					)}
 				</Toolbar>
 			</AppBar>
-			<SwipeableDrawer
+			<Drawer
 				anchor="left"
 				open={state.left}
 				onClose={toggleDrawer("left", false)}
-				onOpen={toggleDrawer("left", true)}
+				// onOpen={toggleDrawer("left", true)}
 			>
 				<DrawerList />
-			</SwipeableDrawer>
+			</Drawer>
 		</div>
 	);
 });

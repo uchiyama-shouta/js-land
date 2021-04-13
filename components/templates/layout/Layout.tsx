@@ -1,11 +1,16 @@
+import Head from "next/head";
 import { memo, ReactNode, useState, VFC } from "react";
 import Header from "../../organisms/Header";
 
 type Props = {
 	children: ReactNode;
+	title?: string;
+	description?: string;
 };
 
-const Layout: VFC<Props> = memo(({ children }) => {
+const Layout: VFC<Props> = memo((props) => {
+	const siteTitle = "JS-land";
+	const { children, title, description } = props;
 	const [state, setState] = useState({
 		top: false,
 		left: false,
@@ -15,6 +20,10 @@ const Layout: VFC<Props> = memo(({ children }) => {
 
 	return (
 		<>
+			<Head>
+				<title>{title ? `${title} | ${siteTitle}` : siteTitle}</title>
+				<meta name="description" content={description} />
+			</Head>
 			<Header state={state} setState={setState} />
 			<div>{children}</div>
 			<style jsx>{`
