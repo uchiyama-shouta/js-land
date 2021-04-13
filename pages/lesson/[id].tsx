@@ -15,7 +15,7 @@ const LessonDetailPage: VFC<Props> = (props) => {
 		<Layout description={`${title}の購入ページです。`}>
          <div style={{height: 60}} />
 			<div style={{ margin: "auto", width: 400 }}>
-				<Image src={thumbnailPath} width={500} height={300} />
+				<Image src={thumbnailPath} width={500} height={300} alt="レッスンのサムネイル画像です。" />
 				<h2>{`${title}:　${id}`}</h2>
 				<p>{copy}</p>
 				<p>{price.toLocaleString() + "円"}</p>
