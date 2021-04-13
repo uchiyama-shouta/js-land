@@ -6,7 +6,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
-import Divider from '@material-ui/core/Divider';
+import Divider from "@material-ui/core/Divider";
 import { auth } from "../../../src/firebase";
 import { useRouter } from "next/router";
 import { initialState, userState } from "../../../src/store/userState";
@@ -43,44 +43,51 @@ const DrawerList: VFC<Props> = memo((props) => {
 		}
 	};
 	return (
-		<div
-			className={clsx(classes.list, {
-				[classes.fullList]: anchor === "top" || anchor === "bottom",
-			})}
-			role="presentation"
-		>
-			<List>
-				{testList.map((text) => (
-					<ListItem button key={text}>
-						<ListItemText primary={text} />
-					</ListItem>
-				))}
-				<ListItem button>
-					<Link href="/blog">
-						<a>
-							<ListItemText primary="ブログ" />
-						</a>
-					</Link>
-				</ListItem>
-				<Divider />
-				{user.isSignedIn && (
-					<>
-						<ListItem button>
-							<ListItemText primary="ログアウト" onClick={logOut} />
+		<>
+			<div
+				className={clsx(classes.list, {
+					[classes.fullList]: anchor === "top" || anchor === "bottom",
+				})}
+				role="presentation"
+			>
+				<List>
+					{testList.map((text) => (
+						<ListItem button key={text}>
+							<ListItemText primary={text} />
 						</ListItem>
-						{user.role === "administrator" && (
-							<ListItem>
-								<Link href="/edit">
-									<a>
-										<ListItemText primary="編集" />
-									</a>
-								</Link>
+					))}
+					<ListItem button>
+						<Link href="/blog">
+							<a>
+								<ListItemText primary="ブログ" />
+							</a>
+						</Link>
+					</ListItem>
+					<Divider />
+					{user.isSignedIn && (
+						<>
+							<ListItem button>
+								<ListItemText primary="ログアウト" onClick={logOut} />
 							</ListItem>
-						)}
-					</>
-				)}
-			</List>
-		</div>
+							{user.role === "administrator" && (
+								<ListItem>
+									<Link href="/edit">
+										<a>
+											<ListItemText primary="編集" />
+										</a>
+									</Link>
+								</ListItem>
+							)}
+						</>
+					)}
+				</List>
+			</div>
+			<style jsx>{`
+				a {
+					width: 100%;
+				}
+			`}</style>
+		</>
 	);
 });
 
