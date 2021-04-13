@@ -51,6 +51,7 @@ const LessonCard: VFC<Props> = memo((props) => {
 						src={thumbnailPath}
 						width={325}
 						height={170}
+						alt='レッスンの画像'
 					/>
 					<CardActionArea>
 						<CardContent className={classes.pb10}>

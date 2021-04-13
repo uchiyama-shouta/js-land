@@ -14,7 +14,7 @@ type Props = {
 const Home: VFC<Props> = (props) => {
 	return (
 		<>
-			<Layout>
+			<Layout description="JavaScript特化のオンラインのプログラミング学習サービスです。">
 				<section className={styles.firstView}>
 					<p className={styles.copy}>
 						最新のフロントエンドを学び、

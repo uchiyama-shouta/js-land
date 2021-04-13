@@ -36,7 +36,7 @@ const signUp = () => {
 	};
 	return (
 		<>
-			<Layout>
+			<Layout description="アカウント登録画面です。">
 				<h2 className={styles.title}>Sign Up</h2>
 				<div className={styles.textInput}>
 					<form onSubmit={signUp}>

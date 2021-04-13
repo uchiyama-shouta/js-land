@@ -12,7 +12,7 @@ const LessonDetailPage: VFC<Props> = (props) => {
 	const { id, thumbnailPath, title, price, copy } = props.propsData;
 	console.log(props.propsData.id);
 	return (
-		<Layout>
+		<Layout description={`${title}の購入ページです。`}>
          <div style={{height: 60}} />
 			<div style={{ margin: "auto", width: 400 }}>
 				<Image src={thumbnailPath} width={500} height={300} />

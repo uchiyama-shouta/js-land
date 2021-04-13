@@ -17,7 +17,7 @@ const lesson: VFC<Props> = memo((props) => {
 	console.log(id)
 	return (
 		<>
-			<Layout>
+			<Layout description="レッスン一覧ページです。">
 				<div className="spacer" />
 				<h2 className="section_title">レッスン一覧</h2>
 				<LessonCardList data={props.datas} />

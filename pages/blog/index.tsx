@@ -13,7 +13,7 @@ const index: VFC<Props> = (props) => {
 	const { data } = props;
 
 	return (
-		<Layout>
+		<Layout description="ブログの記事一覧ページです。">
 			{data.map((data: BlogContentDatatype) => (
 				<Article key={data.id} blog={data} />
 			))}

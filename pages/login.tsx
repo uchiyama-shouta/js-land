@@ -36,7 +36,7 @@ const Login: VFC = () => {
 
 	return (
 		<>
-			<Layout>
+			<Layout description="ログイン画面です。">
 				<h2 className={styles.title}>Login</h2>
 				<div className={styles.textInput}>
 					<form onSubmit={onSubmitlogin}>
