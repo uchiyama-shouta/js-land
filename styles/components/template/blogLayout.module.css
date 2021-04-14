@@ -7,14 +7,21 @@
 .main {
 	height: 2000;
 	width: 55%;
+<<<<<<< HEAD
    margin: 0 auto;
 }
 .aside {
    width: 35%;
+=======
+	margin: 0 auto;
+}
+.aside {
+	width: 35%;
+>>>>>>> createLesson
 }
 
 @media screen and (max-width: 480px) {
-   /*　画面サイズが768pxから1024pxまではここを読み込む　*/
+	/*　画面サイズが768pxから1024pxまではここを読み込む　*/
 	.container {
 		display: block;
 		width: 90%;
