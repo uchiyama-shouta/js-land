@@ -80,7 +80,7 @@ const Header: VFC<Props> = memo((props) => {
 						color="textPrimary"
 					>
 						<Link href="/">
-							<a>Logo</a>
+							<a>JS-land</a>
 						</Link>
 					</Typography>
 					{user.isSignedIn ? null : (
