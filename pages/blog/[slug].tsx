@@ -1,10 +1,11 @@
 import { VFC } from "react";
 import { GetStaticProps, GetStaticPaths } from "next";
-import Image from "next/image";
 import Link from "next/link";
+
 import Layout from "../../components/templates/layout/Layout";
 import { BlogContentDatatype } from "../../types/blog/blogContentDataType";
 import { BlogDataType } from "../../types/blog/blogDataType";
+import BlogLayout from "../../components/templates/layout/BlogLayout";
 
 type Props = {
 	data: BlogContentDatatype;
@@ -15,18 +16,30 @@ const Post: VFC<Props> = (props) => {
 	const description = `${data.title} | ${data.content.slice(0, 80)}...`;
 	return (
 		<Layout title={data.title} description={description}>
-			<div className="post-meta">
-				<span>{data.publishedAt.slice(0, 10).replace(/-/g, "/")}</span>
-			</div>
-			<div
-				className="post-body"
-				dangerouslySetInnerHTML={{ __html: data.content }}
-			/>
-			<Link href="/">
-				<a>back to home</a>
-			</Link>
+			<BlogLayout>
+				<h1 className="title">{data.title}</h1>
+				<div className="post-meta">
+					<span>{data.publishedAt.slice(0, 10).replace(/-/g, "/")}</span>
+				</div>
+				<div
+					className="blog-post-body"
+					dangerouslySetInnerHTML={{ __html: data.content }}
+				/>
+				<Link href="/blog">
+					<a>一覧ページに戻る</a>
+				</Link>
+			</BlogLayout>
 			<style jsx>{`
-				.post-body {
+				.title {
+					font-size: 30px;
+				}
+				.post-meta {
+					margin-bottom: 30px;
+				}
+				span {
+					margin-left: 5px;
+				}
+				.blog-post-body {
 					margin-bottom: 70px;
 				}
 			`}</style>

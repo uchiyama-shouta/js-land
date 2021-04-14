@@ -1,0 +1,38 @@
+.container {
+	display: flex;
+	width: 90%;
+	margin: 50px auto;
+}
+
+.main {
+	height: 2000;
+	width: 55%;
+   margin: 0 auto;
+   background-color: #fff;
+}
+.aside {
+   width: 35%;
+}
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+   /*　画面サイズが768pxから1024pxまではここを読み込む　*/
+   .main {
+      background-color: red;
+   }
+}
+
+@media screen and (max-width: 480px) {
+   /*　画面サイズが768pxから1024pxまではここを読み込む　*/
+	.container {
+		display: block;
+		width: 90%;
+		margin: 50px auto;
+	}
+	.main {
+      background-color: blue;
+		height: 2000;
+		width: 100%;
+	}
+	.aside {
+		width: 100%;
+	}
+}

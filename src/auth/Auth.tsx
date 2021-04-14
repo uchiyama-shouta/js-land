@@ -13,7 +13,6 @@ const Auth: VFC<Props> = memo(({ children }) => {
 	const router = useRouter();
 	const [user, setUser] = useRecoilState(userState);
 
-	// console.log(user);
 	useEffect(() => {
 		if (!user.isSignedIn) {
 			listenAuthState(router, user, setUser);
