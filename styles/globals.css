@@ -41,6 +41,9 @@ a {
 	color: #0044cc;
 	font-size: 16px;
 }
+.blog-post-body a:hover {
+	text-decoration: underline;
+}
 .blog-post-body a:visited {
 	color: #6200ac;
 }
