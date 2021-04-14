@@ -43,21 +43,33 @@ const LessonCardList: VFC<Props> = memo((props) => {
 			<div className={classes.root}>
 				<Grid container justify="center" alignItems="center">
 					<Grid className={classes.flex} container spacing={4}>
-						{data.slice(0, max).map((data) => (
-							<Grid item key={data.id}>
-								<LessonCard
-									className={classes.card}
-									thumbnailPath={data.thumbnailPath}
-									title={data.title}
-									copy={data.copy}
-									price={data.price}
-									id={data.id}
-								/>
-							</Grid>
-						))}
+						{data.length ? (
+							data.slice(0, max).map((data) => (
+								<Grid item key={data.id}>
+									<LessonCard
+										className={classes.card}
+										thumbnailPath={data.thumbnailPath}
+										title={data.title}
+										copy={data.copy}
+										price={data.price}
+										id={data.id}
+									/>
+								</Grid>
+							))
+						) : (
+							<p>comming soon...</p>
+						)}
 					</Grid>
 				</Grid>
 			</div>
+			<style jsx>{`
+				p {
+					text-align: center;
+					margin: 0 auto;
+					font-size: 20px;
+					line-height: 10;
+				}
+			`}</style>
 		</>
 	);
 });

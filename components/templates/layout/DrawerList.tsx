@@ -70,7 +70,7 @@ const DrawerList: VFC<Props> = memo((props) => {
 								<ListItemText primary="ログアウト" onClick={logOut} />
 							</ListItem>
 							{user.role === "administrator" && (
-								<ListItem>
+								<ListItem button>
 									<Link href="/edit">
 										<a>
 											<ListItemText primary="編集" />
