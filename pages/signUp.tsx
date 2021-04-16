@@ -41,18 +41,21 @@ const signUp = () => {
 				<div className={styles.textInput}>
 					<form onSubmit={signUp}>
 						<TextInput
+							rows={1}
 							value={name}
 							label="名前"
 							onChange={inputName}
 							type="text"
 						/>
 						<TextInput
+							rows={1}
 							value={email}
 							label="メールアドレス"
 							onChange={inputEmail}
 							type="email"
 						/>
 						<TextInput
+							rows={1}
 							value={password}
 							label="パスワード"
 							onChange={inputPassword}

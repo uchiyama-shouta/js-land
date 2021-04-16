@@ -9,7 +9,7 @@ type Props = {
 };
 
 const LessonDetailPage: VFC<Props> = (props) => {
-	const { id, thumbnailPath, title, price, copy } = props.propsData;
+	const { id, thumbnailPath, title, price, description } = props.propsData;
 	console.log(props.propsData.id);
 	return (
 		<Layout description={`${title}の購入ページです。`}>
@@ -17,7 +17,7 @@ const LessonDetailPage: VFC<Props> = (props) => {
 			<div style={{ margin: "auto", width: 400 }}>
 				<Image src={thumbnailPath} width={500} height={300} alt="レッスンのサムネイル画像です。" />
 				<h2>{`${title}:　${id}`}</h2>
-				<p>{copy}</p>
+				<p>{description}</p>
 				<p>{price.toLocaleString() + "円"}</p>
 			</div>
 		</Layout>

@@ -41,12 +41,14 @@ const Login: VFC = () => {
 				<div className={styles.textInput}>
 					<form onSubmit={onSubmitlogin}>
 						<TextInput
+							rows={1}
 							value={email}
 							label="メールアドレス"
 							onChange={inputEmail}
 							type="email"
 						/>
 						<TextInput
+							rows={1}
 							value={password}
 							label="パスワード"
 							onChange={inputPassword}

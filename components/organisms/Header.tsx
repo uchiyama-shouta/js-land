@@ -1,5 +1,6 @@
 import { Dispatch, memo, SetStateAction, VFC } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { useRecoilValue } from "recoil";
 import { createStyles, makeStyles, Theme } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
@@ -80,7 +81,15 @@ const Header: VFC<Props> = memo((props) => {
 						color="textPrimary"
 					>
 						<Link href="/">
-							<a>Logo</a>
+							<a>
+								<Image
+									id="logo"
+									width={95}
+									height={15}
+									alt="ロゴ"
+									src="/image/logo_transparent.png"
+								/>
+							</a>
 						</Link>
 					</Typography>
 					{user.isSignedIn ? null : (
@@ -103,7 +112,6 @@ const Header: VFC<Props> = memo((props) => {
 				anchor="left"
 				open={state.left}
 				onClose={toggleDrawer("left", false)}
-				// onOpen={toggleDrawer("left", true)}
 			>
 				<DrawerList />
 			</Drawer>
