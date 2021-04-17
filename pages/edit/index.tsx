@@ -57,32 +57,34 @@ const Index: VFC = () => {
 	return (
 		<>
 			<Layout>
-				{user.role === 'administrator' && (
+				{user.role === "administrator" && (
 					<>
 						<div className="container">
 							<div className="center">
 								<h2 className="">レッスンの作成</h2>
 								<div className="spacer" />
 								<ImageArea image={image} setImage={setImage} />
-								<TextInput
-									label="タイトル"
-									value={title}
-									onChange={inputTitle}
-								/>
-								<TextInput
-									label="説明"
-									rows={5}
-									multiline={true}
-									value={description}
-									onChange={inputDescription}
-								/>
-								<TextInput
-									label="値段"
-									rows={5}
-									value={price}
-									onChange={inputPrice}
-									type="number"
-								/>
+								<div className="wraper">
+									<TextInput
+										label="タイトル"
+										value={title}
+										onChange={inputTitle}
+									/>
+									<TextInput
+										label="説明"
+										rows={5}
+										multiline={true}
+										value={description}
+										onChange={inputDescription}
+									/>
+									<TextInput
+										label="値段"
+										rows={5}
+										value={price}
+										onChange={inputPrice}
+										type="number"
+									/>
+								</div>
 								<div className="spacer" />
 								<PrimaryButton
 									onClick={() => {
@@ -141,6 +143,15 @@ const Index: VFC = () => {
 				}
 				.link:hover {
 					text-decoration: underline;
+				}
+				@media screen and (max-width: 480px) {
+					.center {
+						width: 370px;
+						margin-left: 0;
+					}
+					.wraper {
+						width: 90%;
+					}
 				}
 			`}</style>
 		</>

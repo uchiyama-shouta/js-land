@@ -80,6 +80,7 @@ const ImageArea: VFC<Props> = memo((props) => {
 			<style jsx>{`
 				.text-right {
 					text-align: right;
+					width: 380px;
 				}
 				.none {
 					display: none;
