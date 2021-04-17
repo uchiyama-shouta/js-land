@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useState } from "react";
+import { useRouter } from "next/router";
 import { useRecoilValue } from "recoil";
 import { db } from "../../src/firebase";
 
@@ -15,6 +16,7 @@ import ContentsEdit from "../../components/organisms/ContentsEdit";
 const LessonEdit = (props) => {
 	const { id } = props;
 	const user = useRecoilValue(userState);
+	const router = useRouter();
 	const [title, setTitle] = useState("");
 	const [image, setImage] = useState<ImageType>("");
 	const [description, setDescription] = useState("");
@@ -58,9 +60,17 @@ const LessonEdit = (props) => {
 		}
 	}, [id]);
 
+	useEffect(() => {
+		if (user && user.role !== "administrator") {
+			setTimeout(() => {
+				router.push("/");
+			}, 3000);
+		}
+	});
+
 	return (
 		<Layout>
-			{user.role && (
+			{user.role === "administrator" && (
 				<>
 					<div className="container">
 						<div className="center">

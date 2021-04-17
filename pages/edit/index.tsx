@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useState, VFC } from "react";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import { useRecoilValue } from "recoil";
 
 import Layout from "../../components/templates/layout/Layout";
@@ -19,6 +20,7 @@ type ImageType =
 
 const Index: VFC = () => {
 	const user = useRecoilValue(userState);
+	const router = useRouter();
 	const [title, setTitle] = useState("");
 	const [image, setImage] = useState<ImageType>("");
 	const [description, setDescription] = useState("");
@@ -44,10 +46,18 @@ const Index: VFC = () => {
 		[setPrice]
 	);
 
+	useEffect(() => {
+		if (user && user.role !== "administrator") {
+			setTimeout(() => {
+				router.push("/");
+			}, 3000);
+		}
+	});
+
 	return (
 		<>
 			<Layout>
-				{user.role && (
+				{user.role === 'administrator' && (
 					<>
 						<div className="container">
 							<div className="center">
