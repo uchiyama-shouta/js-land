@@ -9,6 +9,7 @@ export const editLesson = (
 	image?: ImageType,
 ) => {
 	const data = {
+		id,
 		title,
 		description,
 		price: typeof price === "string" && parseInt(price),
