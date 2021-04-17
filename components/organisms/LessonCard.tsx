@@ -41,6 +41,7 @@ type Props = LessonDataType & { className?: any };
 
 const LessonCard: VFC<Props> = memo((props) => {
 	const { thumbnailPath, title, description, price, id } = props;
+	console.log(id)
 	const classes = useStyles();
 	return (
 		<Card className={classes.root}>

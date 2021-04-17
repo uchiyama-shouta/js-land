@@ -3,7 +3,8 @@ import Image from "next/image";
 import { GetStaticPaths, GetStaticProps } from "next";
 import { LessonDataType } from "../../types/lesson/lessonType";
 import Layout from "../../components/templates/layout/Layout";
-import { datas } from '../../src/sample/lessonData'
+import { lessonDataList } from "../../lib/lesson/LessonDataList";
+
 type Props = {
 	propsData: LessonDataType;
 };
@@ -29,6 +30,7 @@ export default LessonDetailPage;
 
 export const getStaticProps: GetStaticProps = async (context) => {
 	const id = context.params.id;
+	const datas = await lessonDataList();
 	const propsData = datas.find((data) => data.id === id);
 
 	return {
@@ -39,6 +41,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
+	const datas = await lessonDataList();
 	const paths = datas.map((data) => ({
 		params: {
 			id: data.id,

@@ -5,13 +5,14 @@ import Layout from "../components/templates/layout/Layout";
 import LessonCardList from "../components/templates/layout/LessonCardList";
 import styles from "../styles/components/pages/index.module.css";
 import { LessonDataType } from "../types/lesson/lessonType";
-import { datas } from "../src/sample/lessonData";
+import { lessonDataList } from "../lib/lesson/LessonDataList";
 
 type Props = {
 	datas: LessonDataType[];
 };
 
 const Home: VFC<Props> = (props) => {
+	console.log(props.datas);
 	return (
 		<>
 			<Layout description="JavaScript特化のオンラインのプログラミング学習サービスです。">
@@ -40,6 +41,7 @@ const Home: VFC<Props> = (props) => {
 };
 
 export const getStaticProps: GetStaticProps = async () => {
+	const datas = await lessonDataList();
 	return {
 		props: {
 			datas,

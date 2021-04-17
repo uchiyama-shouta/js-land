@@ -1,15 +1,16 @@
 import { atom } from "recoil";
-import { UserStateType } from "../../types/user/UserStateType";
+import { LessonDataType } from "../../types/lesson/lessonType";
 
-export const initialState: UserStateType = {
-	isSignedIn: false,
-	role: "customer",
-	uid: "",
-	username: "",
-	email: "",
+export const initialState: LessonDataType = {
+	thumbnailPath: "",
+	title: "",
+	description: "",
+	price: 0,
+	id: "",
+	contents: [],
 };
 
-export const userState = atom<UserStateType>({
-	key: "userState",
+export const lessonState = atom<LessonDataType>({
+	key: "lessonState",
 	default: initialState,
 });
