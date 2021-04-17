@@ -136,6 +136,15 @@ const LessonEdit = (props) => {
 						.link:hover {
 							text-decoration: underline;
 						}
+						@media screen and (max-width: 480px) {
+							.center {
+								width: 370px;
+								margin-left: 0;
+							}
+							.wraper {
+								width: 90%;
+							}
+						}
 					`}</style>
 				</>
 			)}
