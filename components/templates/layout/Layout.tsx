@@ -25,10 +25,11 @@ const Layout: VFC<Props> = memo((props) => {
 				<meta name="description" content={description} />
 			</Head>
 			<Header state={state} setState={setState} />
-			<div>{children}</div>
+			<div />
+			<>{children}</>
 			<style jsx>{`
 				div {
-					padding-top: 64px;
+					height: 64px;
 				}
 			`}</style>
 		</>
