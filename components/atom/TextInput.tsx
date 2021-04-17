@@ -6,21 +6,31 @@ type Props = {
 	type?: string;
 	multiline?: boolean;
 	fullWidth?: boolean;
-	value: string;
+	value: string | number;
+	rows?: number;
 	onChange: (any) => void;
 };
 
 const BasicTextFields: VFC<Props> = memo((props) => {
-	const { label, type, multiline, value, onChange } = props;
+	const {
+		label,
+		type,
+		multiline,
+		value,
+		onChange,
+		fullWidth = true,
+		rows = 1,
+	} = props;
 	return (
 		<TextField
 			label={label}
 			margin="dense"
 			type={type}
 			multiline={multiline}
-			fullWidth
+			fullWidth={fullWidth}
 			value={value}
 			onChange={onChange}
+			rows={rows}
 		/>
 	);
 });
