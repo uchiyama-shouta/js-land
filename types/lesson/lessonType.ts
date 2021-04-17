@@ -4,5 +4,5 @@ export type LessonDataType = {
 	description: string;
 	price: number;
 	id?: string;
-	contents?: []
+	contents?: [];
 };

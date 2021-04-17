@@ -1,4 +1,3 @@
-import { useRouter } from "next/router";
 import { useCallback, useEffect, useState } from "react";
 import { useRecoilValue } from "recoil";
 import { db } from "../../src/firebase";
@@ -9,20 +8,19 @@ import ImageArea from "../../components/organisms/ImageArea";
 import Layout from "../../components/templates/layout/Layout";
 import { userState } from "../../src/store/userState";
 import { ImageType } from "../../types/lesson/ImageType";
+import { GetServerSideProps } from "next";
+import { editLesson } from "../../lib/lesson/editLesson";
+import ContentsEdit from "../../components/organisms/ContentsEdit";
 
-const LessonEdit = () => {
-	const router = useRouter();
-	const { pageId } = router.query;
+const LessonEdit = (props) => {
+	const { id } = props;
 	const user = useRecoilValue(userState);
 	const [title, setTitle] = useState("");
 	const [image, setImage] = useState<ImageType>("");
 	const [description, setDescription] = useState("");
 	const [price, setPrice] = useState<number | "">("");
-	const [id, setId] = useState<string>('')
 
-	if(typeof(pageId) === 'string') {
-		setId(pageId)
-	}
+	const [contents, setContents] = useState([]);
 
 	const inputTitle = useCallback(
 		(e) => {
@@ -42,54 +40,59 @@ const LessonEdit = () => {
 		},
 		[setPrice]
 	);
+
 	useEffect(() => {
-		db.collection("lessons")
-			.get(id)
-			.then((doc) => {
-				console.log();
-			}).catch(error => {
-				console.log(error)
-		  })
-	}, []);
+		if (id !== "") {
+			db.collection("lessons")
+				.doc(id)
+				.get()
+				.then((snapshot) => {
+					const lesson = snapshot.data();
+					console.log(lesson);
+					setTitle(lesson.title);
+					setDescription(lesson.description);
+					setImage(lesson.image);
+					setPrice(lesson.price);
+					setContents(lesson.contents);
+				});
+		}
+	}, [id]);
+
 	return (
 		<Layout>
 			{user.role && (
 				<>
 					<div className="container">
 						<div className="center">
+							<h2 className="">レッスンの編集</h2>
+							<div className="spacer" />
 							<ImageArea image={image} setImage={setImage} />
-							<TextInput
-								label="タイトル"
-								rows={1}
-								value={title}
-								onChange={inputTitle}
-								fullWidth={true}
-							/>
+							<TextInput label="タイトル" value={title} onChange={inputTitle} />
 							<TextInput
 								label="説明"
-								rows={5}
 								value={description}
+								multiline={true}
+								rows={5}
 								onChange={inputDescription}
-								fullWidth={true}
 							/>
 							<TextInput
 								label="値段"
-								rows={5}
 								value={price}
 								onChange={inputPrice}
-								fullWidth={true}
 								type="number"
 							/>
 							<div className="spacer" />
+							<ContentsEdit contents={contents} setContents={setContents} />
+							<div className="spacer" />
 							<PrimaryButton
 								onClick={() => {
-									// createLesson(title, description, price);
+									editLesson(id, title, description, price, image);
 									setTitle("");
 									setDescription("");
 									setPrice("");
 								}}
 							>
-								レッスンを編集する
+								レッスンの編集を確定する
 							</PrimaryButton>
 						</div>
 					</div>
@@ -105,6 +108,13 @@ const LessonEdit = () => {
 							margin: 0 auto;
 							width: 400px;
 						}
+
+						.title {
+							text-align: center;
+							margin-top: 20px;
+							font-size: 30px;
+						}
+
 						.spacer {
 							height: 60px;
 						}
@@ -125,32 +135,11 @@ const LessonEdit = () => {
 
 export default LessonEdit;
 
-// export const getStaticProps: GetStaticProps = async (context) => {
-// 	const id = context.params.id;
-// 	// const propsData = datas.find((data) => data.id === id);
-
-// 	return {
-// 		props: {
-// 			// propsData,
-// 		},
-// 	};
-// };
-
-// export const getStaticPaths: GetStaticPaths = async () => {
-// 	// const paths = datas.map((data) => ({
-// 	// 	params: {
-// 	// 		id: data.id,
-// 	// 	},
-// 	// }));
-// 	const paths = [
-// 		{
-// 			params: {
-// 				id: "",
-// 			},
-// 		},
-// 	];
-// 	return {
-// 		paths,
-// 		fallback: false,
-// 	};
-// };
+export const getServerSideProps: GetServerSideProps = async (context) => {
+	const id = context.params.id;
+	return {
+		props: {
+			id,
+		},
+	};
+};

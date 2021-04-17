@@ -38,6 +38,7 @@ const max = 10;
 const LessonCardList: VFC<Props> = memo((props) => {
 	const classes = useStyles();
 	const { data } = props;
+	console.log(data[0].id)
 	return (
 		<>
 			<div className={classes.root}>
@@ -50,7 +51,7 @@ const LessonCardList: VFC<Props> = memo((props) => {
 										className={classes.card}
 										thumbnailPath={data.thumbnailPath}
 										title={data.title}
-										copy={data.copy}
+										description={data.description}
 										price={data.price}
 										id={data.id}
 									/>

@@ -7,7 +7,7 @@ type Props = {
 	multiline?: boolean;
 	fullWidth?: boolean;
 	value: string | number;
-	rows: number;
+	rows?: number;
 	onChange: (any) => void;
 };
 
@@ -18,8 +18,8 @@ const BasicTextFields: VFC<Props> = memo((props) => {
 		multiline,
 		value,
 		onChange,
-		rows,
 		fullWidth = true,
+		rows = 1,
 	} = props;
 	return (
 		<TextField

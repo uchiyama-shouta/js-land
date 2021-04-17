@@ -1,4 +1,4 @@
-import { Dispatch, SetStateAction, useCallback, VFC } from "react";
+import { Dispatch, memo, SetStateAction, useCallback, VFC } from "react";
 import { storage } from "../../src/firebase";
 import { makeStyles } from "@material-ui/styles";
 import IconButton from "@material-ui/core/IconButton";
@@ -17,7 +17,7 @@ type Props = {
 	setImage: Dispatch<SetStateAction<any>>;
 };
 
-const ImageArea: VFC<Props> = (props) => {
+const ImageArea: VFC<Props> = memo((props) => {
 	const classes = useStyles();
 	const uploadImage = useCallback(
 		(e) => {
@@ -97,6 +97,6 @@ const ImageArea: VFC<Props> = (props) => {
 			`}</style>
 		</>
 	);
-};
+});
 
 export default ImageArea;

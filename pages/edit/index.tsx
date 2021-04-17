@@ -51,13 +51,13 @@ const Index: VFC = () => {
 					<>
 						<div className="container">
 							<div className="center">
+								<h2 className="">レッスンの作成</h2>
+								<div className="spacer" />
 								<ImageArea image={image} setImage={setImage} />
 								<TextInput
 									label="タイトル"
-									rows={1}
 									value={title}
 									onChange={inputTitle}
-									fullWidth={true}
 								/>
 								<TextInput
 									label="説明"
@@ -65,25 +65,30 @@ const Index: VFC = () => {
 									multiline={true}
 									value={description}
 									onChange={inputDescription}
-									fullWidth={true}
 								/>
 								<TextInput
 									label="値段"
 									rows={5}
 									value={price}
 									onChange={inputPrice}
-									fullWidth={true}
 									type="number"
 								/>
 								<div className="spacer" />
 								<PrimaryButton
 									onClick={() => {
-										const LessonId = createLesson(title, description, price, image);
+										const LessonId = createLesson(
+											title,
+											description,
+											price,
+											image
+										);
+
 										setTitle("");
 										setDescription("");
 										setPrice("");
 										setImage("");
-										setId(LessonId)
+
+										setId(LessonId);
 									}}
 								>
 									レッスンを作成する
@@ -92,12 +97,19 @@ const Index: VFC = () => {
 								<Link href={`/edit/${id}`}>
 									<a className="link">レッスンの編集へ</a>
 								</Link>
+
+								<div className="spacer" />
 							</div>
 						</div>
 					</>
 				)}
 			</Layout>
 			<style jsx>{`
+				.title {
+					text-align: center;
+					margin-top: 20px;
+					font-size: 30px;
+				}
 				.container {
 					padding-top: 50px;
 					width: 80%;
@@ -126,18 +138,3 @@ const Index: VFC = () => {
 };
 
 export default Index;
-
-// useEffect(() => {
-// 	const unSub = db.collection("lessons").onSnapshot((snapshot) => {
-// 		const datas: LessonType[] = snapshot.docs.map((doc) => ({
-// 			title: doc.data().title,
-// 			thumbnailPath: doc.data().thumbnailPath,
-// 			copy: doc.data().copy,
-// 			price: doc.data().price,
-// 			id: doc.data().id,
-// 			contents: [],
-// 		}));
-// 		setLessons(datas);
-// 	});
-// 	return () => unSub();
-// }, []);
