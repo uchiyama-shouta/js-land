@@ -40,7 +40,7 @@ const useStyles = makeStyles({
 type Props = LessonDataType & { className?: any };
 
 const LessonCard: VFC<Props> = memo((props) => {
-	const { thumbnailPath, title, copy, price, id } = props;
+	const { thumbnailPath, title, description, price, id } = props;
 	const classes = useStyles();
 	return (
 		<Card className={classes.root}>
@@ -59,7 +59,7 @@ const LessonCard: VFC<Props> = memo((props) => {
 								{title}
 							</Typography>
 							<Typography variant="body2" color="initial" component="p">
-								{copy}
+								{description}
 							</Typography>
 							<Divider className={classes.divider} />
 							<Typography

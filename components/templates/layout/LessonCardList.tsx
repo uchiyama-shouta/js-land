@@ -50,7 +50,7 @@ const LessonCardList: VFC<Props> = memo((props) => {
 										className={classes.card}
 										thumbnailPath={data.thumbnailPath}
 										title={data.title}
-										copy={data.copy}
+										description={data.description}
 										price={data.price}
 										id={data.id}
 									/>

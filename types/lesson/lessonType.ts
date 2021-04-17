@@ -1,7 +1,7 @@
 export type LessonDataType = {
 	thumbnailPath: string;
 	title: string;
-	copy: string;
+	description: string;
 	price: number;
 	id?: string;
 };

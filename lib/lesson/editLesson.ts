@@ -17,8 +17,5 @@ export const editLesson = (
 		contents: [],
 		isRelease: false,
 	};
-	// const ref = db.collection("lessons").doc();
-	// const id = ref.id;
-	// data.id = id;
 	db.collection("lessons").doc(id).set(data, { merge: true });
 };
