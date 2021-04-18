@@ -14,9 +14,14 @@ const LessonDetailPage: VFC<Props> = (props) => {
 	console.log(props.propsData.id);
 	return (
 		<Layout description={`${title}の購入ページです。`}>
-         <div style={{height: 60}} />
+			<div style={{ height: 60 }} />
 			<div style={{ margin: "auto", width: 400 }}>
-				<Image src={thumbnailPath} width={500} height={300} alt="レッスンのサムネイル画像です。" />
+				<Image
+					src={thumbnailPath}
+					width={500}
+					height={300}
+					alt="レッスンのサムネイル画像です。"
+				/>
 				<h2>{`${title}:　${id}`}</h2>
 				<p>{description}</p>
 				<p>{price.toLocaleString() + "円"}</p>
@@ -27,7 +32,6 @@ const LessonDetailPage: VFC<Props> = (props) => {
 
 export default LessonDetailPage;
 
-
 export const getStaticProps: GetStaticProps = async (context) => {
 	const id = context.params.id;
 	const datas = await lessonDataList();
@@ -37,6 +41,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
 		props: {
 			propsData,
 		},
+		revalidate: 30,
 	};
 };
 
