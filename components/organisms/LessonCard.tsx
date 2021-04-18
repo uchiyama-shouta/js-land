@@ -37,14 +37,26 @@ const useStyles = makeStyles({
 	divider: {
 		margin: "10px 0",
 	},
+	description: {
+		height: 60,
+		overflow: "hidden",
+		textOverflow: "ellipsis",
+	},
 	price: {
 		fontSize: 20,
 		paddingBottom: 0,
 	},
-	icon: {
+	iconButton: {
 		position: "absolute",
 		top: 10,
 		right: 10,
+		height: 35,
+		width: 35,
+		padding: 5,
+		backgroundColor: "#fff",
+		borderRadius: 9999
+	},
+	icon: {
 		height: 25,
 		width: 25,
 	},
@@ -72,7 +84,12 @@ const LessonCard: VFC<Props> = memo((props) => {
 								<Typography gutterBottom variant="h5" component="h2">
 									{title}
 								</Typography>
-								<Typography variant="body2" color="initial" component="p">
+								<Typography
+									variant="body2"
+									color="initial"
+									component="p"
+									className={classes.description}
+								>
 									{replaceToBr(description)}
 								</Typography>
 								<Divider className={classes.divider} />
@@ -91,7 +108,9 @@ const LessonCard: VFC<Props> = memo((props) => {
 				{user.role === "administrator" && (
 					<Link href={`/edit/${id}`}>
 						<a>
-							<ArrowForwardIosIcon className={classes.icon} />
+							<div className={classes.iconButton}>
+								<ArrowForwardIosIcon className={classes.icon} />
+							</div>
 						</a>
 					</Link>
 				)}
