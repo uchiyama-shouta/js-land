@@ -50,3 +50,7 @@ a {
 .blog-post-body li {
 	margin-left: 40px;
 }
+
+code.hljs {
+	font-size: 18px;
+}

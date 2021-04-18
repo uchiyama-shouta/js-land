@@ -1,6 +1,9 @@
 import { VFC } from "react";
 import { GetStaticProps, GetStaticPaths } from "next";
 import Link from "next/link";
+import cheerio from "cheerio";
+import hljs from "highlight.js";
+import 'highlight.js/styles/night-owl.css';
 
 import Layout from "../../components/templates/layout/Layout";
 import { BlogContentDatatype } from "../../types/blog/blogContentDataType";
@@ -9,10 +12,11 @@ import BlogLayout from "../../components/templates/layout/BlogLayout";
 
 type Props = {
 	data: BlogContentDatatype;
+	body: any;
 };
 
 const Post: VFC<Props> = (props) => {
-	const { data } = props;
+	const { data, body } = props;
 	const description = `${data.title} | ${data.content.slice(0, 80)}...`;
 	return (
 		<Layout title={data.title} description={description}>
@@ -23,7 +27,7 @@ const Post: VFC<Props> = (props) => {
 				</div>
 				<div
 					className="blog-post-body"
-					dangerouslySetInnerHTML={{ __html: data.content }}
+					dangerouslySetInnerHTML={{ __html: body }}
 				/>
 				<Link href="/blog">
 					<a>一覧ページに戻る</a>
@@ -57,9 +61,16 @@ export const getStaticProps: GetStaticProps = async (context) => {
 	const id = context.params.slug;
 	const res = await fetch(apiUrl + id, key);
 	const data: BlogContentDatatype = await res.json();
+	const $ = cheerio.load(data.content);
+	$("pre code").each((_, elm) => {
+		const result = hljs.highlightAuto($(elm).text());
+		$(elm).html(result.value);
+		$(elm).addClass("hljs");
+	});
 	return {
 		props: {
 			data,
+			body: $.html(),
 		},
 	};
 };
