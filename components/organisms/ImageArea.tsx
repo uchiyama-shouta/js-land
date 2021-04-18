@@ -95,6 +95,12 @@ const ImageArea: VFC<Props> = memo((props) => {
 					margin: 0 auto;
 					background-color: #ddd;
 				}
+				@media screen and (max-width: 480px) {
+					.text-right {
+						text-align: center;
+						width: 350px;
+					}
+				}
 			`}</style>
 		</>
 	);
