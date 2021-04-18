@@ -12,7 +12,7 @@ export const editLesson = (
 		id,
 		title,
 		description,
-		price: typeof price === "string" && parseInt(price),
+		price: typeof price === "string" ? parseInt(price) : price,
 		image,
 		contents: [],
 		isRelease: false,
