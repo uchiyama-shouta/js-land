@@ -1,5 +1,6 @@
 import Head from "next/head";
 import { memo, ReactNode, useState, VFC } from "react";
+import Footer from "../../organisms/Footer";
 import Header from "../../organisms/Header";
 
 type Props = {
@@ -27,6 +28,8 @@ const Layout: VFC<Props> = memo((props) => {
 			<Header state={state} setState={setState} />
 			<div />
 			<>{children}</>
+			<div />
+			<Footer />
 			<style jsx>{`
 				div {
 					height: 64px;
