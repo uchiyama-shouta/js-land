@@ -1,19 +1,15 @@
 import { Dispatch, memo, SetStateAction, useEffect, VFC } from "react";
+import { LessonDataType } from "../../types/lesson/lessonType";
 
 type Props = {
-	contents: any[];
+	contents: LessonDataType | {};
 	setContents: Dispatch<SetStateAction<any>>;
 };
 
-const ContentsEdit: VFC<Props> = (props) => {
+const ContentsEdit: VFC<Props> = memo((props) => {
 	const { contents, setContents } = props;
-	useEffect(() => {
-		console.log(props.contents);
-		console.log(contents);
-		console.log("render!!!");
-		setContents([{ type: "text" }]);
-	}, []);
+	console.log(contents);
 	return <div>EDIT</div>;
-};
+});
 
 export default ContentsEdit;

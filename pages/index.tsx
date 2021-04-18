@@ -11,8 +11,7 @@ type Props = {
 	datas: LessonDataType[];
 };
 
-const Home: VFC<Props> = (props) => {
-	console.log(props.datas);
+const Home: VFC<Props> = ({ datas }) => {
 	return (
 		<>
 			<Layout description="JavaScript特化のオンラインのプログラミング学習サービスです。">
@@ -25,7 +24,7 @@ const Home: VFC<Props> = (props) => {
 				</section>
 				<section>
 					<h2 className={styles.section_title}>レッスン一覧</h2>
-					<LessonCardList data={props.datas} />
+					<LessonCardList data={datas} />
 					<Link href="/lesson">
 						<a className={styles.button}>レッスン一覧</a>
 					</Link>
