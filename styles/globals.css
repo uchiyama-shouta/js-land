@@ -49,6 +49,7 @@ a {
 }
 .blog-post-body li {
 	margin-left: 40px;
+	font-size: 16px;
 }
 
 code.hljs {
