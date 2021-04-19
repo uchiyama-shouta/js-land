@@ -1,4 +1,5 @@
 import { memo, ReactNode, VFC } from "react";
+import BlogAside from "../../organisms/BlogAside";
 
 import styles from "../../../styles/components/template/blogLayout.module.css";
 
@@ -12,7 +13,7 @@ const BlogLayout: VFC<Props> = memo((props) => {
 		<>
 			<div className={styles.container}>
 				<main className={styles.main}>{children}</main>
-				<aside className={styles.aside}></aside>
+				<BlogAside />
 			</div>
 		</>
 	);
