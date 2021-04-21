@@ -11,8 +11,6 @@ import PrimaryButton from "../../components/atom/button/PrimaryButton";
 import { LessonDataType } from "../../types/lesson/lessonType";
 import { createLesson } from "../../lib/lesson/createLesson";
 
-type LessonType = LessonDataType;
-
 type ImageType =
 	| ""
 	| { id: string | ""; path: string | "" }
@@ -47,12 +45,10 @@ const Index: VFC = () => {
 	);
 
 	useEffect(() => {
-		if (user && user.role !== "administrator") {
-			setTimeout(() => {
-				router.push("/");
-			}, 3000);
+		if (user.isSignedIn && user.role !== "administrator") {
+			router.push("/");
 		}
-	});
+	}, [user]);
 
 	return (
 		<>

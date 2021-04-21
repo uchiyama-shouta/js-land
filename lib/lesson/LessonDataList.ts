@@ -12,6 +12,7 @@ export const lessonDataList = async () => {
 			price: docData.price,
 			id: doc.id,
 			contents: docData.contents,
+			isRelease: docData.isRelease,
 		};
 		return data;
 	});
