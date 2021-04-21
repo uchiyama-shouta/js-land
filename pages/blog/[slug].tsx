@@ -9,6 +9,7 @@ import Layout from "../../components/templates/layout/Layout";
 import { BlogContentDatatype } from "../../types/blog/blogContentDataType";
 import { BlogDataType } from "../../types/blog/blogDataType";
 import BlogLayout from "../../components/templates/layout/BlogLayout";
+import { createDescription } from "../../lib/function/createDescription";
 
 type Props = {
 	data: BlogContentDatatype;
@@ -17,7 +18,7 @@ type Props = {
 
 const Post: VFC<Props> = (props) => {
 	const { data, body } = props;
-	const description = `${data.title} | ${data.content.slice(0, 80)}...`;
+	const description = `${data.title} | ${createDescription(data.content.slice(0, 80))}...`;
 	return (
 		<Layout title={data.title} description={description}>
 			<BlogLayout>

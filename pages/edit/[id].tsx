@@ -13,6 +13,8 @@ import { GetServerSideProps } from "next";
 import { editLesson } from "../../lib/lesson/editLesson";
 import ContentsEdit from "../../components/organisms/ContentsEdit";
 import { LessonDataType } from "../../types/lesson/lessonType";
+import { LessonContentType } from "../../types/lesson/lessonContentType";
+import { LessonChapterType } from "../../types/lesson/lessonChapterType";
 
 const LessonEdit = (props) => {
 	const { id } = props;
@@ -22,7 +24,7 @@ const LessonEdit = (props) => {
 	const [image, setImage] = useState<ImageType>("");
 	const [description, setDescription] = useState("");
 	const [price, setPrice] = useState<number | "">("");
-	const [contents, setContents] = useState<LessonDataType | {}>({});
+	const [contents, setContents] = useState<LessonChapterType[] | []>([]);
 
 	const inputTitle = useCallback(
 		(e) => {
@@ -61,12 +63,10 @@ const LessonEdit = (props) => {
 	}, [id]);
 
 	useEffect(() => {
-		if (user && user.role !== "administrator") {
-			setTimeout(() => {
-				router.push("/");
-			}, 3000);
+		if (user.isSignedIn && user.role !== "administrator") {
+			router.push("/");
 		}
-	});
+	}, [user]);
 
 	return (
 		<Layout>

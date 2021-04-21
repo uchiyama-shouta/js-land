@@ -1,10 +1,8 @@
 export type LessonContentType = {
 	type: "text" | "video";
-	lessonTitle: "";
+	lessonTitle: string;
 	content: {};
 };
-
-
 
 // const lessoncontent = [
 // 	{
