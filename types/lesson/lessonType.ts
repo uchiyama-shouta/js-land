@@ -7,4 +7,5 @@ export type LessonDataType = {
 	price: number;
 	id?: string;
 	contents?: LessonChapterType[];
+	isRelease?: Boolean;
 };
