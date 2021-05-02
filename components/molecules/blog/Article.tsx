@@ -47,6 +47,7 @@ const Article: VFC<Props> = memo((props) => {
 							}
 							width={325}
 							height={170}
+							quality={60}
 							alt="サムネイル画像"
 						/>
 						<div>
