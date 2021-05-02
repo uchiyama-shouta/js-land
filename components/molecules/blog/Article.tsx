@@ -64,7 +64,3 @@ const Article: VFC<Props> = memo((props) => {
 });
 
 export default Article;
-
-// {data.map((data: BlogContentDatatype) => (
-// 	<Article key={data.id} blog={data} />
-// ))}
