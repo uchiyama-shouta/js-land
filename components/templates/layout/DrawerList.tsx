@@ -21,8 +21,6 @@ const useStyles = makeStyles({
 	},
 });
 
-const testList = ["レッスン一覧", "購入したレッスン", "検索"];
-
 type Props = {
 	anchor?: "top" | "left" | "bottom" | "right";
 };
@@ -51,11 +49,13 @@ const DrawerList: VFC<Props> = memo((props) => {
 				role="presentation"
 			>
 				<List>
-					{testList.map((text) => (
-						<ListItem button key={text}>
-							<ListItemText primary={text} />
-						</ListItem>
-					))}
+					<ListItem button>
+						<Link href="/lesson">
+							<a>
+								<ListItemText primary="レッスン一覧" />
+							</a>
+						</Link>
+					</ListItem>
 					<ListItem button>
 						<Link href="/blog">
 							<a>

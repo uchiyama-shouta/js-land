@@ -3,7 +3,7 @@ import { GetStaticProps, GetStaticPaths } from "next";
 import Link from "next/link";
 import cheerio from "cheerio";
 import hljs from "highlight.js";
-import 'highlight.js/styles/night-owl.css';
+import 'highlight.js/styles/hybrid.css';
 
 import Layout from "../../components/templates/layout/Layout";
 import { BlogContentDatatype } from "../../types/blog/blogContentDataType";

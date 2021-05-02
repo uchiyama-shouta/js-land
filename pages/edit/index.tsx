@@ -10,17 +10,13 @@ import TextInput from "../../components/atom/TextInput";
 import PrimaryButton from "../../components/atom/button/PrimaryButton";
 import { LessonDataType } from "../../types/lesson/lessonType";
 import { createLesson } from "../../lib/lesson/createLesson";
-
-type ImageType =
-	| ""
-	| { id: string | ""; path: string | "" }
-	| { id: ""; path: "" };
+import { ImageType } from "../../types/lesson/ImageType";
 
 const Index: VFC = () => {
 	const user = useRecoilValue(userState);
 	const router = useRouter();
 	const [title, setTitle] = useState("");
-	const [image, setImage] = useState<ImageType>("");
+	const [image, setImage] = useState<ImageType>(undefined);
 	const [description, setDescription] = useState("");
 	const [price, setPrice] = useState<number | "">("");
 	const [id, setId] = useState("");
@@ -94,7 +90,7 @@ const Index: VFC = () => {
 										setTitle("");
 										setDescription("");
 										setPrice("");
-										setImage("");
+										setImage(undefined);
 
 										setId(LessonId);
 									}}
@@ -104,6 +100,9 @@ const Index: VFC = () => {
 
 								<Link href={`/edit/${id}`}>
 									<a className="link">レッスンの編集へ</a>
+								</Link>
+								<Link href={`/edit/lesson`}>
+									<a className="link">レッスンの一覧へ</a>
 								</Link>
 
 								<div className="spacer" />

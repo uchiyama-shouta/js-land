@@ -21,7 +21,7 @@ const LessonEdit = (props) => {
 	const user = useRecoilValue(userState);
 	const router = useRouter();
 	const [title, setTitle] = useState("");
-	const [image, setImage] = useState<ImageType>("");
+	const [image, setImage] = useState<ImageType>(undefined);
 	const [description, setDescription] = useState("");
 	const [price, setPrice] = useState<number | "">("");
 	const [contents, setContents] = useState<LessonChapterType[] | []>([]);

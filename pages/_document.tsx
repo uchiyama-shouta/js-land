@@ -15,7 +15,7 @@ export default class MyDocument extends Document {
 						// href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
 					/>
 					<link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
-					<link rel="apple-touch-icon" href="favicon.png" />
+					<link rel="apple-touch-icon" href="/favicon.png" />
 				</Head>
 				<body>
 					<Main />
