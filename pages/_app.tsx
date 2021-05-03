@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import Router from "next/router";
 import { RecoilRoot } from "recoil";
 import Head from "next/head";
 import type { AppProps } from "next/app";
@@ -9,6 +10,11 @@ import theme from "../src/theme";
 
 import Auth from "../src/auth/Auth";
 import "../styles/globals.css";
+import { GA_TRACKING_ID, pageview } from "../lib/gtag";
+
+if (GA_TRACKING_ID) {
+	Router.events.on("routeChangeComplete", (url) => pageview(url));
+}
 
 export default function MyApp({ Component, pageProps }: AppProps) {
 	useEffect(() => {
