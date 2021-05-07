@@ -38,7 +38,6 @@ const ArticleGrid: VFC<Props> = memo((props) => {
 			<div className={classes.root}>
 				<Grid container justify="center" alignItems="center">
 					<Grid className={classes.flex} container spacing={4}>
-						{/* {blog.slice(0, max).map((data) => ( */}
 						{blog.map((data) => (
 							<Grid item key={data.id}>
 								<Article key={data.id} blog={data} />

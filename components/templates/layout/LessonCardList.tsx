@@ -42,7 +42,6 @@ const LessonCardList: VFC<Props> = memo((props) => {
 	const { data } = props;
 	const user = useRecoilValue(userState);
 
-	console.log(data)
 	return (
 		<>
 			<div className={classes.root}>
