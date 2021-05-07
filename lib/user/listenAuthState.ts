@@ -33,7 +33,11 @@ export const listenAuthState = async (
 				});
 		} else {
 			console.log("ログイン出来てない");
-			if (router.pathname === "/") {
+			if (
+				router.pathname === "/" ||
+				router.pathname === "/blog" ||
+				router.pathname.match("/blog/")
+			) {
 				return;
 			} else {
 				router.push("/login");
