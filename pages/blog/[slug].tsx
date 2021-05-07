@@ -35,7 +35,7 @@ const Post: VFC<Props> = (props) => {
 						property="og:url"
 						content={`https://learning-service.vercel.app/blog/${data.id}`}
 					/>
-					<meta property="og:image" content={data.thumbnail.url} />
+					<meta property="og:image" content={thumbnailPath} />
 					<meta property="og:site_name" content="JS-land" />
 					<meta property="og:description" content={description} />
 					<meta name="twitter:card" content="summary" />
