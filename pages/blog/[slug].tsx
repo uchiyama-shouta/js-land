@@ -22,19 +22,22 @@ const Post: VFC<Props> = (props) => {
 	const description = `${data.title} | ${createDescription(
 		data.content.slice(0, 80)
 	)}...`;
+	const sampleThumbnailPath =
+		"https://images.microcms-assets.io/assets/c9a1727417ca42caaeb447e362bfef6a/829615ee10f5486caa355eaab355234f/thumbnail_React_image.png";
+	const thumbnailPath = data.thumbnail ? data.thumbnail.url : sampleThumbnailPath
 	return (
 		<>
 			<Head>
 				<head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# article: http://ogp.me/ns/article#">
 					<meta property="og:title" content={data.title} />
 					<meta property="og:type" content="article" />
-					<meta property="og:url" content={`https://learning-service.vercel.app/blog/${data.id}`} />
+					<meta
+						property="og:url"
+						content={`https://learning-service.vercel.app/blog/${data.id}`}
+					/>
 					<meta property="og:image" content={data.thumbnail.url} />
 					<meta property="og:site_name" content="JS-land" />
-					<meta
-						property="og:description"
-						content={description}
-					/>
+					<meta property="og:description" content={description} />
 					<meta name="twitter:card" content="summary" />
 				</head>
 			</Head>
