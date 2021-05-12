@@ -19,7 +19,6 @@ const useStyles = makeStyles((theme: Theme) =>
 	createStyles({
 		root: {
 			flexGrow: 1,
-			// marginBottom: 10,
 		},
 		appBar: {
 			backgroundColor: "#fff",

@@ -41,6 +41,7 @@ const lesson = () => {
 			setDatas(res);
 		});
 	}, []);
+	console.log(datas);
 	return (
 		<>
 			<Layout>

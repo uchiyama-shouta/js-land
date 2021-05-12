@@ -8,7 +8,6 @@ import ImageArea from "../../components/organisms/ImageArea";
 import { userState } from "../../src/store/userState";
 import TextInput from "../../components/atom/TextInput";
 import PrimaryButton from "../../components/atom/button/PrimaryButton";
-import { LessonDataType } from "../../types/lesson/lessonType";
 import { createLesson } from "../../lib/lesson/createLesson";
 import { ImageType } from "../../types/lesson/ImageType";
 
