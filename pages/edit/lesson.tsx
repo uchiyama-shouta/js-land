@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useRecoilValue } from "recoil";
 
-import { makeStyles } from "@material-ui/core/styles";
+import { createStyles, makeStyles, Theme } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import SwiperCore, { Navigation, Pagination, A11y, Autoplay } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -17,19 +17,24 @@ import { userState } from "../../src/store/userState";
 
 SwiperCore.use([Navigation, Pagination, A11y, Autoplay]);
 
-const useStyles = makeStyles({
-	container: {
-		width: "90vw",
-		margin: "0 auto",
-		whiteSpace: "nowrap",
-	},
-	card: {
-		width: 380,
-		padding: 10,
-		margin: "30px auto",
-		minHeight: 500,
-	},
-});
+const useStyles = makeStyles((theme: Theme) =>
+	createStyles({
+		container: {
+			width: "90vw",
+			margin: "0 auto",
+			whiteSpace: "nowrap",
+		},
+		card: {
+			width: 380,
+			padding: 10,
+			margin: "30px auto",
+			minHeight: 500,
+			[theme.breakpoints.down("md")]: {
+				width: 320,
+			},
+		},
+	})
+);
 
 const lesson = () => {
 	const [datas, setDatas] = useState<LessonDataType[] | []>([]);
