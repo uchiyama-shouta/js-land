@@ -159,6 +159,7 @@ const LessonEditCard: VFC<Props> = memo((props) => {
 							setTitle("");
 							setDescription("");
 							setPrice(0);
+							alert('保存できました')
 						}}
 					>
 						保存する
