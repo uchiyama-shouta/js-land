@@ -90,11 +90,9 @@ const LessonEditCard: VFC<Props> = memo((props) => {
 		[setImage]
 	);
 
-	console.log(image);
-
 	return (
 		<>
-			<div>
+			<div className="container">
 				{titleFlag ? (
 					<div onDoubleClick={handleTitleFlag}>
 						<TextInput
@@ -172,6 +170,9 @@ const LessonEditCard: VFC<Props> = memo((props) => {
 				</Link>
 			</div>
 			<style jsx>{`
+				.container {
+					margin: 0 auto;
+				}
 				.spacer {
 					height: 30px;
 				}

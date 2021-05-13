@@ -4,8 +4,6 @@ import { useRecoilValue } from "recoil";
 import { db } from "../../src/firebase";
 
 import PrimaryButton from "../../components/atom/button/PrimaryButton";
-import TextInput from "../../components/atom/TextInput";
-import ImageArea from "../../components/organisms/ImageArea";
 import Layout from "../../components/templates/layout/Layout";
 import { userState } from "../../src/store/userState";
 import { ImageType } from "../../types/lesson/ImageType";
@@ -25,25 +23,6 @@ const LessonEdit = (props) => {
 	const [description, setDescription] = useState("");
 	const [price, setPrice] = useState<number | "">("");
 	const [contents, setContents] = useState<LessonChapterType[] | []>([]);
-
-	const inputTitle = useCallback(
-		(e) => {
-			setTitle(e.target.value);
-		},
-		[setTitle]
-	);
-	const inputDescription = useCallback(
-		(e) => {
-			setDescription(e.target.value);
-		},
-		[setDescription]
-	);
-	const inputPrice = useCallback(
-		(e) => {
-			setPrice(e.target.value);
-		},
-		[setPrice]
-	);
 
 	useEffect(() => {
 		if (id !== "") {
@@ -74,36 +53,10 @@ const LessonEdit = (props) => {
 				<>
 					<div className="container">
 						<div className="center">
-							<h2 className="">レッスンの編集</h2>
+							<h2 className="">コンテンツの編集</h2>
 							<div className="spacer" />
-							<ImageArea image={image} setImage={setImage} />
-							<TextInput label="タイトル" value={title} onChange={inputTitle} />
-							<TextInput
-								label="説明"
-								value={description}
-								multiline={true}
-								rows={5}
-								onChange={inputDescription}
-							/>
-							<TextInput
-								label="値段"
-								value={price}
-								onChange={inputPrice}
-								type="number"
-							/>
 							<div className="spacer" />
-							<ContentsEdit contents={contents} setContents={setContents} />
-							<div className="spacer" />
-							<PrimaryButton
-								onClick={() => {
-									editLesson(id, title, description, price, image);
-									setTitle("");
-									setDescription("");
-									setPrice("");
-								}}
-							>
-								レッスンの編集を確定する
-							</PrimaryButton>
+							<PrimaryButton>レッスンの編集を確定する</PrimaryButton>
 						</div>
 					</div>
 					<style jsx>{`
@@ -118,13 +71,11 @@ const LessonEdit = (props) => {
 							margin: 0 auto;
 							width: 400px;
 						}
-
 						.title {
 							text-align: center;
 							margin-top: 20px;
 							font-size: 30px;
 						}
-
 						.spacer {
 							height: 60px;
 						}

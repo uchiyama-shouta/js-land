@@ -24,7 +24,7 @@ const useStyles = makeStyles({
 		whiteSpace: "nowrap",
 	},
 	card: {
-		width: 400,
+		width: 380,
 		padding: 10,
 		margin: "30px auto",
 		minHeight: 500,
@@ -41,7 +41,6 @@ const lesson = () => {
 			setDatas(res);
 		});
 	}, []);
-	console.log(datas);
 	return (
 		<>
 			<Layout>
