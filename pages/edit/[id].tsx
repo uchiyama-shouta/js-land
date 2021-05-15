@@ -8,21 +8,19 @@ import Layout from "../../components/templates/layout/Layout";
 import { userState } from "../../src/store/userState";
 import { ImageType } from "../../types/lesson/ImageType";
 import { GetServerSideProps } from "next";
-import { editLesson } from "../../lib/lesson/editLesson";
-import ContentsEdit from "../../components/organisms/ContentsEdit";
-import { LessonDataType } from "../../types/lesson/lessonType";
-import { LessonContentType } from "../../types/lesson/lessonContentType";
+import Select from "@material-ui/core/Select";
 import { LessonChapterType } from "../../types/lesson/lessonChapterType";
 
 const LessonEdit = (props) => {
 	const { id } = props;
 	const user = useRecoilValue(userState);
 	const router = useRouter();
-	const [title, setTitle] = useState("");
-	const [image, setImage] = useState<ImageType>(undefined);
-	const [description, setDescription] = useState("");
-	const [price, setPrice] = useState<number | "">("");
-	const [contents, setContents] = useState<LessonChapterType[] | []>([]);
+	const [type, setType] = useState<string>("");
+
+	const handleChange = (event) => {
+		const name = event.target.value;
+		setType(name);
+	};
 
 	useEffect(() => {
 		if (id !== "") {
@@ -32,11 +30,6 @@ const LessonEdit = (props) => {
 				.then((snapshot) => {
 					const lesson = snapshot.data();
 					console.log(lesson);
-					setTitle(lesson.title);
-					setDescription(lesson.description);
-					setImage(lesson.image);
-					setPrice(lesson.price);
-					setContents(lesson.contents);
 				});
 		}
 	}, [id]);
@@ -47,6 +40,8 @@ const LessonEdit = (props) => {
 		}
 	}, [user]);
 
+	console.log(type);
+
 	return (
 		<Layout>
 			{user.role === "administrator" && (
@@ -55,6 +50,19 @@ const LessonEdit = (props) => {
 						<div className="center">
 							<h2 className="">コンテンツの編集</h2>
 							<div className="spacer" />
+							<Select
+								native
+								value={type}
+								onChange={handleChange}
+								inputProps={{
+									name: "age",
+									id: "age-native-simple",
+								}}
+							>
+								<option aria-label="None" value="" />
+								<option value="text">text</option>
+								<option value="video">video</option>
+							</Select>
 							<div className="spacer" />
 							<PrimaryButton>レッスンの編集を確定する</PrimaryButton>
 						</div>
