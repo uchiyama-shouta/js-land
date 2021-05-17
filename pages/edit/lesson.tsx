@@ -51,7 +51,7 @@ const lesson = () => {
 			<Layout>
 				{user.role === "administrator" && (
 					<div className={classes.container}>
-						<h1>Edit</h1>
+						<h1 className="text-center my-3 text-3xl font-bold">Edit</h1>
 						<Swiper
 							spaceBetween={50}
 							slidesPerView={1}
@@ -75,18 +75,6 @@ const lesson = () => {
 					</div>
 				)}
 			</Layout>
-			<style jsx>{`
-				h1 {
-					text-align: center;
-					margin: 10px 0;
-				}
-				p {
-					font-size: 16px;
-				}
-				.spacer {
-					height: 30px;
-				}
-			`}</style>
 		</>
 	);
 };

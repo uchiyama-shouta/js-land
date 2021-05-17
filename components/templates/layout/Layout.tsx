@@ -26,9 +26,9 @@ const Layout: VFC<Props> = memo((props) => {
 				<meta name="description" content={description} />
 			</Head>
 			<Header state={state} setState={setState} />
-			<div />
+			<div className="h-12" />
 			<>{children}</>
-			<div />
+			<div className="h-12" />
 			<Footer />
 			<style jsx>{`
 				div {

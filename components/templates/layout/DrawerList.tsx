@@ -51,14 +51,14 @@ const DrawerList: VFC<Props> = memo((props) => {
 				<List>
 					<ListItem button>
 						<Link href="/lesson">
-							<a>
+							<a className="w-full">
 								<ListItemText primary="レッスン一覧" />
 							</a>
 						</Link>
 					</ListItem>
 					<ListItem button>
 						<Link href="/blog">
-							<a>
+							<a className="w-full">
 								<ListItemText primary="ブログ" />
 							</a>
 						</Link>
@@ -72,7 +72,7 @@ const DrawerList: VFC<Props> = memo((props) => {
 							{user.role === "administrator" && (
 								<ListItem button>
 									<Link href="/edit">
-										<a>
+										<a className="w-full">
 											<ListItemText primary="編集" />
 										</a>
 									</Link>
@@ -82,11 +82,6 @@ const DrawerList: VFC<Props> = memo((props) => {
 					)}
 				</List>
 			</div>
-			<style jsx>{`
-				a {
-					width: 100%;
-				}
-			`}</style>
 		</>
 	);
 });

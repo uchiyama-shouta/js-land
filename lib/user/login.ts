@@ -14,8 +14,6 @@ export const login = async (
 		const result = await auth.signInWithEmailAndPassword(email, password);
 		const uid = result.user.uid;
 
-		console.log(uid);
-
 		await usersRef
 			.doc(uid)
 			.get()

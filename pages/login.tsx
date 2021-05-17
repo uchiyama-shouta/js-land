@@ -5,7 +5,6 @@ import { userState } from "../src/store/userState";
 import Layout from "../components/templates/layout/Layout";
 import TextInput from "../components/atom/TextInput";
 
-import styles from "../styles/components/pages/login.module.css";
 import PrimaryButton from "../components/atom/button/PrimaryButton";
 import { auth } from "../src/firebase";
 import { login } from "../lib/user/login";
@@ -37,8 +36,8 @@ const Login: VFC = () => {
 	return (
 		<>
 			<Layout description="ログイン画面です。">
-				<h2 className={styles.title}>Login</h2>
-				<div className={styles.textInput}>
+				<h2 className="text-center mt-5 text-3xl">Login</h2>
+				<div className="text-center h-auto w-screen-2rem mx-auto my-8 p-4 max-w-sm">
 					<form onSubmit={onSubmitlogin}>
 						<TextInput
 							rows={1}
@@ -54,8 +53,8 @@ const Login: VFC = () => {
 							onChange={inputPassword}
 							type="password"
 						/>
-						<div className="spacer" />
-						<div className={styles.center}>
+						<div className="h-12" />
+						<div className="text-center">
 							<PrimaryButton
 								disabled={(!email || !password) && true}
 								type="submit"
@@ -67,11 +66,6 @@ const Login: VFC = () => {
 					</form>
 				</div>
 			</Layout>
-			<style jsx>{`
-				.spacer {
-					height: 50px;
-				}
-			`}</style>
 		</>
 	);
 };

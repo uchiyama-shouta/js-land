@@ -53,20 +53,20 @@ const ImageArea: VFC<Props> = memo((props) => {
 			<div>
 				{props.image ? (
 					<img
-						className="preview-image"
+						className="mx-auto w-4/5"
 						src={props.image.path}
 						alt="プレビュー"
 					/>
 				) : (
-					<div className="no-image" />
+					<div className="mx-auto w-4/5 h-52 bg-gray-300" />
 				)}
-				<div className="text-right">
+				<div className="sm:text-right sm:w-96 w-80 text-center">
 					<span>サムネイル画像の登録する</span>
 					<IconButton className={classes.icon}>
 						<label>
 							<AddPhotoAlternateIcon />
 							<input
-								className="none"
+								className="hidden"
 								type="file"
 								id="image"
 								onChange={(e) => {
@@ -77,31 +77,6 @@ const ImageArea: VFC<Props> = memo((props) => {
 					</IconButton>
 				</div>
 			</div>
-			<style jsx>{`
-				.text-right {
-					text-align: right;
-					width: 380px;
-				}
-				.none {
-					display: none;
-				}
-				.preview-image {
-					width: 80%;
-					margin: 0 auto;
-				}
-				.no-image {
-					width: 80%;
-					height: 200px;
-					margin: 0 auto;
-					background-color: #ddd;
-				}
-				@media screen and (max-width: 480px) {
-					.text-right {
-						text-align: center;
-						width: 350px;
-					}
-				}
-			`}</style>
 		</>
 	);
 });

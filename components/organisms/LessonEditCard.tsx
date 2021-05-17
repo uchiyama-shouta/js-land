@@ -5,8 +5,6 @@ import Link from "next/link";
 import IconButton from "@material-ui/core/IconButton";
 import AddPhotoAlternateIcon from "@material-ui/icons/AddPhotoAlternate";
 
-import styles from "../../styles/components/organisms/LessonEditCard.module.css";
-
 import TextInput from "../atom/TextInput";
 import { replaceToBr } from "../../lib/function/replaceToBr";
 import { LessonDataType } from "../../types/lesson/lessonType";
@@ -92,7 +90,7 @@ const LessonEditCard: VFC<Props> = memo((props) => {
 
 	return (
 		<>
-			<div className="container">
+			<div>
 				{titleFlag ? (
 					<div onDoubleClick={handleTitleFlag}>
 						<TextInput
@@ -102,17 +100,19 @@ const LessonEditCard: VFC<Props> = memo((props) => {
 						/>
 					</div>
 				) : (
-					<h2 onDoubleClick={handleTitleFlag}>{title}</h2>
+					<h2 className="text-xl font-bold" onDoubleClick={handleTitleFlag}>
+						{title}
+					</h2>
 				)}
 				<div className="spacer" />
 				<Image width={400} height={250} src={image.path} />
-				<div className="text-right">
+				<div className="text-left">
 					<span>サムネイル画像の登録する</span>
-					<IconButton className="icon">
+					<IconButton className="w-6 h-6">
 						<label>
 							<AddPhotoAlternateIcon />
 							<input
-								className="none"
+								className="hidden"
 								type="file"
 								id="image"
 								onChange={(e) => {
@@ -132,12 +132,12 @@ const LessonEditCard: VFC<Props> = memo((props) => {
 						/>
 					</div>
 				) : (
-					<p onDoubleClick={handlePriceFlag} className={styles.p}>
+					<p onDoubleClick={handlePriceFlag} className="text-base">
 						{data.price}円
 					</p>
 				)}
 				{descriptionFlag ? (
-					<div className="text-area" onDoubleClick={handleDescriptionFlag}>
+					<div className="h-32" onDoubleClick={handleDescriptionFlag}>
 						<TextInput
 							label="説明"
 							value={description}
@@ -147,51 +147,29 @@ const LessonEditCard: VFC<Props> = memo((props) => {
 						/>
 					</div>
 				) : (
-					<p onDoubleClick={handleDescriptionFlag} className={styles.p}>
+					<p onDoubleClick={handleDescriptionFlag} className="text-base">
 						{replaceToBr(data.description)}
 					</p>
 				)}
-				<div className="spacer" />
-				<div className="center">
+				<div className="h-8" />
+				<div className="text-center">
 					<PrimaryButton
 						onClick={() => {
 							editLesson(data.id, title, description, price, image);
 							setTitle("");
 							setDescription("");
 							setPrice(0);
-							alert('保存できました')
+							alert("保存できました");
 						}}
 					>
 						保存する
 					</PrimaryButton>
 				</div>
-				<div className="spacer" />
+				<div className="h-8" />
 				<Link href={`/edit/${data.id}`}>
-					<a className={styles.link}>コンテンツの編集へ</a>
+					<a className="block mt-2 text-center hover:underline">コンテンツの編集へ</a>
 				</Link>
 			</div>
-			<style jsx>{`
-				.container {
-					margin: 0 auto;
-				}
-				.spacer {
-					height: 30px;
-				}
-				.center {
-					text-align: center;
-				}
-				.text-area {
-					height: 125px;
-				}
-				.none {
-					display: none;
-				}
-				.icon {
-					margin-right: 8;
-					height: 45;
-					width: 45;
-				}
-			`}</style>
 		</>
 	);
 });

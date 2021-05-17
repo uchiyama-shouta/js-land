@@ -2,7 +2,6 @@ import { useCallback, useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import Layout from "../components/templates/layout/Layout";
 
-import styles from "../styles/components/pages/signup.module.css";
 import TextInput from "../components/atom/TextInput";
 import PrimaryButton from "../components/atom/button/PrimaryButton";
 import { auth } from "../src/firebase";
@@ -37,8 +36,8 @@ const signUp = () => {
 	return (
 		<>
 			<Layout description="アカウント登録画面です。">
-				<h2 className={styles.title}>Sign Up</h2>
-				<div className={styles.textInput}>
+				<h2 className="text-center mt-5 text-3xl">Sign Up</h2>
+				<div className="text-center h-auto w-screen-2rem mx-auto my-8 p-4 max-w-sm">
 					<form onSubmit={signUp}>
 						<TextInput
 							rows={1}
@@ -61,8 +60,8 @@ const signUp = () => {
 							onChange={inputPassword}
 							type="password"
 						/>
-						<div className="spacer" />
-						<div className={styles.center}>
+						<div className="h-12" />
+						<div className="text-center">
 							<PrimaryButton
 								disabled={(!email || !password) && true}
 								type="submit"
@@ -74,11 +73,6 @@ const signUp = () => {
 					</form>
 				</div>
 			</Layout>
-			<style jsx>{`
-				.spacer {
-					height: 50px;
-				}
-			`}</style>
 		</>
 	);
 };

@@ -80,19 +80,11 @@ const LessonCardList: VFC<Props> = memo((props) => {
 								</React.Fragment>
 							))
 						) : (
-							<p>comming soon...</p>
+							<p className="text-center mx-auto text-xl leading-4">comming soon...</p>
 						)}
 					</Grid>
 				</Grid>
 			</div>
-			<style jsx>{`
-				p {
-					text-align: center;
-					margin: 0 auto;
-					font-size: 20px;
-					line-height: 10;
-				}
-			`}</style>
 		</>
 	);
 });

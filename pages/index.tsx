@@ -3,7 +3,6 @@ import { GetStaticProps } from "next";
 import Link from "next/link";
 import Layout from "../components/templates/layout/Layout";
 import LessonCardList from "../components/templates/layout/LessonCardList";
-import styles from "../styles/components/pages/index.module.css";
 import { LessonDataType } from "../types/lesson/lessonType";
 import { lessonDataList } from "../lib/lesson/LessonDataList";
 
@@ -15,26 +14,27 @@ const Home: VFC<Props> = ({ datas }) => {
 	return (
 		<>
 			<Layout description="JavaScript特化のオンラインのプログラミング学習サービスです。">
-				<section className={styles.firstView}>
-					<p className={styles.copy}>
+				<section className="relative w-screen bg-sky-blue h-96 mb-12">
+					<p className="absolute top-2/4 left-2/4  -translate-y-2/4 -translate-x-2/4 text-xl text-center w-11/12 translate-center">
 						最新のフロントエンドを学び、
 						<br />
-						人生を<span className={styles.copy_span}>チョット</span>変えよう
+						人生を
+						<span className="text-3xl text-red-600 font-bold">チョット</span>
+						変えよう
 					</p>
 				</section>
-				<section>
-					<h2 className={styles.section_title}>レッスン一覧</h2>
+				<section className="mb-12">
+					<h2 className="text-center mb-12 text-xl font-semibold">
+						レッスン一覧
+					</h2>
 					<LessonCardList data={datas} />
 					<Link href="/lesson">
-						<a className={styles.button}>レッスン一覧</a>
+						<a className="text-center mt-12 mt-4 mx-auto w-60 py-4 text-base rounded-md bg-blue-500 text-white block">
+							レッスン一覧
+						</a>
 					</Link>
 				</section>
 			</Layout>
-			<style jsx>{`
-				section {
-					margin-bottom: 50px;
-				}
-			`}</style>
 		</>
 	);
 };

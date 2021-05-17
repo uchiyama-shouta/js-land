@@ -17,7 +17,7 @@ a {
 	margin: 0;
 }
 
-.blog-post-body h2 {
+#blog-post-body h2 {
 	font-size: 1.8em;
 	border-bottom: 1px solid #ddd;
 	padding-bottom: 0.1em;
@@ -29,25 +29,25 @@ a {
 	cursor: pointer;
 	position: relative;
 }
-.blog-post-body h3 {
+#blog-post-body h3 {
 	font-size: 1.4em;
 }
-.blog-post-body p {
+#blog-post-body p {
 	margin: 0 0 1.6em;
 	line-height: 1.75;
 	font-size: 16px;
 }
-.blog-post-body a {
+#blog-post-body a {
 	color: #0044cc;
 	font-size: 16px;
 }
-.blog-post-body a:hover {
+#blog-post-body a:hover {
 	text-decoration: underline;
 }
-.blog-post-body a:visited {
+#blog-post-body a:visited {
 	color: #6200ac;
 }
-.blog-post-body li {
+#blog-post-body li {
 	margin-left: 40px;
 	font-size: 16px;
 	margin-bottom: 5px;

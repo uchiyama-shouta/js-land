@@ -17,20 +17,11 @@ import { UserStateType } from "../../types/user/UserStateType";
 
 const useStyles = makeStyles((theme: Theme) =>
 	createStyles({
-		root: {
-			flexGrow: 1,
-		},
 		appBar: {
 			backgroundColor: "#fff",
 		},
-		justify: {
-			justifyContent: "space-between",
-		},
 		menuButton: {
 			marginRight: theme.spacing(2),
-		},
-		title: {
-			flexGrow: 1,
 		},
 	})
 );
@@ -62,9 +53,9 @@ const Header: VFC<Props> = memo((props) => {
 	};
 
 	return (
-		<div className={classes.root}>
+		<div className="flex-grow">
 			<AppBar position="fixed" className={classes.appBar}>
-				<Toolbar className={classes.justify}>
+				<Toolbar>
 					<IconButton
 						className={classes.menuButton}
 						edge="start"
@@ -74,11 +65,7 @@ const Header: VFC<Props> = memo((props) => {
 					>
 						<MenuIcon />
 					</IconButton>
-					<Typography
-						variant="h6"
-						className={classes.title}
-						color="textPrimary"
-					>
+					<Typography variant="h6" className="flex-grow" color="textPrimary">
 						<Link href="/">
 							<a>
 								<Image

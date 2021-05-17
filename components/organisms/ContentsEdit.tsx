@@ -60,8 +60,7 @@ const ContentsEdit: VFC<Props> = memo((props) => {
 	};
 
 	useEffect(() => {
-		console.log(contents);
-		console.log(type);
+
 	}, [contents, type]);
 
 	return (

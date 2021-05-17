@@ -9,6 +9,7 @@ import CssBaseline from "@material-ui/core/CssBaseline";
 import theme from "../src/theme";
 
 import Auth from "../src/auth/Auth";
+import "tailwindcss/tailwind.css";
 import "../styles/globals.css";
 import { GA_TRACKING_ID, pageview } from "../lib/gtag";
 

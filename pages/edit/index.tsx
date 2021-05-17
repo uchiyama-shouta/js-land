@@ -50,10 +50,12 @@ const Index: VFC = () => {
 			<Layout>
 				{user.role === "administrator" && (
 					<>
-						<div className="container">
-							<div className="center">
-								<h2 className="">レッスンの作成</h2>
-								<div className="spacer" />
+						<div className="w-4/5 mx-auto">
+							<div className="text-center mx-auto pt-12 w-80 sm:w-96">
+								<h2 className="text-center text-xl font-bold">
+									レッスンの作成
+								</h2>
+								<div className="h-14" />
 								<ImageArea image={image} setImage={setImage} />
 								<div className="wraper">
 									<TextInput
@@ -76,7 +78,7 @@ const Index: VFC = () => {
 										type="number"
 									/>
 								</div>
-								<div className="spacer" />
+								<div className="h-14" />
 								<PrimaryButton
 									onClick={() => {
 										const LessonId = createLesson(
@@ -98,56 +100,17 @@ const Index: VFC = () => {
 								</PrimaryButton>
 
 								<Link href={`/edit/${id}`}>
-									<a className="link">レッスンの編集へ</a>
+									<a className="block mt-2 hover:underline">レッスンの編集へ</a>
 								</Link>
 								<Link href={`/edit/lesson`}>
-									<a className="link">レッスンの一覧へ</a>
+									<a className="block mt-2 hover:underline">レッスンの一覧へ</a>
 								</Link>
-
-								<div className="spacer" />
+								<div className="h-14" />
 							</div>
 						</div>
 					</>
 				)}
 			</Layout>
-			<style jsx>{`
-				.title {
-					text-align: center;
-					margin-top: 20px;
-					font-size: 30px;
-				}
-				.container {
-					padding-top: 50px;
-					width: 80%;
-					margin: 0 auto;
-				}
-				.center {
-					padding-top: 50px;
-					text-align: center;
-					margin: 0 auto;
-					width: 400px;
-				}
-				.spacer {
-					height: 60px;
-				}
-				.link {
-					display: block;
-					margin-top: 10px;
-					color: #555;
-				}
-				.link:hover {
-					text-decoration: underline;
-				}
-				@media screen and (max-width: 480px) {
-					.center {
-						width: 370px;
-						margin-left: 0;
-					}
-					.wraper {
-						width: 90%;
-					}
-				}
-			`}</style>
 		</>
 	);
 };

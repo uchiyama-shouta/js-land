@@ -32,8 +32,6 @@ const CreateLesson: VFC<Props> = memo((props) => {
 		[setType]
 	);
 
-	console.log(contents);
-
 	const onClickEdit = () => {
 		// setContents([...contents, { chapterName, lessons: { type } }]);
 		const target = contents.find((t) => t.chapterName === chapterName);
@@ -62,16 +60,11 @@ const CreateLesson: VFC<Props> = memo((props) => {
 						</MenuItem>
 					))}
 				</Select>
-				<div className="spacer" />
+				<div className="h-7" />
 				<PrimaryButton onClick={() => onClickEdit()} disabled={!chapterName}>
 					確定する
 				</PrimaryButton>
 			</div>
-			<style jsx>{`
-				.spacer {
-					height: 30px;
-				}
-			`}</style>
 		</>
 	);
 });

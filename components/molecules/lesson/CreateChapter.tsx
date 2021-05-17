@@ -11,16 +11,11 @@ const CreateChapter = (props) => {
 					label="チャプター名"
 					onChange={onChangeChapterName}
 				/>
-				<div className="spacer" />
+				<div className="h-7" />
 				<PrimaryButton onClick={() => onClickEdit()} disabled={!chapterName}>
 					確定する
 				</PrimaryButton>
 			</div>
-			<style jsx>{`
-				.spacer {
-					height: 30px;
-				}
-			`}</style>
 		</>
 	);
 };

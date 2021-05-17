@@ -10,27 +10,14 @@ type Props = {
 };
 
 const lesson: VFC<Props> = memo((props) => {
-	console.log(props)
-	const id = props.datas.map((data) => (
-		data.id
-	))
-	console.log(id)
+	const id = props.datas.map((data) => data.id);
 	return (
 		<>
 			<Layout description="レッスン一覧ページです。">
-				<div className="spacer" />
-				<h2 className="section_title">レッスン一覧</h2>
+				<div className="h-12" />
+				<h2 className="text-center mb-12 text-xl font-bold">レッスン一覧</h2>
 				<LessonCardList data={props.datas} />
 			</Layout>
-			<style jsx>{`
-				div.spacer {
-					height: 50px;
-				}
-            .section_title {
-               text-align: center;
-               margin: 0 0 50px;
-            }
-			`}</style>
 		</>
 	);
 });

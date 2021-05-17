@@ -24,7 +24,9 @@ const Post: VFC<Props> = (props) => {
 	)}...`;
 	const sampleThumbnailPath =
 		"https://images.microcms-assets.io/assets/c9a1727417ca42caaeb447e362bfef6a/829615ee10f5486caa355eaab355234f/thumbnail_React_image.png";
-	const thumbnailPath = data.thumbnail ? data.thumbnail.url : sampleThumbnailPath
+	const thumbnailPath = data.thumbnail
+		? data.thumbnail.url
+		: sampleThumbnailPath;
 	return (
 		<>
 			<Head>
@@ -43,32 +45,22 @@ const Post: VFC<Props> = (props) => {
 			</Head>
 			<Layout title={data.title} description={description}>
 				<BlogLayout>
-					<h1 className="title">{data.title}</h1>
-					<div className="post-meta">
-						<span>{data.publishedAt.slice(0, 10).replace(/-/g, "/")}</span>
+					<h1 className="text-3xl font-bold">{data.title}</h1>
+					<div className="mb-7">
+						<span className="ml-1">
+							{data.publishedAt.slice(0, 10).replace(/-/g, "/")}
+						</span>
 					</div>
 					<div
-						className="blog-post-body"
+						id="blog-post-body"
+						className="mb-16"
 						dangerouslySetInnerHTML={{ __html: body }}
 					/>
 					<Link href="/blog">
 						<a>一覧ページに戻る</a>
 					</Link>
 				</BlogLayout>
-				<style jsx>{`
-					.title {
-						font-size: 30px;
-					}
-					.post-meta {
-						margin-bottom: 30px;
-					}
-					span {
-						margin-left: 5px;
-					}
-					.blog-post-body {
-						margin-bottom: 70px;
-					}
-				`}</style>
+				<style jsx>{``}</style>
 			</Layout>
 		</>
 	);
