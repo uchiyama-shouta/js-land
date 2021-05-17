@@ -21,6 +21,9 @@ module.exports = {
 				".w-screen-2rem": {
 					width: "calc(100% - 2rem)",
 				},
+				".w-55%": {
+					width: "55%",
+				},
 			};
 
 			addUtilities(newUtilities);

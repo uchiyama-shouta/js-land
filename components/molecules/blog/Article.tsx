@@ -3,7 +3,6 @@ import Link from "next/link";
 import Image from "next/image";
 import { BlogContentDatatype } from "../../../types/blog/blogContentDataType";
 
-import styles from "../../../styles/components/molecules/Article.module.css";
 import { makeStyles } from "@material-ui/styles";
 import Card from "@material-ui/core/Card";
 
@@ -39,7 +38,7 @@ const Article: VFC<Props> = memo((props) => {
 		<article>
 			<Card className={classes.root}>
 				<Link href={`/blog/${blog.id}`}>
-					<a className={styles.link}>
+					<a className="inline-block h-full w-full">
 						<Image
 							className={classes.media}
 							src={
@@ -51,8 +50,8 @@ const Article: VFC<Props> = memo((props) => {
 							alt="サムネイル画像"
 						/>
 						<div>
-							<div className={styles.article_body}>
-								<h2 className={styles.title}>{blog.title}</h2>
+							<div className="px-8 py-5">
+								<h2 className="font-bold text-lg">{blog.title}</h2>
 								<span>{blog.publishedAt.slice(0, 10).replace(/-/g, "/")}</span>
 							</div>
 						</div>
