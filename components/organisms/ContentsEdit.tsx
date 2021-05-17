@@ -65,7 +65,7 @@ const ContentsEdit: VFC<Props> = memo((props) => {
 
 	return (
 		<>
-			<div className="wrapper">
+			<div className="w-full py-8">
 				<Divider />
 				<h2>内容の編集</h2>
 				{createFlag || editFlag ? (
@@ -84,7 +84,7 @@ const ContentsEdit: VFC<Props> = memo((props) => {
 								contents={contents}
 							/>
 						)}
-						<div className="spacer" />
+						<div className="h-8" />
 					</>
 				) : null}
 				<div />
@@ -95,18 +95,6 @@ const ContentsEdit: VFC<Props> = memo((props) => {
 				<CreateIcon className={classes.icon} onClick={onClickSetEditFlag} />
 				<Divider />
 			</div>
-			<style jsx>{`
-				h2 {
-					line-height: 70px;
-				}
-				.spacer {
-					height: 30px;
-				}
-				.wrapper {
-					width: 100%;
-					padding: 30px 0;
-				}
-			`}</style>
 		</>
 	);
 });

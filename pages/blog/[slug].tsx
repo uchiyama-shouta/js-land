@@ -60,7 +60,6 @@ const Post: VFC<Props> = (props) => {
 						<a>一覧ページに戻る</a>
 					</Link>
 				</BlogLayout>
-				<style jsx>{``}</style>
 			</Layout>
 		</>
 	);

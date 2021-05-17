@@ -30,11 +30,6 @@ const Layout: VFC<Props> = memo((props) => {
 			<>{children}</>
 			<div className="h-12" />
 			<Footer />
-			<style jsx>{`
-				div {
-					height: 64px;
-				}
-			`}</style>
 		</>
 	);
 });
