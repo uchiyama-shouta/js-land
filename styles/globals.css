@@ -1,59 +1,60 @@
-html,
-body {
-	padding: 0;
-	margin: 0;
-	font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-		Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+	#blog-post-body h2 {
+		font-size: 1.8em;
+		border-bottom: 1px solid #ddd;
+		padding-bottom: 0.1em;
+		font-weight: bold;
+		line-height: 1.5;
+		font-feature-settings: "palt";
+		margin-top: 2.2em;
+		margin-bottom: 2.4rem;
+		cursor: pointer;
+		position: relative;
+	}
+	#blog-post-body h3 {
+		font-size: 1.4em;
+	}
+	#blog-post-body p {
+		margin: 0 0 1.6em;
+		line-height: 1.75;
+		font-size: 16px;
+	}
+	#blog-post-body a {
+		color: #0044cc;
+		font-size: 16px;
+	}
+	#blog-post-body a:hover {
+		text-decoration: underline;
+	}
+	#blog-post-body a:visited {
+		color: #6200ac;
+	}
+	#blog-post-body li {
+		margin-left: 40px;
+		font-size: 16px;
+		margin-bottom: 5px;
+		line-height: 1.4;
+	}
+	code.hljs {
+		font-size: 18px;
+	}
 }
 
-a {
-	color: inherit;
-	text-decoration: none;
-}
-
-* {
-	box-sizing: border-box;
-	padding: 0;
-	margin: 0;
-}
-
-#blog-post-body h2 {
-	font-size: 1.8em;
-	border-bottom: 1px solid #ddd;
-	padding-bottom: 0.1em;
-	font-weight: bold;
-	line-height: 1.5;
-	font-feature-settings: "palt";
-	margin-top: 2.2em;
-	margin-bottom: 2.4rem;
-	cursor: pointer;
-	position: relative;
-}
-#blog-post-body h3 {
-	font-size: 1.4em;
-}
-#blog-post-body p {
-	margin: 0 0 1.6em;
-	line-height: 1.75;
-	font-size: 16px;
-}
-#blog-post-body a {
-	color: #0044cc;
-	font-size: 16px;
-}
-#blog-post-body a:hover {
-	text-decoration: underline;
-}
-#blog-post-body a:visited {
-	color: #6200ac;
-}
-#blog-post-body li {
-	margin-left: 40px;
-	font-size: 16px;
-	margin-bottom: 5px;
-	line-height: 1.4;
-}
-
-code.hljs {
-	font-size: 18px;
+@layer utilities {
+	.bg-sky-blue {
+		backgroundcolor: rgba(40, 180, 255, 0.6);
+	}
+	.translate-center {
+		transform: translate(-50%, -50%);
+	}
+	.w-screen-2rem {
+		width: calc(100% - 2rem);
+	}
+	.w-55per {
+		width: 55%;
+	}
 }
