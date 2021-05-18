@@ -39,6 +39,10 @@
 		margin-bottom: 5px;
 		line-height: 1.4;
 	}
+	#blog-post-body p code {
+		background-color: #eee;
+		padding: 0.1em 0.4em;
+	}
 	code.hljs {
 		font-size: 18px;
 	}

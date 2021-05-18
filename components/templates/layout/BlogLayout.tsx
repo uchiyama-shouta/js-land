@@ -11,7 +11,6 @@ const BlogLayout: VFC<Props> = memo((props) => {
 		<>
 			<div className="sm:flex w-11/12 block sm:w-11/12 mx-auto my-12">
 				<main className="sm:w-55per-responsive w-full sm:mx-auto">{children}</main>
-				{/* 追加されたユーティリティに対してレスポンシブが効かない */}
 				<BlogAside />
 			</div>
 		</>
