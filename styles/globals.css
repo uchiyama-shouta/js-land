@@ -58,3 +58,9 @@
 		width: 55%;
 	}
 }
+
+@responsive {
+	.w-55per-responsive {
+		width: 55%;
+	}
+}
