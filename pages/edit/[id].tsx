@@ -11,11 +11,18 @@ import { GetServerSideProps } from "next";
 import Select from "@material-ui/core/Select";
 import { LessonChapterType } from "../../types/lesson/lessonChapterType";
 
+import TextInput from "../../components/atom/TextInput";
+
 const LessonEdit = (props) => {
 	const { id } = props;
 	const user = useRecoilValue(userState);
 	const router = useRouter();
 	const [type, setType] = useState<string>("");
+	const [title, setTitle] = useState("");
+
+	const onChangeTitle = (e) => {
+		setTitle(e.target.value);
+	};
 
 	const handleChange = (event) => {
 		const name = event.target.value;
@@ -29,7 +36,6 @@ const LessonEdit = (props) => {
 				.get()
 				.then((snapshot) => {
 					const lesson = snapshot.data();
-
 				});
 		}
 	}, [id]);
@@ -48,21 +54,39 @@ const LessonEdit = (props) => {
 				<>
 					<div className="pt-12 w-4/5 mx-auto">
 						<div className="text-center p-12 mx-auto w-96">
-							<h2 className="text-center my-3 text-xl font-bold">コンテンツの編集</h2>
+							<h2 className="text-center my-3 text-xl font-bold">
+								コンテンツの編集
+							</h2>
 							<div className="h-14" />
+							<TextInput
+								label="タイトル"
+								value={title}
+								onChange={onChangeTitle}
+							/>
+							<div className="h-5" />
 							<Select
 								native
 								value={type}
 								onChange={handleChange}
 								inputProps={{
-									name: "age",
-									id: "age-native-simple",
+									name: "type",
+									id: "type-native-simple",
 								}}
 							>
-								<option aria-label="None" value="" />
+								<option aria-label="None" value="選択してください" />
 								<option value="text">text</option>
 								<option value="video">video</option>
 							</Select>
+							{(type !== "" && type === "text" && (
+								<div>
+									<div>text</div>
+								</div>
+							)) ||
+								(type === "video" && (
+									<div>
+										<div>video</div>
+									</div>
+								))}
 							<div className="h-14" />
 							<PrimaryButton>レッスンの編集を確定する</PrimaryButton>
 						</div>

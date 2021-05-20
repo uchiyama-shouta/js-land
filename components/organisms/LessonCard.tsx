@@ -1,6 +1,7 @@
 import React, { memo, VFC } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
@@ -54,7 +55,7 @@ const useStyles = makeStyles({
 		width: 35,
 		padding: 5,
 		backgroundColor: "#fff",
-		borderRadius: 9999
+		borderRadius: 9999,
 	},
 	icon: {
 		height: 25,
@@ -67,6 +68,8 @@ const LessonCard: VFC<Props> = memo((props) => {
 	const { thumbnailPath, title, description, price, id } = props;
 	const user = useRecoilValue(userState);
 	const classes = useStyles();
+	const router = useRouter();
+	const pathName = `/edit/${id}`;
 	return (
 		<>
 			<Card className={classes.root}>
@@ -106,13 +109,12 @@ const LessonCard: VFC<Props> = memo((props) => {
 					</a>
 				</Link>
 				{user.role === "administrator" && (
-					<Link href={`/edit/${id}`}>
-						<a>
-							<div className={classes.iconButton}>
-								<ArrowForwardIosIcon className={classes.icon} />
-							</div>
-						</a>
-					</Link>
+					<div
+						className={classes.iconButton}
+						onClick={() => router.push(pathName)}
+					>
+						<ArrowForwardIosIcon className={classes.icon} />
+					</div>
 				)}
 			</Card>
 		</>

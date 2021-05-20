@@ -29,7 +29,7 @@ const Home: VFC<Props> = ({ datas }) => {
 					</h2>
 					<LessonCardList data={datas} />
 					<Link href="/lesson">
-						<a className="text-center mt-12 mt-4 mx-auto w-60 py-4 text-base rounded-md bg-blue-500 text-white block">
+						<a className="text-center mt-12 mt-4 mx-auto w-60 py-4 text-base rounded-md bg-blue-600 text-white block font-semibold">
 							レッスン一覧
 						</a>
 					</Link>
