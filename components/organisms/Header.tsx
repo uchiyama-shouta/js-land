@@ -22,6 +22,9 @@ const useStyles = makeStyles((theme: Theme) =>
 		},
 		menuButton: {
 			marginRight: theme.spacing(2),
+			"&:focus": {
+				outline: "none",
+			},
 		},
 	})
 );
