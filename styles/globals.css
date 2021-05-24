@@ -51,7 +51,7 @@
 
 @layer utilities {
 	.bg-sky-blue {
-		background-color: rgba(40, 180, 255, 0.6);
+		background-color: rgba(40, 180, 255, 0.55);
 	}
 	.translate-center {
 		transform: translate(-50%, -50%);
