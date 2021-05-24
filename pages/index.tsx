@@ -15,7 +15,7 @@ const Home: VFC<Props> = ({ datas }) => {
 		<>
 			<Layout description="JavaScript特化のオンラインのプログラミング学習サービスです。">
 				<section className="relative w-screen bg-sky-blue h-96 mb-12">
-					<p className="absolute top-2/4 left-2/4  -translate-y-2/4 -translate-x-2/4 text-xl text-center w-11/12 translate-center">
+					<p className="absolute top-2/4 left-2/4 -translate-y-2/4 -translate-x-2/4 text-xl text-center w-11/12 translate-center">
 						最新のフロントエンドを学び、
 						<br />
 						人生を
@@ -29,7 +29,7 @@ const Home: VFC<Props> = ({ datas }) => {
 					</h2>
 					<LessonCardList data={datas} />
 					<Link href="/lesson">
-						<a className="text-center mt-12 mt-4 mx-auto w-60 py-4 text-base rounded-md bg-blue-600 text-white block font-semibold">
+						<a className="text-center mt-12 mx-auto w-60 py-4 text-base rounded-md bg-blue-600 text-white block font-semibold focus:outline-none">
 							レッスン一覧
 						</a>
 					</Link>

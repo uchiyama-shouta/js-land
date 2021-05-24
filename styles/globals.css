@@ -11,12 +11,13 @@
 		line-height: 1.5;
 		font-feature-settings: "palt";
 		margin-top: 2.2em;
-		margin-bottom: 2.4rem;
+		margin-bottom: 2rem;
 		cursor: pointer;
 		position: relative;
 	}
 	#blog-post-body h3 {
 		font-size: 1.4em;
+		font-weight: bold;
 	}
 	#blog-post-body p {
 		margin: 0 0 1.6em;
