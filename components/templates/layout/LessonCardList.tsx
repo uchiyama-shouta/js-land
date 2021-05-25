@@ -13,15 +13,6 @@ type Props = {
 
 const useStyles = makeStyles((theme: Theme) =>
 	createStyles({
-		root: {
-			width: "90%",
-			maxWidth: 1100,
-			[theme.breakpoints.down("md")]: {
-				maxWidth: 720,
-			},
-			margin: "0 auto",
-			flexGrow: 1,
-		},
 		flex: {
 			[theme.breakpoints.down("xs")]: {
 				display: "block",
@@ -44,7 +35,7 @@ const LessonCardList: VFC<Props> = memo((props) => {
 
 	return (
 		<>
-			<div className={classes.root}>
+			<div className="w-11/12 flex-grow mx-auto md:max-w-6xl max-w-2xl">
 				<Grid container justify="center" alignItems="center">
 					<Grid className={classes.flex} container spacing={4}>
 						{data.length ? (

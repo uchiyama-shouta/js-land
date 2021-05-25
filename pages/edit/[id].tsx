@@ -17,7 +17,7 @@ const LessonEdit = (props) => {
 	const { id } = props;
 	const user = useRecoilValue(userState);
 	const router = useRouter();
-	const [type, setType] = useState<string>("");
+	const [type, setType] = useState("");
 	const [title, setTitle] = useState("");
 
 	const onChangeTitle = (e) => {
@@ -79,6 +79,7 @@ const LessonEdit = (props) => {
 							</Select>
 							{(type !== "" && type === "text" && (
 								<div>
+									{/* <MarkDownEditer></MarkDownEditer> */}
 									<div>text</div>
 								</div>
 							)) ||

@@ -11,15 +11,6 @@ type Props = {
 
 const useStyles = makeStyles((theme: Theme) =>
 	createStyles({
-		root: {
-			width: "100%",
-			maxWidth: 900,
-			[theme.breakpoints.down("md")]: {
-				maxWidth: 700,
-			},
-         margin: "0 auto",
-			flexGrow: 1,
-		},
 		flex: {
 			[theme.breakpoints.down("md")]: {
 				display: "block",
@@ -35,7 +26,7 @@ const ArticleGrid: VFC<Props> = memo((props) => {
 	const { blog } = props;
 	return (
 		<>
-			<div className={classes.root}>
+			<div className="flex-grow w-full md:max-w-4xl max-w-2xl mx-auto">
 				<Grid container justify="center" alignItems="center">
 					<Grid className={classes.flex} container spacing={4}>
 						{blog.map((data) => (

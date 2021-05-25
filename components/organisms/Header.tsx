@@ -1,7 +1,7 @@
 import { Dispatch, memo, SetStateAction, VFC } from "react";
 import Link from "next/link";
-import Image from "next/image";
 import { useRecoilValue } from "recoil";
+
 import { createStyles, makeStyles, Theme } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Button from "@material-ui/core/Button";
@@ -14,6 +14,7 @@ import Drawer from "@material-ui/core/Drawer";
 import DrawerList from "../templates/layout/DrawerList";
 import { userState } from "../../src/store/userState";
 import { UserStateType } from "../../types/user/UserStateType";
+import Logo from "../atom/Logo";
 
 const useStyles = makeStyles((theme: Theme) =>
 	createStyles({
@@ -69,17 +70,7 @@ const Header: VFC<Props> = memo((props) => {
 						<MenuIcon />
 					</IconButton>
 					<Typography variant="h6" className="flex-grow" color="textPrimary">
-						<Link href="/">
-							<a>
-								<Image
-									id="logo"
-									width={95}
-									height={15}
-									alt="ロゴ"
-									src="/image/logo_transparent.png"
-								/>
-							</a>
-						</Link>
+						<Logo />
 					</Typography>
 					{user.isSignedIn ? null : (
 						<>

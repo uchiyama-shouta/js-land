@@ -7,8 +7,6 @@ import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import CardActionArea from "@material-ui/core/CardActionArea";
-import Typography from "@material-ui/core/Typography";
-import Divider from "@material-ui/core/Divider";
 import ArrowForwardIosIcon from "@material-ui/icons/ArrowForwardIos";
 
 import { replaceToBr } from "../../lib/function/replaceToBr";
@@ -32,35 +30,6 @@ const useStyles = makeStyles({
 			paddingBottom: 10,
 		},
 	},
-	media: {
-		height: 170,
-	},
-	divider: {
-		margin: "10px 0",
-	},
-	description: {
-		height: 60,
-		overflow: "hidden",
-		textOverflow: "ellipsis",
-	},
-	price: {
-		fontSize: 20,
-		paddingBottom: 0,
-	},
-	iconButton: {
-		position: "absolute",
-		top: 10,
-		right: 10,
-		height: 35,
-		width: 35,
-		padding: 5,
-		backgroundColor: "#fff",
-		borderRadius: 9999,
-	},
-	icon: {
-		height: 25,
-		width: 25,
-	},
 });
 type Props = LessonDataType & { className?: any };
 
@@ -76,7 +45,6 @@ const LessonCard: VFC<Props> = memo((props) => {
 				<Link href={`/lesson/${id}`}>
 					<a>
 						<Image
-							className={classes.media}
 							src={thumbnailPath}
 							width={325}
 							height={170}
@@ -84,36 +52,22 @@ const LessonCard: VFC<Props> = memo((props) => {
 						/>
 						<CardActionArea>
 							<CardContent className={classes.pb10}>
-								<Typography gutterBottom variant="h5" component="h2">
-									{title}
-								</Typography>
-								<Typography
-									variant="body2"
-									color="initial"
-									component="p"
-									className={classes.description}
-								>
+								<h2 className="mb-2 text-2xl">{title}</h2>
+								<p className="h-16 text-black overflow-hidden overflow-ellipsis">
 									{replaceToBr(description)}
-								</Typography>
-								<Divider className={classes.divider} />
-								<Typography
-									className={classes.price}
-									variant="body2"
-									color="initial"
-									component="p"
-								>
-									{price.toLocaleString() + "円"}
-								</Typography>
+								</p>
+								<hr className="h-px my-2 mx-0 bg-gray-300 border-none flex-shrink-0" />
+								<p className="text-xl pb-0">{price.toLocaleString()}円</p>
 							</CardContent>
 						</CardActionArea>
 					</a>
 				</Link>
 				{user.role === "administrator" && (
 					<div
-						className={classes.iconButton}
+						className="absolute top-3 right-3 w-9 h-9 pt-1 pl-2 bg-white rounded-full"
 						onClick={() => router.push(pathName)}
 					>
-						<ArrowForwardIosIcon className={classes.icon} />
+						<ArrowForwardIosIcon className="h-6 w-6" />
 					</div>
 				)}
 			</Card>

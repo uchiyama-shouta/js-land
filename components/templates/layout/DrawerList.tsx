@@ -6,7 +6,6 @@ import { makeStyles } from "@material-ui/core/styles";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
-import Divider from "@material-ui/core/Divider";
 import { auth } from "../../../src/firebase";
 import { useRouter } from "next/router";
 import { initialState, userState } from "../../../src/store/userState";
@@ -63,7 +62,7 @@ const DrawerList: VFC<Props> = memo((props) => {
 							</a>
 						</Link>
 					</ListItem>
-					<Divider />
+					<hr className="h-px mx-0 bg-gray-300 border-none flex-shrink-0" />
 					{user.isSignedIn && (
 						<>
 							<ListItem button>

@@ -19,11 +19,6 @@ SwiperCore.use([Navigation, Pagination, A11y, Autoplay]);
 
 const useStyles = makeStyles((theme: Theme) =>
 	createStyles({
-		container: {
-			width: "90vw",
-			margin: "0 auto",
-			whiteSpace: "nowrap",
-		},
 		card: {
 			width: 380,
 			padding: 10,
@@ -50,7 +45,7 @@ const lesson = () => {
 		<>
 			<Layout>
 				{user.role === "administrator" && (
-					<div className={classes.container}>
+					<div className="w-11/12 mx-auto whitespace-nowrap">
 						<h1 className="text-center my-3 text-3xl font-bold">Edit</h1>
 						<Swiper
 							spaceBetween={50}

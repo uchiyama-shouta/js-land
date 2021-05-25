@@ -19,16 +19,6 @@ const useStyles = makeStyles({
 		margin: "0 auto",
 		transition: "opacity 0.3s",
 	},
-	media: {
-		height: 170,
-	},
-	divider: {
-		margin: "10px 0",
-	},
-	price: {
-		fontSize: 20,
-		paddingBottom: 0,
-	},
 });
 
 const Article: VFC<Props> = memo((props) => {
@@ -40,7 +30,6 @@ const Article: VFC<Props> = memo((props) => {
 				<Link href={`/blog/${blog.id}`}>
 					<a className="inline-block h-full w-full">
 						<Image
-							className={classes.media}
 							src={
 								blog.thumbnail ? blog.thumbnail.url : "/image/lesson-image.jpg"
 							}
