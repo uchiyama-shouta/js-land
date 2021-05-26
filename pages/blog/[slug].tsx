@@ -57,7 +57,7 @@ const Post: VFC<Props> = (props) => {
 						dangerouslySetInnerHTML={{ __html: body }}
 					/>
 					<Link href="/blog">
-						<a>一覧ページに戻る</a>
+						<a className="text-black hover:underline">一覧ページに戻る</a>
 					</Link>
 				</BlogLayout>
 			</Layout>
