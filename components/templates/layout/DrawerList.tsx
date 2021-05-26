@@ -1,8 +1,6 @@
 import React, { memo, VFC } from "react";
 import Link from "next/link";
 import { useRecoilState } from "recoil";
-import clsx from "clsx";
-import { makeStyles } from "@material-ui/core/styles";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
@@ -11,23 +9,8 @@ import { useRouter } from "next/router";
 import { initialState, userState } from "../../../src/store/userState";
 import { UserStateType } from "../../../types/user/UserStateType";
 
-const useStyles = makeStyles({
-	list: {
-		width: 250,
-	},
-	fullList: {
-		width: "auto",
-	},
-});
-
-type Props = {
-	anchor?: "top" | "left" | "bottom" | "right";
-};
-
-const DrawerList: VFC<Props> = memo((props) => {
+const DrawerList: VFC = memo(() => {
 	const [user, setUser] = useRecoilState<UserStateType>(userState);
-	const classes = useStyles();
-	const { anchor } = props;
 	const router = useRouter();
 
 	const logOut = async () => {
@@ -41,12 +24,7 @@ const DrawerList: VFC<Props> = memo((props) => {
 	};
 	return (
 		<>
-			<div
-				className={clsx(classes.list, {
-					[classes.fullList]: anchor === "top" || anchor === "bottom",
-				})}
-				role="presentation"
-			>
+			<div className="w-64" role="presentation">
 				<List>
 					<ListItem button>
 						<Link href="/lesson">

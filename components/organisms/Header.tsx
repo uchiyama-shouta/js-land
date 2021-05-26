@@ -29,30 +29,20 @@ const useStyles = makeStyles((theme: Theme) =>
 	})
 );
 
-type Anchor = "top" | "left" | "bottom" | "right";
-
-type stateType = {
-	top: boolean;
-	left: boolean;
-	bottom: boolean;
-	right: boolean;
-};
-
 type Props = {
-	state: stateType;
-	setState: Dispatch<SetStateAction<stateType>>;
+	isOpen: boolean;
+	setIsOpen: Dispatch<SetStateAction<boolean>>;
 };
 
 const Header: VFC<Props> = memo((props) => {
 	const classes = useStyles();
-	const { state, setState } = props;
 	const user = useRecoilValue<UserStateType>(userState);
-	const toggleDrawer = (anchor: Anchor, open: boolean) => (e) => {
+	const { isOpen, setIsOpen } = props;
+	const toggleDrawer = (open: boolean) => (e) => {
 		if (e.type === "keydown" && (e.key === "Tab" || e.key === "Shift")) {
 			return;
 		}
-
-		setState({ ...state, [anchor]: open });
+		setIsOpen(open);
 	};
 
 	return (
@@ -64,13 +54,11 @@ const Header: VFC<Props> = memo((props) => {
 						edge="start"
 						color="default"
 						aria-label="menu"
-						onClick={toggleDrawer("left", true)}
+						onClick={toggleDrawer(true)}
 					>
 						<MenuIcon />
 					</IconButton>
-					<h6 className="flex-grow">
-						<Logo />
-					</h6>
+					<Logo />
 					{user.isSignedIn ? null : (
 						<>
 							<Button color="default" className={classes.menuButton}>
@@ -87,11 +75,7 @@ const Header: VFC<Props> = memo((props) => {
 					)}
 				</Toolbar>
 			</AppBar>
-			<Drawer
-				anchor="left"
-				open={state.left}
-				onClose={toggleDrawer("left", false)}
-			>
+			<Drawer anchor="left" open={isOpen} onClose={toggleDrawer(false)}>
 				<DrawerList />
 			</Drawer>
 		</div>

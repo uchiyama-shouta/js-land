@@ -12,12 +12,7 @@ type Props = {
 const Layout: VFC<Props> = memo((props) => {
 	const siteTitle = "JS-land";
 	const { children, title, description } = props;
-	const [state, setState] = useState({
-		top: false,
-		left: false,
-		bottom: false,
-		right: false,
-	});
+	const [isOpen, setIsOpen] = useState(false);
 
 	return (
 		<>
@@ -25,7 +20,7 @@ const Layout: VFC<Props> = memo((props) => {
 				<title>{title ? `${title} | ${siteTitle}` : siteTitle}</title>
 				<meta name="description" content={description} />
 			</Head>
-			<Header state={state} setState={setState} />
+			<Header isOpen={isOpen} setIsOpen={setIsOpen} />
 			<div className="h-12" />
 			<>{children}</>
 			<div className="h-12" />
