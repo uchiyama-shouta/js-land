@@ -15,7 +15,7 @@ const Auth: VFC<Props> = memo(({ children }) => {
 
 	useEffect(() => {
 		if (!user.isSignedIn) {
-			listenAuthState(router, user, setUser);
+			listenAuthState(router, setUser);
 		}
 	}, []);
 

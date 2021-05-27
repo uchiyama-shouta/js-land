@@ -1,12 +1,10 @@
 import { NextRouter } from "next/router";
 import { SetterOrUpdater } from "recoil";
 import { auth } from "../../src/firebase";
-import { UserStateType } from "../../types/user/UserStateType";
 import { usersRef } from "./usersRef";
 
 export const listenAuthState = async (
 	router: NextRouter,
-	userState: UserStateType,
 	setUsers: SetterOrUpdater<any>
 ) => {
 	auth.onAuthStateChanged((user) => {
@@ -23,7 +21,6 @@ export const listenAuthState = async (
 					}
 
 					setUsers({
-						...userState,
 						isSignedIn: true,
 						role: data.role,
 						uid: uid,

@@ -66,6 +66,9 @@
 	.w-screen-plus-32 {
 		width: calc(100% + 32px);
 	}
+	.h-21rem {
+		height: 21rem;
+	}
 }
 
 @responsive {
