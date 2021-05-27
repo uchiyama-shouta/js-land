@@ -1,39 +1,20 @@
-import { Dispatch, memo, SetStateAction, VFC } from "react";
+import { memo, useState, VFC } from "react";
 import Link from "next/link";
+import dynamic from "next/dynamic";
 import { useRecoilValue } from "recoil";
 
-import { createStyles, makeStyles, Theme } from "@material-ui/core/styles";
-import Button from "@material-ui/core/Button";
-import Toolbar from "@material-ui/core/Toolbar";
-import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
-import Drawer from "@material-ui/core/Drawer";
 
 import DrawerList from "../templates/layout/DrawerList";
 import Logo from "../atom/Logo";
 import { userState } from "../../src/store/userState";
 import { UserStateType } from "../../types/user/UserStateType";
 
-const useStyles = makeStyles((theme: Theme) =>
-	createStyles({
-		menuButton: {
-			marginRight: theme.spacing(2),
-			"&:focus": {
-				outline: "none",
-			},
-		},
-	})
-);
+const Drawer = dynamic(() => import("@material-ui/core/Drawer"));
 
-type Props = {
-	isOpen: boolean;
-	setIsOpen: Dispatch<SetStateAction<boolean>>;
-};
-
-const Header: VFC<Props> = memo((props) => {
-	const classes = useStyles();
+const Header: VFC = memo(() => {
 	const user = useRecoilValue<UserStateType>(userState);
-	const { isOpen, setIsOpen } = props;
+	const [isOpen, setIsOpen] = useState(false);
 	const toggleDrawer = (open: boolean) => () => {
 		setIsOpen(open);
 	};
@@ -41,32 +22,40 @@ const Header: VFC<Props> = memo((props) => {
 	return (
 		<div className="flex-grow">
 			<header className="bg-white fixed top-0 left-auto right-0 w-full flex z-50 box-border flex-shrink-0 flex-col shadow-md">
-				<Toolbar>
-					<IconButton
-						className={classes.menuButton}
-						edge="start"
-						color="default"
+				<div className="flex relative items-center px-4 sm:px-6 min-h-56 sm:min-h-64">
+					<button
+						className="mr-4 -ml-3 p-3 text-gray-500 focus:outline-none transition rounded-full hover:bg-gray-100"
+						tabIndex={0}
+						type="button"
 						aria-label="menu"
 						onClick={toggleDrawer(true)}
 					>
 						<MenuIcon />
-					</IconButton>
+					</button>
 					<Logo />
 					{!user.isSignedIn && (
 						<>
-							<Button color="default" className={classes.menuButton}>
+							<button
+								className="mr-4 p-2 focus:outline-none transition hover:bg-gray-100 rounded"
+								tabIndex={0}
+								type="button"
+							>
 								<Link href="/login">
 									<a>ログイン</a>
 								</Link>
-							</Button>
-							<Button color="default" className={classes.menuButton}>
+							</button>
+							<button
+								className="mr-4 p-2 focus:outline-none transition hover:bg-gray-100 rounded"
+								tabIndex={0}
+								type="button"
+							>
 								<Link href="/signUp">
 									<a>新規登録</a>
 								</Link>
-							</Button>
+							</button>
 						</>
 					)}
-				</Toolbar>
+				</div>
 			</header>
 			<Drawer anchor="left" open={isOpen} onClose={toggleDrawer(false)}>
 				<DrawerList />

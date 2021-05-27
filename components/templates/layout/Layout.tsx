@@ -1,5 +1,5 @@
+import { memo, ReactNode, VFC } from "react";
 import Head from "next/head";
-import { memo, ReactNode, useState, VFC } from "react";
 import Footer from "../../organisms/Footer";
 import Header from "../../organisms/Header";
 
@@ -12,7 +12,6 @@ type Props = {
 const Layout: VFC<Props> = memo((props) => {
 	const siteTitle = "JS-land";
 	const { children, title, description } = props;
-	const [isOpen, setIsOpen] = useState(false);
 
 	return (
 		<>
@@ -20,7 +19,7 @@ const Layout: VFC<Props> = memo((props) => {
 				<title>{title ? `${title} | ${siteTitle}` : siteTitle}</title>
 				<meta name="description" content={description} />
 			</Head>
-			<Header isOpen={isOpen} setIsOpen={setIsOpen} />
+			<Header />
 			<div className="h-12" />
 			<>{children}</>
 			<div className="h-12" />

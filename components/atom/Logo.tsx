@@ -4,7 +4,7 @@ import Image from "next/image";
 
 const Logo = memo(() => {
 	return (
-		<h1 className="flex-grow">
+		<h1 className="flex-grow pt-1">
 			<Link href="/">
 				<a>
 					<Image
