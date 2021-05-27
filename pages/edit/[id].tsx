@@ -1,13 +1,13 @@
 import { useCallback, useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { useRecoilValue } from "recoil";
+import { GetServerSideProps } from "next";
 import { db } from "../../src/firebase";
 
 import PrimaryButton from "../../components/atom/button/PrimaryButton";
 import Layout from "../../components/templates/layout/Layout";
 import { userState } from "../../src/store/userState";
 import { ImageType } from "../../types/lesson/ImageType";
-import { GetServerSideProps } from "next";
 import Select from "@material-ui/core/Select";
 import { LessonChapterType } from "../../types/lesson/lessonChapterType";
 

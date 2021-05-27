@@ -23,43 +23,41 @@ const DrawerList: VFC = memo(() => {
 		}
 	};
 	return (
-		<>
-			<div className="w-64" role="presentation">
-				<List>
-					<ListItem button>
-						<Link href="/lesson">
-							<a className="w-full">
-								<ListItemText primary="レッスン一覧" />
-							</a>
-						</Link>
-					</ListItem>
-					<ListItem button>
-						<Link href="/blog">
-							<a className="w-full">
-								<ListItemText primary="ブログ" />
-							</a>
-						</Link>
-					</ListItem>
-					<hr className="h-px mx-0 bg-gray-300 border-none flex-shrink-0" />
-					{user.isSignedIn && (
-						<>
+		<div className="w-64" role="presentation">
+			<List>
+				<ListItem button>
+					<Link href="/lesson">
+						<a className="w-full">
+							<ListItemText primary="レッスン一覧" />
+						</a>
+					</Link>
+				</ListItem>
+				<ListItem button>
+					<Link href="/blog">
+						<a className="w-full">
+							<ListItemText primary="ブログ" />
+						</a>
+					</Link>
+				</ListItem>
+				<hr className="h-px mx-0 bg-gray-300 border-none flex-shrink-0" />
+				{user.isSignedIn && (
+					<>
+						<ListItem button>
+							<ListItemText primary="ログアウト" onClick={logOut} />
+						</ListItem>
+						{user.role === "administrator" && (
 							<ListItem button>
-								<ListItemText primary="ログアウト" onClick={logOut} />
+								<Link href="/edit">
+									<a className="w-full">
+										<ListItemText primary="編集" />
+									</a>
+								</Link>
 							</ListItem>
-							{user.role === "administrator" && (
-								<ListItem button>
-									<Link href="/edit">
-										<a className="w-full">
-											<ListItemText primary="編集" />
-										</a>
-									</Link>
-								</ListItem>
-							)}
-						</>
-					)}
-				</List>
-			</div>
-		</>
+						)}
+					</>
+				)}
+			</List>
+		</div>
 	);
 });
 

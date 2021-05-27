@@ -3,7 +3,6 @@ import Link from "next/link";
 import { useRecoilValue } from "recoil";
 
 import { createStyles, makeStyles, Theme } from "@material-ui/core/styles";
-import AppBar from "@material-ui/core/AppBar";
 import Button from "@material-ui/core/Button";
 import Toolbar from "@material-ui/core/Toolbar";
 import IconButton from "@material-ui/core/IconButton";
@@ -11,15 +10,12 @@ import MenuIcon from "@material-ui/icons/Menu";
 import Drawer from "@material-ui/core/Drawer";
 
 import DrawerList from "../templates/layout/DrawerList";
+import Logo from "../atom/Logo";
 import { userState } from "../../src/store/userState";
 import { UserStateType } from "../../types/user/UserStateType";
-import Logo from "../atom/Logo";
 
 const useStyles = makeStyles((theme: Theme) =>
 	createStyles({
-		appBar: {
-			backgroundColor: "#fff",
-		},
 		menuButton: {
 			marginRight: theme.spacing(2),
 			"&:focus": {
@@ -38,16 +34,13 @@ const Header: VFC<Props> = memo((props) => {
 	const classes = useStyles();
 	const user = useRecoilValue<UserStateType>(userState);
 	const { isOpen, setIsOpen } = props;
-	const toggleDrawer = (open: boolean) => (e) => {
-		if (e.type === "keydown" && (e.key === "Tab" || e.key === "Shift")) {
-			return;
-		}
+	const toggleDrawer = (open: boolean) => () => {
 		setIsOpen(open);
 	};
 
 	return (
 		<div className="flex-grow">
-			<AppBar position="fixed" className={classes.appBar}>
+			<header className="bg-white fixed top-0 left-auto right-0 w-full flex z-50 box-border flex-shrink-0 flex-col shadow-md">
 				<Toolbar>
 					<IconButton
 						className={classes.menuButton}
@@ -59,7 +52,7 @@ const Header: VFC<Props> = memo((props) => {
 						<MenuIcon />
 					</IconButton>
 					<Logo />
-					{user.isSignedIn ? null : (
+					{!user.isSignedIn && (
 						<>
 							<Button color="default" className={classes.menuButton}>
 								<Link href="/login">
@@ -74,7 +67,7 @@ const Header: VFC<Props> = memo((props) => {
 						</>
 					)}
 				</Toolbar>
-			</AppBar>
+			</header>
 			<Drawer anchor="left" open={isOpen} onClose={toggleDrawer(false)}>
 				<DrawerList />
 			</Drawer>

@@ -19,7 +19,7 @@ const useStyles = makeStyles((theme: Theme) =>
 	})
 );
 
-const max = 10;
+// const max = 10;
 
 const ArticleGrid: VFC<Props> = memo((props) => {
 	const classes = useStyles();

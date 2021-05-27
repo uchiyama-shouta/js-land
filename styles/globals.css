@@ -63,6 +63,9 @@
 	.w-55per {
 		width: 55%;
 	}
+	.w-screen-plus-32 {
+		width: calc(100% + 32px);
+	}
 }
 
 @responsive {
