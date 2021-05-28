@@ -1,27 +1,18 @@
 import React, { memo, VFC } from "react";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import { useRecoilState } from "recoil";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
-import { auth } from "../../../src/firebase";
-import { useRouter } from "next/router";
-import { initialState, userState } from "../../../src/store/userState";
+
+import { userState } from "../../../src/store/userState";
 import { UserStateType } from "../../../types/user/UserStateType";
 
 const DrawerList: VFC = memo(() => {
 	const [user, setUser] = useRecoilState<UserStateType>(userState);
 	const router = useRouter();
 
-	const logOut = async () => {
-		try {
-			await auth.signOut();
-			setUser(initialState);
-			router.push("/login");
-		} catch (error) {
-			alert(error.message);
-		}
-	};
 	return (
 		<div className="w-64" role="presentation">
 			<List>
@@ -43,7 +34,14 @@ const DrawerList: VFC = memo(() => {
 				{user.isSignedIn && (
 					<>
 						<ListItem button>
-							<ListItemText primary="ログアウト" onClick={logOut} />
+							<ListItemText
+								primary="ログアウト"
+								onClick={async () =>
+									await import("../../../lib/user/logOut").then((mod) =>
+										mod.logOut(setUser, router)
+									)
+								}
+							/>
 						</ListItem>
 						{user.role === "administrator" && (
 							<ListItem button>

@@ -5,8 +5,8 @@ import { useRecoilValue } from "recoil";
 
 import MenuIcon from "@material-ui/icons/Menu";
 
-import DrawerList from "../templates/layout/DrawerList";
 import Logo from "../atom/Logo";
+import DrawerList from "../templates/layout/DrawerList";
 import { userState } from "../../src/store/userState";
 import { UserStateType } from "../../types/user/UserStateType";
 
@@ -15,7 +15,7 @@ const Drawer = dynamic(() => import("@material-ui/core/Drawer"));
 const Header: VFC = memo(() => {
 	const user = useRecoilValue<UserStateType>(userState);
 	const [isOpen, setIsOpen] = useState(false);
-	const toggleDrawer = (open: boolean) => () => {
+	const toggleDrawer = (open: boolean) => {
 		setIsOpen(open);
 	};
 
@@ -28,7 +28,7 @@ const Header: VFC = memo(() => {
 						tabIndex={0}
 						type="button"
 						aria-label="menu"
-						onClick={toggleDrawer(true)}
+						onClick={() => toggleDrawer(true)}
 					>
 						<MenuIcon />
 					</button>
@@ -57,7 +57,7 @@ const Header: VFC = memo(() => {
 					)}
 				</div>
 			</header>
-			<Drawer anchor="left" open={isOpen} onClose={toggleDrawer(false)}>
+			<Drawer anchor="left" open={isOpen} onClose={() => toggleDrawer(false)}>
 				<DrawerList />
 			</Drawer>
 		</div>
