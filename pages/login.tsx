@@ -6,7 +6,6 @@ import Layout from "../components/templates/layout/Layout";
 import TextInput from "../components/atom/TextInput";
 
 import PrimaryButton from "../components/atom/button/PrimaryButton";
-import { auth } from "../src/firebase";
 import { login } from "../lib/user/login";
 
 const Login: VFC = () => {
@@ -23,13 +22,18 @@ const Login: VFC = () => {
 	}, []);
 
 	useEffect(() => {
-		auth.onAuthStateChanged((user) => {
-			user && router.push("/");
-		});
+		import("../src/firebase")
+			.then((mod) => mod.auth)
+			.then((auth) => {
+				auth.onAuthStateChanged((user) => {
+					user && router.push("/");
+				});
+			});
 	}, []);
 
 	const onSubmitlogin = async (e) => {
 		e.preventDefault();
+		const login = await import("../lib/user/login").then((mod) => mod.login);
 		login(email, password, router, setUsers);
 	};
 

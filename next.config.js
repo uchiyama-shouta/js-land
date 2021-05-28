@@ -1,5 +1,14 @@
-module.exports = {
+const withBundleAnalyzer = require("@next/bundle-analyzer")({
+	enabled: process.env.ANALYZE === "true",
+});
+
+module.exports = withBundleAnalyzer({
 	images: {
-		domains: ['images.microcms-assets.io', 'firebasestorage.googleapis.com'],
+		domains: ["images.microcms-assets.io", "firebasestorage.googleapis.com"],
 	},
-};
+});
+// module.exports = {
+// 	images: {
+// 		domains: ['images.microcms-assets.io', 'firebasestorage.googleapis.com'],
+// 	},
+// };

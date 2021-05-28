@@ -48,6 +48,9 @@
 	code.hljs {
 		font-size: 18px;
 	}
+	canvas {
+		display: none;
+	}
 }
 
 @layer utilities {

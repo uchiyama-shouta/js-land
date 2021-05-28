@@ -10,7 +10,7 @@ import DrawerList from "../templates/layout/DrawerList";
 import { userState } from "../../src/store/userState";
 import { UserStateType } from "../../types/user/UserStateType";
 
-const Drawer = dynamic(() => import("@material-ui/core/Drawer"));
+const Drawer = dynamic(async () => await import("@material-ui/core/Drawer"));
 
 const Header: VFC = memo(() => {
 	const user = useRecoilValue<UserStateType>(userState);

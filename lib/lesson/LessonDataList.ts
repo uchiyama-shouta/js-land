@@ -1,7 +1,7 @@
-import { db } from "../../src/firebase";
 import { LessonDataType } from "../../types/lesson/lessonType";
 
 export const lessonDataList = async () => {
+	const db = await import("../../src/firebase").then((mod) => mod.db);
 	const lessonsRef = await db.collection("lessons").get();
 	const datas = lessonsRef.docs.map((doc) => {
 		const docData = doc.data();

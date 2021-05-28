@@ -2,7 +2,6 @@ import { NextRouter } from "next/router";
 import { auth, FirebaseTimestamp } from "../../src/firebase";
 import { usersRef } from "./usersRef";
 
-
 export const createUser = async (
 	router: NextRouter,
 	name: string,
@@ -10,6 +9,7 @@ export const createUser = async (
 	password: string
 ) => {
 	try {
+		const auth = await import("../../src/firebase").then((mod) => mod.auth);
 		await auth
 			.createUserWithEmailAndPassword(email, password)
 			.then((result) => {
@@ -32,16 +32,16 @@ export const createUser = async (
 					usersRef
 						.doc(uid)
 						.set(userInitialData)
-						.then(async () => {
-							router.push("/login");
+						.then(() => {
+							router.push("/");
 						});
 				}
 			})
-			.catch((err) => {
+			.catch(() => {
 				alert("アカウント登録に失敗しました。もう1度お試しください。");
 			});
-      } catch (err) {
-         alert("アカウント登録に失敗しました。もう1度お試しください。");
-         throw new Error(err);
+	} catch (err) {
+		alert("アカウント登録に失敗しました。もう1度お試しください。");
+		throw new Error(err);
 	}
 };

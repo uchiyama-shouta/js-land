@@ -5,7 +5,6 @@ import Layout from "../components/templates/layout/Layout";
 import TextInput from "../components/atom/TextInput";
 import PrimaryButton from "../components/atom/button/PrimaryButton";
 import { auth } from "../src/firebase";
-import { createUser } from "../lib/user/createUser";
 
 const signUp = () => {
 	const router = useRouter();
@@ -24,14 +23,21 @@ const signUp = () => {
 	}, []);
 
 	useEffect(() => {
-		auth.onAuthStateChanged((user) => {
-			user && router.push("/");
-		});
+		import("../src/firebase")
+			.then((mod) => mod.auth)
+			.then((auth) => {
+				auth.onAuthStateChanged((user) => {
+					user && router.push("/");
+				});
+			});
 	}, []);
 
 	const signUp = async (e) => {
 		e.preventDefault();
-		createUser(router, name, email, password);
+		const createUser = await import("../lib/user/createUser").then(
+			(mod) => mod.createUser
+		);
+		await createUser(router, name, email, password);
 	};
 	return (
 		<>
