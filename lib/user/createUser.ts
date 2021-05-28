@@ -1,6 +1,5 @@
 import { NextRouter } from "next/router";
-import { auth, FirebaseTimestamp } from "../../src/firebase";
-import { usersRef } from "./usersRef";
+import { FirebaseTimestamp } from "../../src/firebase";
 
 export const createUser = async (
 	router: NextRouter,
@@ -10,6 +9,9 @@ export const createUser = async (
 ) => {
 	try {
 		const auth = await import("../../src/firebase").then((mod) => mod.auth);
+		const usersRef = await import("../../src/firebase")
+			.then((mod) => mod.db)
+			.then((db) => db.collection("users"));
 		await auth
 			.createUserWithEmailAndPassword(email, password)
 			.then((result) => {

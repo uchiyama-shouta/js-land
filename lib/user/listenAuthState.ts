@@ -1,13 +1,16 @@
 import { NextRouter } from "next/router";
 import { SetterOrUpdater } from "recoil";
 // import { auth } from "../../src/firebase";
-import { usersRef } from "./usersRef";
+// import { usersRef } from "./usersRef";
 
 export const listenAuthState = async (
 	router: NextRouter,
 	setUsers: SetterOrUpdater<any>
 ) => {
-	const auth = await import("../../src/firebase").then(mod => mod.auth);
+	const auth = await import("../../src/firebase").then((mod) => mod.auth);
+	const usersRef = await import("../../src/firebase")
+		.then((mod) => mod.db)
+		.then((db) => db.collection("users"));
 	auth.onAuthStateChanged((user) => {
 		if (user) {
 			const uid = user.uid;
