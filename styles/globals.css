@@ -72,6 +72,12 @@
 	.h-21rem {
 		height: 21rem;
 	}
+	.blog-card {
+		max-width: 325px;
+		min-width: 290px;
+		max-height: 350px;
+		min-height: 280px;
+	}
 }
 
 @responsive {

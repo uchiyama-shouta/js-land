@@ -1,8 +1,8 @@
 import { useEffect } from "react";
 import Router from "next/router";
-import { RecoilRoot } from "recoil";
 import Head from "next/head";
 import type { AppProps } from "next/app";
+import { RecoilRoot } from "recoil";
 import PropTypes from "prop-types";
 import { ThemeProvider } from "@material-ui/core/styles";
 import CssBaseline from "@material-ui/core/CssBaseline";

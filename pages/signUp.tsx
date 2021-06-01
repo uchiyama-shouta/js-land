@@ -4,7 +4,7 @@ import Layout from "../components/templates/layout/Layout";
 
 import TextInput from "../components/atom/TextInput";
 import PrimaryButton from "../components/atom/button/PrimaryButton";
-import { auth } from "../src/firebase";
+// import { auth } from "../src/firebase";
 
 const signUp = () => {
 	const router = useRouter();

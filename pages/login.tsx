@@ -6,7 +6,7 @@ import Layout from "../components/templates/layout/Layout";
 import TextInput from "../components/atom/TextInput";
 
 import PrimaryButton from "../components/atom/button/PrimaryButton";
-import { login } from "../lib/user/login";
+// import { login } from "../lib/user/login";
 
 const Login: VFC = () => {
 	const router = useRouter();

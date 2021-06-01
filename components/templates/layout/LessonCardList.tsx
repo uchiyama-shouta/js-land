@@ -1,8 +1,8 @@
 import React, { memo, VFC } from "react";
+import { useRecoilValue } from "recoil";
 
 import { LessonDataType } from "../../../types/lesson/lessonType";
 import LessonCard from "../../organisms/LessonCard";
-import { useRecoilValue } from "recoil";
 import { userState } from "../../../src/store/userState";
 
 type Props = {

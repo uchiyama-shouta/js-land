@@ -1,3 +1,4 @@
+// import { db } from "../../src/firebase";
 import { LessonDataType } from "../../types/lesson/lessonType";
 
 export const lessonDataList = async () => {
