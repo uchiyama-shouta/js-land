@@ -1,10 +1,7 @@
-import React, { memo, VFC } from "react";
+import { memo, VFC } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useRecoilState } from "recoil";
-import List from "@material-ui/core/List";
-import ListItem from "@material-ui/core/ListItem";
-import ListItemText from "@material-ui/core/ListItemText";
 
 import { userState } from "../../../src/store/userState";
 import { UserStateType } from "../../../types/user/UserStateType";
@@ -15,46 +12,56 @@ const DrawerList: VFC = memo(() => {
 
 	return (
 		<div className="w-64" role="presentation">
-			<List>
-				<ListItem button>
+			<ul className="py-2 px-0 m-0">
+				<li className="px-4 py-2 transition-all hover:bg-gray-100">
 					<Link href="/lesson">
 						<a className="w-full">
-							<ListItemText primary="レッスン一覧" />
+							<span className="my-1 text-base font-normal leading-normal block">
+								レッスン一覧
+							</span>
 						</a>
 					</Link>
-				</ListItem>
-				<ListItem button>
+				</li>
+				<li className="px-4 py-2 transition-all hover:bg-gray-100">
 					<Link href="/blog">
 						<a className="w-full">
-							<ListItemText primary="ブログ" />
+							<span className="my-1 text-base font-normal leading-normal block">
+								ブログ
+							</span>
 						</a>
 					</Link>
-				</ListItem>
+				</li>
+				
 				<hr className="h-px mx-0 bg-gray-300 border-none flex-shrink-0" />
+				
 				{user.isSignedIn && (
 					<>
-						<ListItem button>
-							<ListItemText
-								primary="ログアウト"
+						<li className="px-4 py-2 transition-all hover:bg-gray-100">
+							<span
+								className="my-1 text-base font-normal leading-normal block"
 								onClick={async () =>
 									await import("../../../lib/user/logOut").then((mod) =>
 										mod.logOut(setUser, router)
 									)
 								}
-							/>
-						</ListItem>
+							>
+								ログアウト
+							</span>
+						</li>
 						{user.role === "administrator" && (
-							<ListItem button>
+							<li className="px-4 py-2 transition-all hover:bg-gray-100">
 								<Link href="/edit">
 									<a className="w-full">
-										<ListItemText primary="編集" />
+										<span className="my-1 text-base font-normal leading-normal block">
+											編集
+										</span>
 									</a>
 								</Link>
-							</ListItem>
+							</li>
 						)}
 					</>
 				)}
-			</List>
+			</ul>
 		</div>
 	);
 });

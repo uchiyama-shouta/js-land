@@ -1,5 +1,5 @@
 import { GetStaticProps } from "next";
-import React, { VFC } from "react";
+import { VFC } from "react";
 import ArticleGrid from "../../components/templates/layout/ArticleGrid";
 import BlogLayout from "../../components/templates/layout/BlogLayout";
 import Layout from "../../components/templates/layout/Layout";
