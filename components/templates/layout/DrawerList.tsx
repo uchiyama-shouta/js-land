@@ -13,32 +13,28 @@ const DrawerList: VFC = memo(() => {
 	return (
 		<div className="w-64" role="presentation">
 			<ul className="py-2 px-0 m-0">
-				<li className="px-4 py-2 transition-all hover:bg-gray-100">
+				<li className="transition-all hover:bg-gray-100">
 					<Link href="/lesson">
-						<a className="w-full">
-							<span className="my-1 text-base font-normal leading-normal block">
-								レッスン一覧
-							</span>
+						<a className="px-4 py-3 w-full text-base font-normal leading-normal block">
+							レッスン一覧
 						</a>
 					</Link>
 				</li>
-				<li className="px-4 py-2 transition-all hover:bg-gray-100">
+				<li className="transition-all hover:bg-gray-100">
 					<Link href="/blog">
-						<a className="w-full">
-							<span className="my-1 text-base font-normal leading-normal block">
-								ブログ
-							</span>
+						<a className="px-4 py-3 w-full text-base font-normal leading-normal block">
+							ブログ
 						</a>
 					</Link>
 				</li>
-				
+
 				<hr className="h-px mx-0 bg-gray-300 border-none flex-shrink-0" />
-				
+
 				{user.isSignedIn && (
 					<>
-						<li className="px-4 py-2 transition-all hover:bg-gray-100">
+						<li className="transition-all hover:bg-gray-100">
 							<span
-								className="my-1 text-base font-normal leading-normal block"
+								className="px-4 py-3 w-full text-base font-normal leading-normal block"
 								onClick={async () =>
 									await import("../../../lib/user/logOut").then((mod) =>
 										mod.logOut(setUser, router)
@@ -49,12 +45,10 @@ const DrawerList: VFC = memo(() => {
 							</span>
 						</li>
 						{user.role === "administrator" && (
-							<li className="px-4 py-2 transition-all hover:bg-gray-100">
+							<li className="transition-all hover:bg-gray-100">
 								<Link href="/edit">
-									<a className="w-full">
-										<span className="my-1 text-base font-normal leading-normal block">
-											編集
-										</span>
+									<a className="px-4 py-3 w-full text-base font-normal leading-normal block">
+										編集
 									</a>
 								</Link>
 							</li>

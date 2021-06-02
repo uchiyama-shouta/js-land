@@ -89,88 +89,84 @@ const LessonEditCard: VFC<Props> = memo((props) => {
 	);
 
 	return (
-		<>
-			<div>
-				{titleFlag ? (
-					<div onDoubleClick={handleTitleFlag}>
-						<TextInput
-							label="タイトル"
-							value={title}
-							onChange={onChangeTitle}
-						/>
-					</div>
-				) : (
-					<h2 className="text-xl font-bold" onDoubleClick={handleTitleFlag}>
-						{title}
-					</h2>
-				)}
-				<div className="spacer" />
-				<Image width={400} height={250} src={image.path} />
-				<div className="text-left">
-					<span>サムネイル画像の登録する</span>
-					<IconButton className="w-6 h-6">
-						<label>
-							<AddPhotoAlternateIcon />
-							<input
-								className="hidden"
-								type="file"
-								id="image"
-								onChange={(e) => {
-									uploadImage(e);
-								}}
-							/>
-						</label>
-					</IconButton>
+		<div>
+			{titleFlag ? (
+				<div onDoubleClick={handleTitleFlag}>
+					<TextInput label="タイトル" value={title} onChange={onChangeTitle} />
 				</div>
-				{priceFlag ? (
-					<div onDoubleClick={handlePriceFlag}>
-						<TextInput
-							label="値段"
-							value={price}
-							onChange={onChangePrice}
-							type="number"
+			) : (
+				<h2 className="text-xl font-bold" onDoubleClick={handleTitleFlag}>
+					{title}
+				</h2>
+			)}
+			<div className="spacer" />
+			<Image width={400} height={250} src={image.path} />
+			<div className="text-left">
+				<span>サムネイル画像の登録する</span>
+				<IconButton className="w-6 h-6">
+					<label>
+						<AddPhotoAlternateIcon />
+						<input
+							className="hidden"
+							type="file"
+							id="image"
+							onChange={(e) => {
+								uploadImage(e);
+							}}
 						/>
-					</div>
-				) : (
-					<p onDoubleClick={handlePriceFlag} className="text-base">
-						{data.price}円
-					</p>
-				)}
-				{descriptionFlag ? (
-					<div className="h-32" onDoubleClick={handleDescriptionFlag}>
-						<TextInput
-							label="説明"
-							value={description}
-							onChange={onChangeDescription}
-							multiline
-							rows={20}
-						/>
-					</div>
-				) : (
-					<p onDoubleClick={handleDescriptionFlag} className="text-base">
-						{replaceToBr(data.description)}
-					</p>
-				)}
-				<div className="h-8" />
-				<div className="text-center">
-					<PrimaryButton
-						onClick={() => {
-							editLesson(data.id, title, description, price, image);
-							setTitle("");
-							setDescription("");
-							setPrice(0);
-							alert("保存できました");
-						}}
-					>
-						保存する
-					</PrimaryButton>
-				</div>
-				<div className="h-8" />
-				<Link href={`/edit/${data.id}`}>
-					<a className="block mt-2 text-center hover:underline">コンテンツの編集へ</a>
-				</Link>
+					</label>
+				</IconButton>
 			</div>
-		</>
+			{priceFlag ? (
+				<div onDoubleClick={handlePriceFlag}>
+					<TextInput
+						label="値段"
+						value={price}
+						onChange={onChangePrice}
+						type="number"
+					/>
+				</div>
+			) : (
+				<p onDoubleClick={handlePriceFlag} className="text-base">
+					{data.price}円
+				</p>
+			)}
+			{descriptionFlag ? (
+				<div className="h-32" onDoubleClick={handleDescriptionFlag}>
+					<TextInput
+						label="説明"
+						value={description}
+						onChange={onChangeDescription}
+						multiline
+						rows={20}
+					/>
+				</div>
+			) : (
+				<p onDoubleClick={handleDescriptionFlag} className="text-base">
+					{replaceToBr(data.description)}
+				</p>
+			)}
+			<div className="h-8" />
+			<div className="text-center">
+				<PrimaryButton
+					onClick={() => {
+						editLesson(data.id, title, description, price, image);
+						setTitle("");
+						setDescription("");
+						setPrice(0);
+						alert("保存できました");
+					}}
+				>
+					保存する
+				</PrimaryButton>
+			</div>
+			<div className="h-8" />
+			<Link href={`/edit/${data.id}`}>
+				<a className="block mt-2 text-center hover:underline">
+					コンテンツの編集へ
+				</a>
+			</Link>
+		</div>
 	);
 });
 

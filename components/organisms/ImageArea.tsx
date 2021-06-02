@@ -49,35 +49,33 @@ const ImageArea: VFC<Props> = memo((props) => {
 		[props.setImage]
 	);
 	return (
-		<>
-			<div>
-				{props.image ? (
-					<img
-						className="mx-auto w-4/5"
-						src={props.image.path}
-						alt="プレビュー"
-					/>
-				) : (
-					<div className="mx-auto w-4/5 h-52 bg-gray-300" />
-				)}
-				<div className="sm:text-right sm:w-96 w-80 text-center">
-					<span>サムネイル画像の登録する</span>
-					<IconButton className={classes.icon}>
-						<label>
-							<AddPhotoAlternateIcon />
-							<input
-								className="hidden"
-								type="file"
-								id="image"
-								onChange={(e) => {
-									uploadImage(e);
-								}}
-							/>
-						</label>
-					</IconButton>
-				</div>
+		<div>
+			{props.image ? (
+				<img
+					className="mx-auto w-4/5"
+					src={props.image.path}
+					alt="プレビュー"
+				/>
+			) : (
+				<div className="mx-auto w-4/5 h-52 bg-gray-300" />
+			)}
+			<div className="sm:text-right sm:w-96 w-80 text-center">
+				<span>サムネイル画像の登録する</span>
+				<IconButton className={classes.icon}>
+					<label>
+						<AddPhotoAlternateIcon />
+						<input
+							className="hidden"
+							type="file"
+							id="image"
+							onChange={(e) => {
+								uploadImage(e);
+							}}
+						/>
+					</label>
+				</IconButton>
 			</div>
-		</>
+		</div>
 	);
 });
 

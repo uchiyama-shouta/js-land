@@ -40,32 +40,30 @@ const CreateLesson: VFC<Props> = memo((props) => {
 	};
 
 	return (
-		<>
-			<div>
-				<TextInput
-					value={chapterName}
-					label="チャプター名"
-					onChange={onChangeChapterName}
-				/>
-				<Select
-					labelId="demo-simple-select-label"
-					id="demo-simple-select"
-					value={type}
-					onChange={handleChange}
-					className={classes.select}
-				>
-					{types.map((type) => (
-						<MenuItem key={type} value={type}>
-							{type}
-						</MenuItem>
-					))}
-				</Select>
-				<div className="h-7" />
-				<PrimaryButton onClick={() => onClickEdit()} disabled={!chapterName}>
-					確定する
-				</PrimaryButton>
-			</div>
-		</>
+		<div>
+			<TextInput
+				value={chapterName}
+				label="チャプター名"
+				onChange={onChangeChapterName}
+			/>
+			<Select
+				labelId="demo-simple-select-label"
+				id="demo-simple-select"
+				value={type}
+				onChange={handleChange}
+				className={classes.select}
+			>
+				{types.map((type) => (
+					<MenuItem key={type} value={type}>
+						{type}
+					</MenuItem>
+				))}
+			</Select>
+			<div className="h-7" />
+			<PrimaryButton onClick={() => onClickEdit()} disabled={!chapterName}>
+				確定する
+			</PrimaryButton>
+		</div>
 	);
 });
 

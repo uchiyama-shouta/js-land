@@ -12,13 +12,11 @@ type Props = {
 const lesson: VFC<Props> = memo((props) => {
 	const id = props.datas.map((data) => data.id);
 	return (
-		<>
-			<Layout description="レッスン一覧ページです。">
-				<div className="h-12" />
-				<h2 className="text-center mb-12 text-xl font-bold">レッスン一覧</h2>
-				<LessonCardList data={props.datas} />
-			</Layout>
-		</>
+		<Layout description="レッスン一覧ページです。">
+			<div className="h-12" />
+			<h2 className="text-center mb-12 text-xl font-bold">レッスン一覧</h2>
+			<LessonCardList data={props.datas} />
+		</Layout>
 	);
 });
 

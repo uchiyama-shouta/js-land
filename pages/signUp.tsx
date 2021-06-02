@@ -40,46 +40,44 @@ const signUp = () => {
 		await createUser(router, name, email, password);
 	};
 	return (
-		<>
-			<Layout description="アカウント登録画面です。">
-				<h2 className="text-center mt-5 text-3xl">Sign Up</h2>
-				<div className="text-center h-auto w-screen-2rem mx-auto my-8 p-4 max-w-sm">
-					<form onSubmit={signUp}>
-						<TextInput
-							rows={1}
-							value={name}
-							label="名前"
-							onChange={inputName}
-							type="text"
-						/>
-						<TextInput
-							rows={1}
-							value={email}
-							label="メールアドレス"
-							onChange={inputEmail}
-							type="email"
-						/>
-						<TextInput
-							rows={1}
-							value={password}
-							label="パスワード"
-							onChange={inputPassword}
-							type="password"
-						/>
-						<div className="h-12" />
-						<div className="text-center">
-							<PrimaryButton
-								disabled={(!email || !password) && true}
-								type="submit"
-								onClick={() => console.log("sigiup")}
-							>
-								新規登録
-							</PrimaryButton>
-						</div>
-					</form>
-				</div>
-			</Layout>
-		</>
+		<Layout description="アカウント登録画面です。">
+			<h2 className="text-center mt-5 text-3xl">Sign Up</h2>
+			<div className="text-center h-auto w-screen-2rem mx-auto my-8 p-4 max-w-sm">
+				<form onSubmit={signUp}>
+					<TextInput
+						rows={1}
+						value={name}
+						label="名前"
+						onChange={inputName}
+						type="text"
+					/>
+					<TextInput
+						rows={1}
+						value={email}
+						label="メールアドレス"
+						onChange={inputEmail}
+						type="email"
+					/>
+					<TextInput
+						rows={1}
+						value={password}
+						label="パスワード"
+						onChange={inputPassword}
+						type="password"
+					/>
+					<div className="h-12" />
+					<div className="text-center">
+						<PrimaryButton
+							disabled={(!email || !password) && true}
+							type="submit"
+							onClick={() => console.log("sigiup")}
+						>
+							新規登録
+						</PrimaryButton>
+					</div>
+				</form>
+			</div>
+		</Layout>
 	);
 };
 

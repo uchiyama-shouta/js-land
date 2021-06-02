@@ -59,43 +59,36 @@ const ContentsEdit: VFC<Props> = memo((props) => {
 		setContents([...contents, { chapterName, lessons: { type } }]);
 	};
 
-	useEffect(() => {
-
-	}, [contents, type]);
+	useEffect(() => {}, [contents, type]);
 
 	return (
-		<>
-			<div className="w-full py-8">
-				<Divider />
-				<h2>内容の編集</h2>
-				{createFlag || editFlag ? (
-					<>
-						{createFlag && (
-							<CreateChapter
-								chapterName={chapterName}
-								onChangeChapterName={onChangeChapterName}
-								onClickEdit={onClickEdit}
-							/>
-						)}
-						{editFlag && (
-							<CreateLesson
-								chapterName={chapterName}
-								onChangeChapterName={onChangeChapterName}
-								contents={contents}
-							/>
-						)}
-						<div className="h-8" />
-					</>
-				) : null}
-				<div />
-				<AddCircleIcon
-					className={classes.icon}
-					onClick={onClickSetCreateFlag}
-				/>
-				<CreateIcon className={classes.icon} onClick={onClickSetEditFlag} />
-				<Divider />
-			</div>
-		</>
+		<div className="w-full py-8">
+			<Divider />
+			<h2>内容の編集</h2>
+			{createFlag || editFlag ? (
+				<>
+					{createFlag && (
+						<CreateChapter
+							chapterName={chapterName}
+							onChangeChapterName={onChangeChapterName}
+							onClickEdit={onClickEdit}
+						/>
+					)}
+					{editFlag && (
+						<CreateLesson
+							chapterName={chapterName}
+							onChangeChapterName={onChangeChapterName}
+							contents={contents}
+						/>
+					)}
+					<div className="h-8" />
+				</>
+			) : null}
+			<div />
+			<AddCircleIcon className={classes.icon} onClick={onClickSetCreateFlag} />
+			<CreateIcon className={classes.icon} onClick={onClickSetEditFlag} />
+			<Divider />
+		</div>
 	);
 });
 

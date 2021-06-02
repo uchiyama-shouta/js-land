@@ -38,39 +38,37 @@ const Login: VFC = () => {
 	};
 
 	return (
-		<>
-			<Layout description="ログイン画面です。">
-				<h2 className="text-center mt-5 text-3xl">Login</h2>
-				<div className="text-center h-auto w-screen-2rem mx-auto my-8 p-4 max-w-sm">
-					<form onSubmit={onSubmitlogin}>
-						<TextInput
-							rows={1}
-							value={email}
-							label="メールアドレス"
-							onChange={inputEmail}
-							type="email"
-						/>
-						<TextInput
-							rows={1}
-							value={password}
-							label="パスワード"
-							onChange={inputPassword}
-							type="password"
-						/>
-						<div className="h-12" />
-						<div className="text-center">
-							<PrimaryButton
-								disabled={(!email || !password) && true}
-								type="submit"
-								onClick={() => console.log("login")}
-							>
-								ログイン
-							</PrimaryButton>
-						</div>
-					</form>
-				</div>
-			</Layout>
-		</>
+		<Layout description="ログイン画面です。">
+			<h2 className="text-center mt-5 text-3xl">Login</h2>
+			<div className="text-center h-auto w-screen-2rem mx-auto my-8 p-4 max-w-sm">
+				<form onSubmit={onSubmitlogin}>
+					<TextInput
+						rows={1}
+						value={email}
+						label="メールアドレス"
+						onChange={inputEmail}
+						type="email"
+					/>
+					<TextInput
+						rows={1}
+						value={password}
+						label="パスワード"
+						onChange={inputPassword}
+						type="password"
+					/>
+					<div className="h-12" />
+					<div className="text-center">
+						<PrimaryButton
+							disabled={(!email || !password) && true}
+							type="submit"
+							onClick={() => console.log("login")}
+						>
+							ログイン
+						</PrimaryButton>
+					</div>
+				</form>
+			</div>
+		</Layout>
 	);
 };
 
