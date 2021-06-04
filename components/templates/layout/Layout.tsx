@@ -20,9 +20,7 @@ const Layout: VFC<Props> = memo((props) => {
 				<meta name="description" content={description} />
 			</Head>
 			<Header />
-			<div className="h-12" />
-			<>{children}</>
-			<div className="h-12" />
+			<div className="py-12">{children}</div>
 			<Footer />
 		</>
 	);
