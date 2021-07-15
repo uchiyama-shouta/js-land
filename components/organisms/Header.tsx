@@ -1,5 +1,4 @@
 import { memo, useCallback, useState, VFC } from "react";
-import Link from "next/link";
 import dynamic from "next/dynamic";
 import { useRecoilValue } from "recoil";
 
@@ -11,22 +10,21 @@ import { userState } from "../../src/store/userState";
 import { UserStateType } from "../../types/user/UserStateType";
 import HeaderLinks from "../molecules/HeaderLinks";
 
-const Drawer = dynamic(async () => await import("@material-ui/core/Drawer"));
-
 const Header: VFC = memo(() => {
+	const Drawer = dynamic(async () => await import("@material-ui/core/Drawer"));
 	const user = useRecoilValue<UserStateType>(userState);
 	const [isOpen, setIsOpen] = useState(false);
 	const toggleOpen = useCallback(
 		(open: boolean) => {
 			setIsOpen(open);
 		},
-		[isOpen]
+		[isOpen],
 	);
 
 	return (
 		<div className="flex-grow">
 			<header className="bg-white fixed top-0 left-auto right-0 w-full flex z-50 box-border flex-shrink-0 flex-col shadow-md">
-				<div className="flex relative items-center px-4 sm:px-6 min-h-56 sm:min-h-64">
+				<div className="flex relative items-center px-4 sm:px-6 sm:min-h-[64px] min-h-[56px]">
 					<button
 						className="mr-4 -ml-3 p-3 text-gray-500 focus:outline-none transition-colors rounded-full hover:bg-gray-100"
 						tabIndex={0}

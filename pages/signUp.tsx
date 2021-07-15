@@ -4,7 +4,8 @@ import Layout from "../components/templates/layout/Layout";
 
 import TextInput from "../components/atom/TextInput";
 import PrimaryButton from "../components/atom/button/PrimaryButton";
-// import { auth } from "../src/firebase";
+import { auth } from "../src/firebase";
+import { createUser } from "../lib/user/createUser";
 
 const signUp = () => {
 	const router = useRouter();
@@ -23,26 +24,19 @@ const signUp = () => {
 	}, []);
 
 	useEffect(() => {
-		import("../src/firebase")
-			.then((mod) => mod.auth)
-			.then((auth) => {
-				auth.onAuthStateChanged((user) => {
-					user && router.push("/");
-				});
-			});
+		auth.onAuthStateChanged((user) => {
+			user && router.push("/");
+		});
 	}, []);
 
 	const signUp = async (e) => {
 		e.preventDefault();
-		const createUser = await import("../lib/user/createUser").then(
-			(mod) => mod.createUser
-		);
-		await createUser(router, name, email, password);
+		createUser(router, name, email, password);
 	};
 	return (
 		<Layout description="アカウント登録画面です。">
 			<h2 className="text-center mt-5 text-3xl">Sign Up</h2>
-			<div className="text-center h-auto w-screen-2rem mx-auto my-8 p-4 max-w-sm">
+			<div className="text-center h-auto w-[calc(100%-2rem)] mx-auto my-8 p-4 max-w-sm">
 				<form onSubmit={signUp}>
 					<TextInput
 						rows={1}

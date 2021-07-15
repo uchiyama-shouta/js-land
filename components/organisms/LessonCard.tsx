@@ -18,7 +18,7 @@ const LessonCard: VFC<Props> = memo((props) => {
 	const user = useRecoilValue(userState);
 	const pathName = `/edit/${id}`;
 	return (
-		<div className="relative mx-auto w-80 h-21rem rounded shadow-md overflow-hidden">
+		<div className="relative mx-auto w-80 h-[21rem] rounded shadow-md overflow-hidden">
 			<Link href={`/lesson/${id}`}>
 				<a className="w-full h-full">
 					<Image

@@ -6,10 +6,8 @@ import { BlogContentDatatype } from "../../../types/blog/blogContentDataType";
 type Props = {
 	blog: BlogContentDatatype;
 };
-// .blog-cardいつか書き直す
 
-const Article: VFC<Props> = memo((props) => {
-	const { blog } = props;
+const Article: VFC<Props> = memo(({ blog }) => {
 	return (
 		<article className="mx-auto transition-opacity blog-card bg-white rounded overflow-hidden shadow">
 			<Link href={`/blog/${blog.id}`}>

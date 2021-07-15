@@ -1,7 +1,7 @@
 import { NextRouter } from "next/router";
 import { SetterOrUpdater } from "recoil";
 
-// import { usersRef } from "./usersRef";
+import { usersRef } from "./usersRef";
 
 export const login = async (
 	email: string,
@@ -11,9 +11,6 @@ export const login = async (
 ) => {
 	try {
 		const auth = await import("../../src/firebase").then((mod) => mod.auth);
-		const usersRef = await import("../../src/firebase")
-			.then((mod) => mod.db)
-			.then((db) => db.collection("users"));
 		const result = await auth.signInWithEmailAndPassword(email, password);
 		const uid = result.user.uid;
 

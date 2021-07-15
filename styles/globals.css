@@ -54,24 +54,6 @@
 }
 
 @layer utilities {
-	.bg-sky-blue {
-		background-color: rgba(40, 180, 255, 0.55);
-	}
-	.translate-center {
-		transform: translate(-50%, -50%);
-	}
-	.w-screen-2rem {
-		width: calc(100% - 2rem);
-	}
-	.w-55per {
-		width: 55%;
-	}
-	.w-screen-plus-32 {
-		width: calc(100% + 32px);
-	}
-	.h-21rem {
-		height: 21rem;
-	}
 	.blog-card {
 		max-width: 325px;
 		min-width: 290px;
@@ -81,13 +63,4 @@
 }
 
 @responsive {
-	.w-55per-responsive {
-		width: 55%;
-	}
-	.min-h-64 {
-		min-height: 64px;
-	}
-	.min-h-56 {
-		min-height: 56px;
-	}
 }

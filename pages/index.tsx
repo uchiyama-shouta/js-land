@@ -13,8 +13,8 @@ type Props = {
 const Home: VFC<Props> = ({ datas }) => {
 	return (
 		<Layout description="JavaScript特化のオンラインのプログラミング学習サービスです。">
-			<section className="relative w-screen bg-sky-blue h-96 mb-12">
-				<p className="absolute top-2/4 left-2/4 text-xl text-center sm:w-auto w-11/12 translate-center">
+			<section className="relative w-screen bg-[#28b4ff] bg-opacity-60 h-96 mb-12">
+				<p className="absolute top-2/4 left-2/4 text-xl text-center sm:w-auto w-11/12 transform -translate-x-1/2 -translate-y-1/2">
 					最新のフロントエンドを学び、
 					<br />
 					人生を

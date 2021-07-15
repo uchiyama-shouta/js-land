@@ -16,7 +16,7 @@ const LessonCardList: VFC<Props> = memo((props) => {
 	return (
 		<div className="w-11/12 flex-grow mx-auto md:max-w-6xl max-w-2xl">
 			<div className="w-full flex flex-wrap box-border items-center justify-center">
-				<div className="w-screen-plus-32 -m-4 block sm:flex flex-wrap box-border">
+				<div className="w-[calc(100%+32px)] -m-4 block sm:flex flex-wrap box-border">
 					{data.length ? (
 						data.map((data) => (
 							<React.Fragment key={data.id}>

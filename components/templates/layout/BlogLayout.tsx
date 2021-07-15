@@ -8,12 +8,10 @@ type Props = {
 const BlogLayout: VFC<Props> = memo((props) => {
 	const { children } = props;
 	return (
-		<>
-			<div className="sm:flex w-11/12 block sm:w-11/12 mx-auto my-12">
-				<main className="sm:w-55per-responsive w-full sm:mx-auto">{children}</main>
-				<BlogAside />
-			</div>
-		</>
+		<div className="sm:flex w-11/12 block sm:w-11/12 mx-auto my-12">
+			<main className="sm:w-[55%] w-full sm:mx-auto">{children}</main>
+			<BlogAside />
+		</div>
 	);
 });
 

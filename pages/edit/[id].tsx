@@ -2,48 +2,30 @@ import { useCallback, useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { useRecoilValue } from "recoil";
 import { GetServerSideProps } from "next";
-import { db } from "../../src/firebase";
 
-import PrimaryButton from "../../components/atom/button/PrimaryButton";
-import Layout from "../../components/templates/layout/Layout";
-import { userState } from "../../src/store/userState";
-import { ImageType } from "../../types/lesson/ImageType";
 import Select from "@material-ui/core/Select";
-import { LessonChapterType } from "../../types/lesson/lessonChapterType";
-
+import Layout from "../../components/templates/layout/Layout";
+import PrimaryButton from "../../components/atom/button/PrimaryButton";
 import TextInput from "../../components/atom/TextInput";
+import { userState } from "../../src/store/userState";
+import { lessonDataList } from "../../lib/lesson/LessonDataList";
 
 const LessonEdit = (props) => {
-	const { id } = props;
 	const user = useRecoilValue(userState);
 	const router = useRouter();
 	const [type, setType] = useState("");
 	const [title, setTitle] = useState("");
 
-	const onChangeTitle = (e) => {
+	const onChangeTitle = useCallback((e) => {
 		setTitle(e.target.value);
-	};
+	}, [title]);
 
-	const handleChange = (event) => {
-		const name = event.target.value;
-		setType(name);
-	};
-
-	useEffect(() => {
-		if (id !== "") {
-			db.collection("lessons")
-				.doc(id)
-				.get()
-				.then((snapshot) => {
-					const lesson = snapshot.data();
-				});
-		}
-	}, [id]);
+	const handleChange = useCallback((e) => {
+		setType(e.target.value);
+	}, [type]);
 
 	useEffect(() => {
-		if (user.isSignedIn && user.role !== "administrator") {
-			router.push("/");
-		}
+		user.isSignedIn && user.role !== "administrator" && router.push("/");
 	}, [user]);
 
 	console.log(type);
@@ -51,48 +33,46 @@ const LessonEdit = (props) => {
 	return (
 		<Layout>
 			{user.role === "administrator" && (
-				<>
-					<div className="pt-12 w-4/5 mx-auto">
-						<div className="text-center p-12 mx-auto w-96">
-							<h2 className="text-center my-3 text-xl font-bold">
-								コンテンツの編集
-							</h2>
-							<div className="h-14" />
-							<TextInput
-								label="タイトル"
-								value={title}
-								onChange={onChangeTitle}
-							/>
-							<div className="h-5" />
-							<Select
-								native
-								value={type}
-								onChange={handleChange}
-								inputProps={{
-									name: "type",
-									id: "type-native-simple",
-								}}
-							>
-								<option aria-label="None" value="選択してください" />
-								<option value="text">text</option>
-								<option value="video">video</option>
-							</Select>
-							{(type !== "" && type === "text" && (
+				<div className="pt-12 w-4/5 mx-auto">
+					<div className="text-center p-12 mx-auto w-96">
+						<h2 className="text-center my-3 text-xl font-bold mb-12">
+							コンテンツの編集
+						</h2>
+						<TextInput
+							label="タイトル"
+							value={title}
+							onChange={onChangeTitle}
+						/>
+						<div className="h-5" />
+						<Select
+							native
+							value={type}
+							onChange={handleChange}
+							inputProps={{
+								name: "type",
+								id: "type-native-simple",
+							}}
+						>
+							<option aria-label="None" value="選択してください" />
+							<option value="text">text</option>
+							<option value="video">video</option>
+							<option value="chapter">chapter</option>
+						</Select>
+						{(!!type && type === "text" && (
+							<div>
+								<p className="text-lg">text</p>
+							</div>
+						)) ||
+							(type === "video" && (
 								<div>
-									{/* <MarkDownEditer></MarkDownEditer> */}
-									<div>text</div>
+									<p className="text-lg">video</p>
+									<span onClick={() => {}}>動画を追加する</span>
 								</div>
-							)) ||
-								(type === "video" && (
-									<div>
-										<div>video</div>
-									</div>
-								))}
-							<div className="h-14" />
-							<PrimaryButton>レッスンの編集を確定する</PrimaryButton>
-						</div>
+							))}
+						<div className="h-14" />
+						<PrimaryButton>レッスンの編集を確定する</PrimaryButton>
 					</div>
-				</>
+				</div>
 			)}
 		</Layout>
 	);
@@ -102,9 +82,11 @@ export default LessonEdit;
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
 	const id = context.params.id;
+	const lesson = (await lessonDataList()).find((data) => data.id === id);
 	return {
 		props: {
 			id,
+			lessonData: lesson,
 		},
 	};
 };
