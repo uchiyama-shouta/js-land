@@ -17,10 +17,6 @@ type Props = {
 	body: any;
 };
 
-// export const config = {
-// 	amp: true,
-// };
-
 const Post: VFC<Props> = (props) => {
 	const { data, body } = props;
 	const description = `${data.title} | ${createDescription(

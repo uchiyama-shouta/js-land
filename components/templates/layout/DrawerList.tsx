@@ -14,9 +14,9 @@ const DrawerList: VFC = memo(() => {
 		<div className="w-64" role="presentation">
 			<ul className="py-2 px-0 m-0">
 				<li className="transition-all hover:bg-gray-100">
-					<Link href="/lesson">
+					<Link href="/about">
 						<a className="px-4 py-3 w-full text-base font-normal leading-normal block">
-							レッスン一覧
+							About
 						</a>
 					</Link>
 				</li>

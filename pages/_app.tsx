@@ -8,7 +8,7 @@ import { ThemeProvider } from "@material-ui/core/styles";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import theme from "../src/theme";
 
-import Auth from "../src/auth/Auth";
+// import Auth from "../src/auth/Auth";
 import "../styles/globals.css";
 import { GA_TRACKING_ID, pageview } from "../lib/gtag";
 
@@ -34,12 +34,12 @@ export default function MyApp({ Component, pageProps }: AppProps) {
 				/>
 			</Head>
 			<RecoilRoot>
-				<Auth>
+				{/* <Auth> */}
 					<ThemeProvider theme={theme}>
 						<CssBaseline />
 						<Component {...pageProps} />
 					</ThemeProvider>
-				</Auth>
+				{/* </Auth> */}
 			</RecoilRoot>
 		</>
 	);
