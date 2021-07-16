@@ -1,14 +1,14 @@
 import { memo, VFC } from "react";
 import Link from "next/link";
-import { useRouter } from "next/router";
-import { useRecoilState } from "recoil";
+// import { useRouter } from "next/router";
+// import { useRecoilState } from "recoil";
 
-import { userState } from "../../../src/store/userState";
-import { UserStateType } from "../../../types/user/UserStateType";
+// import { userState } from "../../../src/store/userState";
+// import { UserStateType } from "../../../types/user/UserStateType";
 
 const DrawerList: VFC = memo(() => {
-	const [user, setUser] = useRecoilState<UserStateType>(userState);
-	const router = useRouter();
+	// const [user, setUser] = useRecoilState<UserStateType>(userState);
+	// const router = useRouter();
 
 	return (
 		<div className="w-64" role="presentation">
@@ -30,7 +30,7 @@ const DrawerList: VFC = memo(() => {
 
 				<hr className="h-px mx-0 bg-gray-300 border-none flex-shrink-0" />
 
-				{user.isSignedIn && (
+				{/* {user.isSignedIn && (
 					<>
 						<li className="transition-all hover:bg-gray-100">
 							<span
@@ -54,7 +54,7 @@ const DrawerList: VFC = memo(() => {
 							</li>
 						)}
 					</>
-				)}
+				)} */}
 			</ul>
 		</div>
 	);

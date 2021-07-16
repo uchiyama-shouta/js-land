@@ -17,10 +17,14 @@ type Props = {
 	body: any;
 };
 
+export const config = {
+	amp: true,
+};
+
 const Post: VFC<Props> = (props) => {
 	const { data, body } = props;
 	const description = `${data.title} | ${createDescription(
-		data.content.slice(0, 80)
+		data.content.slice(0, 80),
 	)}...`;
 	const sampleThumbnailPath =
 		"https://images.microcms-assets.io/assets/c9a1727417ca42caaeb447e362bfef6a/829615ee10f5486caa355eaab355234f/thumbnail_React_image.png";
