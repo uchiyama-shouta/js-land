@@ -17,9 +17,9 @@ type Props = {
 	body: any;
 };
 
-export const config = {
-	amp: true,
-};
+// export const config = {
+// 	amp: true,
+// };
 
 const Post: VFC<Props> = (props) => {
 	const { data, body } = props;
