@@ -4,8 +4,8 @@ import Layout from "../components/templates/layout/Layout";
 
 import TextInput from "../components/atom/TextInput";
 import PrimaryButton from "../components/atom/button/PrimaryButton";
-import { auth } from "../src/firebase";
-import { createUser } from "../lib/user/createUser";
+// import { auth } from "../src/firebase";
+// import { createUser } from "../lib/user/createUser";
 
 const signUp = () => {
 	const router = useRouter();
@@ -23,21 +23,21 @@ const signUp = () => {
 		setPassword(e.target.value);
 	}, []);
 
-	useEffect(() => {
-		auth.onAuthStateChanged((user) => {
-			user && router.push("/");
-		});
-	}, []);
+	// useEffect(() => {
+	// 	auth.onAuthStateChanged((user) => {
+	// 		user && router.push("/");
+	// 	});
+	// }, []);
 
-	const signUp = async (e) => {
-		e.preventDefault();
-		createUser(router, name, email, password);
-	};
+	// const signUp = async (e) => {
+	// 	e.preventDefault();
+	// 	createUser(router, name, email, password);
+	// };
 	return (
 		<Layout description="アカウント登録画面です。">
 			<h2 className="text-center mt-5 text-3xl">Sign Up</h2>
 			<div className="text-center h-auto w-[calc(100%-2rem)] mx-auto my-8 p-4 max-w-sm">
-				<form onSubmit={signUp}>
+				{/* <form onSubmit={signUp}> */}
 					<TextInput
 						rows={1}
 						value={name}
@@ -69,7 +69,7 @@ const signUp = () => {
 							新規登録
 						</PrimaryButton>
 					</div>
-				</form>
+				{/* </form> */}
 			</div>
 		</Layout>
 	);

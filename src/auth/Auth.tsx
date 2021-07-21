@@ -1,25 +1,25 @@
-import { memo, ReactNode, useEffect, VFC } from "react";
-import { useRouter } from "next/router";
-import { useRecoilState } from "recoil";
+// import { memo, ReactNode, useEffect, VFC } from "react";
+// import { useRouter } from "next/router";
+// import { useRecoilState } from "recoil";
 
-import { listenAuthState } from "../../lib/user/listenAuthState";
-import { userState } from "../store/userState";
+// import { listenAuthState } from "../../lib/user/listenAuthState";
+// import { userState } from "../store/userState";
 
-type Props = {
-	children: ReactNode;
-};
+// type Props = {
+// 	children: ReactNode;
+// };
 
-const Auth: VFC<Props> = memo(({ children }) => {
-	const router = useRouter();
-	const [user, setUser] = useRecoilState(userState);
+// const Auth: VFC<Props> = memo(({ children }) => {
+// 	const router = useRouter();
+// 	const [user, setUser] = useRecoilState(userState);
 
-	useEffect(() => {
-		if (!user.isSignedIn) {
-			listenAuthState(router, setUser);
-		}
-	}, []);
+// 	useEffect(() => {
+// 		if (!user.isSignedIn) {
+// 			listenAuthState(router, setUser);
+// 		}
+// 	}, []);
 
-	return <>{children}</>;
-});
+// 	return <>{children}</>;
+// });
 
-export default Auth;
+// export default Auth;

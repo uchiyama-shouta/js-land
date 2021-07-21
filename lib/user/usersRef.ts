@@ -1,3 +1,3 @@
-import { db } from "../../src/firebase";
+// import { db } from "../../src/firebase";
 
-export const usersRef = db.collection("users");
+// export const usersRef = db.collection("users");
