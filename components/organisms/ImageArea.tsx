@@ -63,9 +63,9 @@ const ImageArea: VFC<Props> = memo((props) => {
 							className="hidden"
 							type="file"
 							id="image"
-							onChange={(e) => {
-								uploadImage(e);
-							}}
+							// onChange={(e) => {
+							// 	uploadImage(e);
+							// }}
 						/>
 					</label>
 				</IconButton>
