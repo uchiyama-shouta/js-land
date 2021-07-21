@@ -1,5 +1,5 @@
 import { Dispatch, memo, SetStateAction, useCallback, VFC } from "react";
-import { storage } from "../../src/firebase";
+// import { storage } from "../../src/firebase";
 import { makeStyles } from "@material-ui/styles";
 import IconButton from "@material-ui/core/IconButton";
 import AddPhotoAlternateIcon from "@material-ui/icons/AddPhotoAlternate";
@@ -20,29 +20,29 @@ type Props = {
 
 const ImageArea: VFC<Props> = memo((props) => {
 	const classes = useStyles();
-	const uploadImage = useCallback(
-		(e) => {
-			const file = e.target.files;
-			let blob = new Blob(file, { type: "image/jpeg" });
+	// const uploadImage = useCallback(
+	// 	(e) => {
+	// 		const file = e.target.files;
+	// 		let blob = new Blob(file, { type: "image/jpeg" });
 
-			const fileName = createId();
+	// 		const fileName = createId();
 
-			const uploadRef = storage.ref("images").child(fileName);
-			const uploadTask = uploadRef.put(blob);
+	// 		const uploadRef = storage.ref("images").child(fileName);
+	// 		const uploadTask = uploadRef.put(blob);
 
-			uploadTask
-				.then(() => {
-					uploadTask.snapshot.ref
-						.getDownloadURL()
-						.then((downloadURL: string) => {
-							const newImage = { id: fileName, path: downloadURL };
-							props.setImage(newImage);
-						});
-				})
-				.catch(() => {});
-		},
-		[props.setImage]
-	);
+	// 		uploadTask
+	// 			.then(() => {
+	// 				uploadTask.snapshot.ref
+	// 					.getDownloadURL()
+	// 					.then((downloadURL: string) => {
+	// 						const newImage = { id: fileName, path: downloadURL };
+	// 						props.setImage(newImage);
+	// 					});
+	// 			})
+	// 			.catch(() => {});
+	// 	},
+	// 	[props.setImage]
+	// );
 	return (
 		<div>
 			{props.image ? (
