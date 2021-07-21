@@ -1,15 +1,7 @@
 import { memo, VFC } from "react";
 import Link from "next/link";
-// import { useRouter } from "next/router";
-// import { useRecoilState } from "recoil";
-
-// import { userState } from "../../../src/store/userState";
-// import { UserStateType } from "../../../types/user/UserStateType";
 
 const DrawerList: VFC = memo(() => {
-	// const [user, setUser] = useRecoilState<UserStateType>(userState);
-	// const router = useRouter();
-
 	return (
 		<div className="w-64" role="presentation">
 			<ul className="py-2 px-0 m-0">

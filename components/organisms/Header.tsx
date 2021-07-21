@@ -1,18 +1,13 @@
 import { memo, useCallback, useState, VFC } from "react";
 import dynamic from "next/dynamic";
-// import { useRecoilValue } from "recoil";
 
 import MenuIcon from "@material-ui/icons/Menu";
 
 import Logo from "../atom/Logo";
 import DrawerList from "../templates/layout/DrawerList";
-// import { userState } from "../../src/store/userState";
-// import { UserStateType } from "../../types/user/UserStateType";
-// import HeaderLinks from "../molecules/HeaderLinks";
 
 const Header: VFC = memo(() => {
 	const Drawer = dynamic(async () => await import("@material-ui/core/Drawer"));
-	// const user = useRecoilValue<UserStateType>(userState);
 	const [isOpen, setIsOpen] = useState(false);
 	const toggleOpen = useCallback(
 		(open: boolean) => {
@@ -35,7 +30,6 @@ const Header: VFC = memo(() => {
 						<MenuIcon />
 					</button>
 					<Logo />
-					{/* {!user.isSignedIn && <HeaderLinks />} */}
 				</div>
 			</header>
 			<Drawer anchor="left" open={isOpen} onClose={() => toggleOpen(false)}>
