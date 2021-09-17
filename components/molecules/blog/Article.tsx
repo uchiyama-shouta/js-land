@@ -21,9 +21,9 @@ const Article: VFC<Props> = memo(({ blog }) => {
 						quality={60}
 						alt="サムネイル画像"
 					/>
-					<div className="px-8 py-5 h-full">
+					<div className="px-8 py-5 h-full min-h-[116px]">
 						<h2 className="font-bold text-lg">{blog.title}</h2>
-						<span>{blog.publishedAt.slice(0, 10).replace(/-/g, "/")}</span>
+						<span>{blog.updatedAt.slice(0, 10).replace(/-/g, "/")}</span>
 					</div>
 				</a>
 			</Link>

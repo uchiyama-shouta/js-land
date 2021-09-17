@@ -1,14 +1,11 @@
-import { useEffect } from "react";
+// import { useEffect } from "react";
 import Router from "next/router";
 import Head from "next/head";
 import type { AppProps } from "next/app";
-import { RecoilRoot } from "recoil";
-import PropTypes from "prop-types";
-import { ThemeProvider } from "@material-ui/core/styles";
-import CssBaseline from "@material-ui/core/CssBaseline";
-import theme from "../src/theme";
+// import PropTypes from "prop-types";
+// import { ThemeProvider } from "@material-ui/core/styles";
+// import CssBaseline from "@material-ui/core/CssBaseline";
 
-// import Auth from "../src/auth/Auth";
 import "../styles/globals.css";
 import { GA_TRACKING_ID, pageview } from "../lib/gtag";
 
@@ -17,12 +14,12 @@ if (GA_TRACKING_ID) {
 }
 
 export default function MyApp({ Component, pageProps }: AppProps) {
-	useEffect(() => {
-		const jssStyles = document.querySelector("#jss-server-side");
-		if (jssStyles) {
-			jssStyles.parentElement.removeChild(jssStyles);
-		}
-	}, []);
+	// useEffect(() => {
+	// 	const jssStyles = document.querySelector("#jss-server-side");
+	// 	if (jssStyles) {
+	// 		jssStyles.parentElement.removeChild(jssStyles);
+	// 	}
+	// }, []);
 
 	return (
 		<>
@@ -33,19 +30,16 @@ export default function MyApp({ Component, pageProps }: AppProps) {
 					content="minimum-scale=1, initial-scale=1, width=device-width"
 				/>
 			</Head>
-			<RecoilRoot>
-				{/* <Auth> */}
-					<ThemeProvider theme={theme}>
-						<CssBaseline />
-						<Component {...pageProps} />
-					</ThemeProvider>
-				{/* </Auth> */}
-			</RecoilRoot>
+
+			{/* <ThemeProvider theme={theme}> */}
+			{/* <CssBaseline /> */}
+			<Component {...pageProps} />
+			{/* </ThemeProvider> */}
 		</>
 	);
 }
 
-MyApp.propTypes = {
-	Component: PropTypes.elementType.isRequired,
-	pageProps: PropTypes.object.isRequired,
-};
+// MyApp.propTypes = {
+// 	Component: PropTypes.elementType.isRequired,
+// 	pageProps: PropTypes.object.isRequired,
+// };

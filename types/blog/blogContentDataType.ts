@@ -3,7 +3,7 @@ export type BlogContentDatatype = {
 	content: string;
 	createdAt: string;
 	publishedAt: string;
-	revisedAt: string;
+	revisedAt?: string;
 	thumbnail?: {
 		url: string;
 		height: number;

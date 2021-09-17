@@ -1,5 +1,6 @@
-import React from "react";
+import { Children } from "react";
 import Document, { Html, Head, Main, NextScript } from "next/document";
+import Script from "next/script";
 import { ServerStyleSheets } from "@material-ui/core/styles";
 import theme from "../src/theme";
 import { GA_TRACKING_ID } from "../lib/gtag";
@@ -9,20 +10,19 @@ export default class MyDocument extends Document {
 		return (
 			<Html lang="ja">
 				<Head>
-					<script
-						async
+					<Script
 						src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`}
 					/>
 					<script
 						dangerouslySetInnerHTML={{
 							__html: `
-								window.dataLayer = window.dataLayer || [];
-								function gtag(){dataLayer.push(arguments);}
-								gtag('js', new Date());
-								gtag('config', '${GA_TRACKING_ID}', {
-								page_path: window.location.pathname,
-								});
-						`,
+							window.dataLayer = window.dataLayer || [];
+							function gtag(){dataLayer.push(arguments);}
+							gtag('js', new Date());
+							gtag('config', '${GA_TRACKING_ID}', {
+							page_path: window.location.pathname,
+							});
+							`,
 						}}
 					/>
 					<meta name="theme-color" content={theme.palette.primary.main} />
@@ -52,7 +52,7 @@ MyDocument.getInitialProps = async (ctx) => {
 	return {
 		...initialProps,
 		styles: [
-			...React.Children.toArray(initialProps.styles),
+			...Children.toArray(initialProps.styles),
 			sheets.getStyleElement(),
 		],
 	};
