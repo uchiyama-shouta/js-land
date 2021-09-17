@@ -1,4 +1,3 @@
-import fetch from "node-fetch";
 import { NextApiRequest, NextApiResponse } from "next";
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
@@ -7,7 +6,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 	}
 	const content = await fetch(
 		`https://shou-blog.microcms.io/api/v1/blog-js/blog/${req.query.slug}?fields=id&draftKey=${req.query.draftKey}`,
-		{ headers: { "X-API-KEY": process.env.apiKey || "" } }
+		{ headers: { "X-API-KEY": process.env.apiKey || "" } },
 	)
 		.then((res) => res.json())
 		.catch((error) => null);

@@ -1,4 +1,4 @@
-import { memo, VFC } from "react";
+import { VFC } from "react";
 
 import { BlogContentDatatype } from "../../../types/blog/blogContentDataType";
 import Article from "../../molecules/blog/Article";
@@ -9,7 +9,7 @@ type Props = {
 
 // const max = 10;
 
-const ArticleGrid: VFC<Props> = memo((props) => {
+const ArticleGrid: VFC<Props> = (props) => {
 	const { blog } = props;
 	return (
 		<div className="flex-grow w-full md:max-w-4xl max-w-2xl mx-auto">
@@ -24,6 +24,6 @@ const ArticleGrid: VFC<Props> = memo((props) => {
 			</div>
 		</div>
 	);
-});
+};
 
 export default ArticleGrid;

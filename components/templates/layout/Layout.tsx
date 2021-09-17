@@ -1,4 +1,4 @@
-import { memo, ReactNode, VFC } from "react";
+import { ReactNode, VFC } from "react";
 import Head from "next/head";
 import Footer from "../../organisms/Footer";
 import Header from "../../organisms/Header";
@@ -9,7 +9,7 @@ type Props = {
 	description?: string;
 };
 
-const Layout: VFC<Props> = memo((props) => {
+const Layout: VFC<Props> = (props) => {
 	const siteTitle = "JS-land";
 	const { children, title, description } = props;
 
@@ -24,6 +24,6 @@ const Layout: VFC<Props> = memo((props) => {
 			<Footer />
 		</>
 	);
-});
+};
 
 export default Layout;

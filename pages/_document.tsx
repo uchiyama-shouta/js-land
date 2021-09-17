@@ -2,7 +2,6 @@ import { Children } from "react";
 import Document, { Html, Head, Main, NextScript } from "next/document";
 import Script from "next/script";
 import { ServerStyleSheets } from "@material-ui/core/styles";
-import theme from "../src/theme";
 import { GA_TRACKING_ID } from "../lib/gtag";
 
 export default class MyDocument extends Document {
@@ -25,7 +24,6 @@ export default class MyDocument extends Document {
 							`,
 						}}
 					/>
-					<meta name="theme-color" content={theme.palette.primary.main} />
 					<link rel="shortcut icon" href="/favicon.png" type="image/x-icon" />
 					<link rel="apple-touch-icon" href="/favicon.png" />
 				</Head>

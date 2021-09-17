@@ -1,6 +1,6 @@
 import { memo, ReactNode, VFC } from "react";
-import Button from '@material-ui/core/Button';
-import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
+import Button from "@material-ui/core/Button";
+import { makeStyles } from "@material-ui/core/styles";
 
 type Props = {
 	children: ReactNode;
@@ -10,21 +10,19 @@ type Props = {
 	type?: "button" | "submit";
 };
 
-const useStyles = makeStyles((theme: Theme) =>
-	createStyles({
-		button: {
+const useStyles = makeStyles({
+	button: {
+		backgroundColor: "#1976d2",
+		height: 48,
+		fontSize: 16,
+		marginBottom: 16,
+		width: 256,
+		"&:hover": {
 			backgroundColor: "#1976d2",
-			height: 48,
-			fontSize: 16,
-			marginBottom: 16,
-			width: 256,
-			"&:hover": {
-				backgroundColor: "#1976d2",
-				opacity: 0.8,
-			},
+			opacity: 0.8,
 		},
-	})
-);
+	},
+});
 
 const PrimaryButton: VFC<Props> = memo((props) => {
 	const {

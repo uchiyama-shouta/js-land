@@ -1,4 +1,4 @@
-import { memo, ReactNode, VFC } from "react";
+import { ReactNode, VFC } from "react";
 import Head from "next/head";
 import BlogAside from "../../organisms/BlogAside";
 
@@ -8,7 +8,7 @@ type Props = {
 	description?: string;
 };
 
-const BlogLayout: VFC<Props> = memo((props) => {
+const BlogLayout: VFC<Props> = (props) => {
 	const { children, title, description } = props;
 	const siteTitle = "JS-land";
 	<Head>
@@ -21,6 +21,6 @@ const BlogLayout: VFC<Props> = memo((props) => {
 			<BlogAside />
 		</div>
 	);
-});
+};
 
 export default BlogLayout;

@@ -1,4 +1,4 @@
-import { memo, VFC } from "react";
+import { VFC } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { BlogContentDatatype } from "../../../types/blog/blogContentDataType";
@@ -7,9 +7,9 @@ type Props = {
 	blog: BlogContentDatatype;
 };
 
-const Article: VFC<Props> = memo(({ blog }) => {
+const Article: VFC<Props> = ({ blog }) => {
 	return (
-		<article className="mx-auto transition-opacity blog-card bg-white rounded overflow-hidden shadow">
+		<article className="mx-auto transition-opacity max-w-[325px] min-w-[290px] max-h-[350] min-h-[280px]  rounded overflow-hidden shadow">
 			<Link href={`/blog/${blog.id}`}>
 				<a className="inline-block h-full w-full">
 					<Image
@@ -29,6 +29,6 @@ const Article: VFC<Props> = memo(({ blog }) => {
 			</Link>
 		</article>
 	);
-});
+};
 
 export default Article;

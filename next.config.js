@@ -7,8 +7,3 @@ module.exports = withBundleAnalyzer({
 		domains: ["images.microcms-assets.io", "firebasestorage.googleapis.com"],
 	},
 });
-// module.exports = {
-// 	images: {
-// 		domains: ['images.microcms-assets.io', 'firebasestorage.googleapis.com'],
-// 	},
-// };

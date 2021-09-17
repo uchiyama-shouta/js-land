@@ -1,8 +1,8 @@
-import { memo, VFC } from "react";
+import { VFC } from "react";
 
 import Logo from "../atom/Logo";
 
-const Header: VFC = memo(() => {
+const Header: VFC = () => {
 	return (
 		<div className="flex-grow">
 			<header className="bg-white fixed top-0 left-auto right-0 w-full flex z-50 box-border flex-shrink-0 flex-col shadow-md">
@@ -12,6 +12,6 @@ const Header: VFC = memo(() => {
 			</header>
 		</div>
 	);
-});
+};
 
 export default Header;

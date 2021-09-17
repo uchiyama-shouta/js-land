@@ -18,22 +18,20 @@ type Props = {
 	body: any;
 };
 
-const Post: VFC<Props> = (props) => {
-	const { data, body } = props;
-	const description = `${data.title} | ${createDescription(data.content)}`;
+const Post: VFC<Props> = ({ data, body }) => {
+	const { id, title, thumbnail, updatedAt, content } = data;
+	const description = `${title} | ${createDescription(content)}`;
 
-	const thumbnailPath = data.thumbnail
-		? data.thumbnail.url
-		: sampleThumbnailPath;
+	const thumbnailPath = thumbnail ? thumbnail.url : sampleThumbnailPath;
 	return (
-		<Layout title={data.title} description={description}>
+		<Layout title={title} description={description}>
 			<Head>
 				<head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# article: http://ogp.me/ns/article#">
-					<meta property="og:title" content={data.title} />
+					<meta property="og:title" content={title} />
 					<meta property="og:type" content="article" />
 					<meta
 						property="og:url"
-						content={`https://learning-service.vercel.app/blog/${data.id}`}
+						content={`https://learning-service.vercel.app/blog/${id}`}
 					/>
 					<meta property="og:image" content={thumbnailPath} />
 					<meta property="og:site_name" content="JS-land" />
@@ -42,10 +40,10 @@ const Post: VFC<Props> = (props) => {
 				</head>
 			</Head>
 			<BlogLayout>
-				<h1 className="text-3xl font-bold">{data.title}</h1>
+				<h1 className="text-3xl font-bold">{title}</h1>
 				<div className="mb-7">
 					<span className="ml-1">
-						{data.updatedAt.slice(0, 10).replace(/-/g, "/")}
+						{updatedAt.slice(0, 10).replace(/-/g, "/")}
 					</span>
 				</div>
 				<div
@@ -80,6 +78,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
 			data,
 			body: $.html(),
 		},
+		revalidate: 10,
 	};
 };
 export const getStaticPaths: GetStaticPaths = async () => {

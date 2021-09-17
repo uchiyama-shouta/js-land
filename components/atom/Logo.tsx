@@ -1,8 +1,7 @@
-import { memo } from "react";
 import Link from "next/link";
 import Image from "next/image";
 
-const Logo = memo(() => {
+const Logo = () => {
 	return (
 		<h1 className="flex-grow pt-1">
 			<Link href="/">
@@ -18,6 +17,6 @@ const Logo = memo(() => {
 			</Link>
 		</h1>
 	);
-});
+};
 
 export default Logo;
