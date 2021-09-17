@@ -6,7 +6,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 		return res.status(404).end();
 	}
 	const content = await fetch(
-		`https://shou-blog.microcms.io/api/v1/blog-js/${req.query.slug}?fields=id&draftKey=${req.query.draftKey}`,
+		`https://shou-blog.microcms.io/api/v1/blog-js/blog/${req.query.slug}?fields=id&draftKey=${req.query.draftKey}`,
 		{ headers: { "X-API-KEY": process.env.apiKey || "" } }
 	)
 		.then((res) => res.json())
