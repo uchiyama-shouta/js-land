@@ -14,7 +14,7 @@ const Layout: VFC<Props> = (props) => {
 	const { children, title, description } = props;
 
 	return (
-		<div>
+		<>
 			<Head>
 				<title>{title ? `${title} | ${siteTitle}` : siteTitle}</title>
 				<meta name="description" content={description} />
@@ -22,7 +22,7 @@ const Layout: VFC<Props> = (props) => {
 			<Header />
 			<div className="py-12">{children}</div>
 			<Footer />
-		</div>
+		</>
 	);
 };
 
