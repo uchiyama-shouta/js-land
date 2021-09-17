@@ -6,8 +6,8 @@ export type BlogContentDatatype = {
 	revisedAt?: string;
 	thumbnail?: {
 		url: string;
-		height: number;
-		width: number;
+		height?: number;
+		width?: number;
 	};
 	title: string;
 	updatedAt: string;

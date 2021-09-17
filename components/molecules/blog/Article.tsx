@@ -23,7 +23,7 @@ const Article: VFC<Props> = ({ blog }) => {
 					/>
 					<div className="px-8 py-5 h-full min-h-[116px]">
 						<h2 className="font-bold text-lg">{blog.title}</h2>
-						<span>{blog.updatedAt.slice(0, 10).replace(/-/g, "/")}</span>
+						<span>{blog.updatedAt}</span>
 					</div>
 				</a>
 			</Link>
