@@ -1,6 +1,6 @@
 import { Children } from "react";
 import Document, { Html, Head, Main, NextScript } from "next/document";
-// import Script from "next/script";
+import Script from "next/script";
 import { ServerStyleSheets } from "@material-ui/core/styles";
 import { GA_TRACKING_ID } from "../lib/gtag";
 
@@ -9,13 +9,14 @@ export default class MyDocument extends Document {
 		return (
 			<Html lang="ja">
 				<Head>
-					{/* <Script
+					<Script
+						defer
 						src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`}
-					/> */}
-					<script
-						src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`}
+						strategy="afterInteractive"
 					/>
-					<script
+					<Script
+						defer
+						strategy="afterInteractive"
 						dangerouslySetInnerHTML={{
 							__html: `
 							window.dataLayer = window.dataLayer || [];
