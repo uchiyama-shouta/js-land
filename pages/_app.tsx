@@ -11,7 +11,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
 		<>
 			<Head>
 				<title>My page</title>
-				<link rel="manifest" href="/manifest.webmanifest" />
+				{/* <link rel="manifest" href="/manifest.webmanifest" />/ */}
 				<meta
 					name="viewport"
 					content="minimum-scale=1, initial-scale=1, width=device-width"
