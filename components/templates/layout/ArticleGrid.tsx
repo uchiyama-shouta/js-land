@@ -7,8 +7,6 @@ type Props = {
 	blog: BlogContentDatatype[];
 };
 
-// const max = 10;
-
 const ArticleGrid: VFC<Props> = (props) => {
 	const { blog } = props;
 	return (
