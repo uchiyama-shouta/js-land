@@ -12,8 +12,6 @@
 		font-feature-settings: "palt";
 		margin-top: 2.2em;
 		margin-bottom: 2rem;
-		cursor: pointer;
-		position: relative;
 	}
 	#blog-post-body h3 {
 		font-size: 1.4em;
@@ -22,7 +20,6 @@
 	#blog-post-body p {
 		margin: 0 0 1.6em;
 		line-height: 1.75;
-		font-size: 16px;
 	}
 	#blog-post-body a {
 		color: #0044cc;
@@ -36,7 +33,6 @@
 	}
 	#blog-post-body li {
 		margin-left: 40px;
-		font-size: 16px;
 		margin-bottom: 5px;
 		line-height: 1.4;
 		list-style: initial;
@@ -46,9 +42,6 @@
 		padding: 0.1em 0.4em;
 	}
 	code.hljs {
-		font-size: 18px;
-	}
-	canvas {
-		display: none;
+		font-size: 16px;
 	}
 }
