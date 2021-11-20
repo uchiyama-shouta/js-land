@@ -1,4 +1,4 @@
-import { VFC } from "react";
+import type { VFC } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { BlogContentDatatype } from "../../../types/blog/blogContentDataType";

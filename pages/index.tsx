@@ -1,8 +1,9 @@
-import { VFC } from "react";
-import { GetStaticProps } from "next";
+import type { GetStaticProps, NextPage } from "next";
+
+import type { BlogDataType } from "../types/blog/blogDataType";
+import type { BlogContentDatatype } from "../types/blog/blogContentDataType";
+
 import BlogLayout from "../components/templates/layout/BlogLayout";
-import { BlogDataType } from "../types/blog/blogDataType";
-import { BlogContentDatatype } from "../types/blog/blogContentDataType";
 import Layout from "../components/templates/layout/Layout";
 import ArticleGrid from "../components/templates/layout/ArticleGrid";
 import { client } from "../lib/microCMS";
@@ -11,7 +12,7 @@ type Props = {
 	data: BlogContentDatatype[];
 };
 
-const Home: VFC<Props> = ({ data }) => {
+const Home: NextPage<Props> = ({ data }) => {
 	return (
 		<Layout description="ブログの記事一覧ページです。">
 			<BlogLayout>

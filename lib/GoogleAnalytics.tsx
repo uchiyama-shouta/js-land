@@ -3,10 +3,10 @@ import { GA_TRACKING_ID } from "./gtag";
 
 const GoogleAnalytics = () => {
 	const script = `
-	window.dataLayer = window.dataLayer || [];
-	function gtag(){dataLayer.push(arguments);}
-	gtag('js', new Date());    
-	gtag('config', '${GA_TRACKING_ID}');`;
+	window.dataLayer = window.dataLayer || []
+	function gtag(){dataLayer.push(arguments)}
+	gtag('js', new Date())
+	gtag('config', '${GA_TRACKING_ID}')`;
 	
 	return (
 		<>

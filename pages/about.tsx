@@ -1,6 +1,7 @@
+import type { NextPage } from "next";
 import Layout from "../components/templates/layout/Layout";
 
-const About = () => {
+const About: NextPage = () => {
 	return (
 		<Layout>
 			<div className="text-center">
