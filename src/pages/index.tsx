@@ -27,8 +27,6 @@ export const getStaticProps: GetStaticProps = async () => {
     endpoint: "blog-js",
   });
 
-
-
   return {
     props: {
       data: data.contents,

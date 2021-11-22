@@ -10,9 +10,9 @@ type Props = {
 const Article: VFC<Props> = ({ blog }) => {
   const { id, title, thumbnail, updatedAt } = blog;
   return (
-    <article className="mx-auto transition-opacity max-w-[325px] min-w-[290px] max-h-[350] min-h-[280px]  rounded overflow-hidden shadow">
+    <article className="overflow-hidden mx-auto min-w-[290px] max-w-[325px] min-h-[280px] max-h-[350] rounded shadow transition-opacity">
       <Link href={`/blog/${id}`}>
-        <a className="inline-block h-full w-full">
+        <a className="inline-block w-full h-full">
           <Image
             src={thumbnail ? thumbnail.url : "/image/lesson-image.jpg"}
             width={325}
@@ -20,8 +20,8 @@ const Article: VFC<Props> = ({ blog }) => {
             quality={60}
             alt="サムネイル画像"
           />
-          <div className="px-8 py-5 h-full min-h-[116px]">
-            <h2 className="font-bold text-lg">{title}</h2>
+          <div className="py-5 px-8 h-full min-h-[116px]">
+            <h2 className="text-lg font-bold">{title}</h2>
             <span>{updatedAt.replace(/-/g, "/").slice(0, 10)}</span>
           </div>
         </a>

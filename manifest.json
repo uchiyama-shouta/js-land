@@ -1,18 +1,18 @@
 {
-	"theme_color": "#000",
-	"background_color": "#fff",
-	"display": "standalone",
-	"scope": "/",
-	"start_url": "/?source=pwa",
-	"name": "JS-land",
-	"short_name": "JS-land",
-	"description": "技術ブログ",
-	"icons": [
-		{
-			"src": "/favicon.png",
-			"sizes": "32x32",
-			"type": "image/png",
-			"purpose": "any maskable"
-		}
-	]
+  "theme_color": "#000",
+  "background_color": "#fff",
+  "display": "standalone",
+  "scope": "/",
+  "start_url": "/?source=pwa",
+  "name": "JS-land",
+  "short_name": "JS-land",
+  "description": "技術ブログ",
+  "icons": [
+    {
+      "src": "/favicon.png",
+      "sizes": "32x32",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
 }
