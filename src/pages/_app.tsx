@@ -1,9 +1,9 @@
 import Head from "next/head";
 import type { AppProps } from "next/app";
 
-import "../styles/globals.css";
-import GoogleAnalytics from "../lib/GoogleAnalytics";
-import { usePageView } from "../hooks/usePageView";
+import "src/styles/globals.css";
+import GoogleAnalytics from "src/lib/GoogleAnalytics";
+import { usePageView } from "src/hooks/usePageView";
 
 export default function MyApp({ Component, pageProps }: AppProps) {
   usePageView();

@@ -1,6 +1,6 @@
 import type { VFC } from "react";
 
-import Logo from "../ui/Logo";
+import Logo from "src/components/ui/Logo";
 
 const Header: VFC = () => {
   return (

@@ -1,7 +1,8 @@
+import type { VFC } from "react";
 import Link from "next/link";
 import Image from "next/image";
 
-const Logo = () => {
+const Logo: VFC = () => {
   return (
     <h1 className="flex-grow pt-1">
       <Link href="/">

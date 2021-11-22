@@ -1,5 +1,5 @@
 import Script from "next/script";
-import { GA_TRACKING_ID } from "./gtag";
+import { GA_TRACKING_ID } from "src/lib/gtag";
 
 const GoogleAnalytics = () => {
   const script = `

@@ -1,6 +1,6 @@
-import { ReactNode, VFC } from "react";
+import type { ReactNode, VFC } from "react";
 import Head from "next/head";
-import BlogAside from "../../models/blog/BlogAside";
+import BlogAside from "src/components/models/blog/BlogAside";
 
 type Props = {
   children: ReactNode;

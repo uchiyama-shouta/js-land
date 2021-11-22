@@ -1,16 +1,18 @@
-import Head from "next/head";
 import type { GetStaticProps, GetStaticPaths, NextPage } from "next";
+import Head from "next/head";
 import Link from "next/link";
 import cheerio from "cheerio";
 import hljs from "highlight.js";
 import "highlight.js/styles/hybrid.css";
 
-import Layout from "../../components/ui/Layout";
-import { BlogContentDatatype } from "../../types/blog/blogContentDataType";
-import { BlogDataType } from "../../types/blog/blogDataType";
-import BlogLayout from "../../components/models/blog/BlogLayout";
-import { createDescription } from "../../utils/createDescription";
-import { client, sampleThumbnailPath } from "../../lib/microCMS";
+import Layout from "src/components/ui/Layout";
+import BlogLayout from "src/components/models/blog/BlogLayout";
+
+import type { BlogContentDatatype } from "src/types/blog/blogContentDataType";
+import type { BlogDataType } from "src/types/blog/blogDataType";
+
+import { createDescription } from "src/utils/createDescription";
+import { client, sampleThumbnailPath } from "src/lib/microCMS";
 
 type Props = {
   data: BlogContentDatatype;
@@ -61,7 +63,7 @@ const Post: NextPage<Props> = ({ data, body, description }) => {
 export default Post;
 
 export const getStaticProps: GetStaticProps = async (context) => {
-  const id = context.params.slug;
+  const id = context.params?.slug;
 
   const data = await client.get<BlogContentDatatype>({
     endpoint: `blog-js/${id}`,

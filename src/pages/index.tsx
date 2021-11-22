@@ -1,12 +1,13 @@
 import type { GetStaticProps, NextPage } from "next";
 
-import type { BlogDataType } from "../types/blog/blogDataType";
-import type { BlogContentDatatype } from "../types/blog/blogContentDataType";
+import type { BlogDataType } from "src/types/blog/blogDataType";
+import type { BlogContentDatatype } from "src/types/blog/blogContentDataType";
 
-import Layout from "../components/ui/Layout";
-import ArticleGrid from "../components/models/blog/ArticleGrid";
-import BlogLayout from "../components/models/blog/BlogLayout";
-import { client } from "../lib/microCMS";
+import Layout from "src/components/ui/Layout";
+import BlogLayout from "src/components/models/blog/BlogLayout";
+import ArticleGrid from "src/components/models/blog/ArticleGrid";
+import { client } from "src/lib/microCMS";
+
 
 type Props = {
   data: BlogContentDatatype[];

@@ -1,7 +1,7 @@
 import type { VFC } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { BlogContentDatatype } from "../../../types/blog/blogContentDataType";
+import { BlogContentDatatype } from "src/types/blog/blogContentDataType";
 
 type Props = {
   blog: BlogContentDatatype;

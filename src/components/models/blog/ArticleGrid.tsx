@@ -1,7 +1,7 @@
-import { VFC } from "react";
+import type { VFC } from "react";
 
-import { BlogContentDatatype } from "../../../types/blog/blogContentDataType";
-import Article from "./Article";
+import type { BlogContentDatatype } from "src/types/blog/blogContentDataType";
+import Article from "src/components/models/blog/Article";
 
 type Props = {
   blog: BlogContentDatatype[];
