@@ -22,7 +22,7 @@ const Article: VFC<Props> = ({ blog }) => {
           />
           <div className="px-8 py-5 h-full min-h-[116px]">
             <h2 className="font-bold text-lg">{title}</h2>
-            <span>{updatedAt.replaceAll("-", "/").slice(0, 10)}</span>
+            <span>{updatedAt.replace(/-/g, "/").slice(0, 10)}</span>
           </div>
         </a>
       </Link>
