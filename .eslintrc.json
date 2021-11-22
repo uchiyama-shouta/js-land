@@ -1,0 +1,26 @@
+{
+  "plugins": ["simple-import-sort", "tailwindcss"],
+  "extends": [
+    "plugin:@typescript-eslint/recommended",
+    "plugin:tailwindcss/recommended",
+    "next/core-web-vitals",
+    "prettier"
+  ],
+  "rules": {
+    "no-var": "error",
+    "prefer-arrow-callback": "error",
+    "prefer-const": "error",
+    "func-style": ["error", "expression"],
+    "react/react-in-jsx-scope": "off",
+    "react/display-name": "error",
+    "react/jsx-handler-names": [
+      "error",
+      {
+        "eventHandlerPrefix": "handle",
+        "eventHandlerPropPrefix": "on",
+        "checkLocalVariables": true,
+        "checkInlineFunction": true
+      }
+    ]
+  }
+}

@@ -1,19 +1,13 @@
-const withPWA = require("next-pwa");
-const runtimeCaching = require("next-pwa/cache");
-
 const withBundleAnalyzer = require("@next/bundle-analyzer")({
-	enabled: process.env.ANALYZE === "true",
+  enabled: process.env.ANALYZE === "true",
 });
 
-module.exports = withPWA({
-	pwa: {
-		dest: "public",
-		runtimeCaching,
-	},
-});
-
+/** @type {import('next').NextConfig} */
 module.exports = withBundleAnalyzer({
-	images: {
-		domains: ["images.microcms-assets.io", "firebasestorage.googleapis.com"],
-	},
+  swcMinify: true,
+  reactStrictMode: true,
+  images: {
+    formats: ["image/avif", "image/webp"],
+    domains: ["images.microcms-assets.io", "firebasestorage.googleapis.com"],
+  },
 });
