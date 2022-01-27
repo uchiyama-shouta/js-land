@@ -12,7 +12,6 @@ const config = {
     formats: ["image/avif", "image/webp"],
     domains: ["images.microcms-assets.io", "firebasestorage.googleapis.com"],
   },
-  experimental: {}
 };
 
 export default withBundleAnalyzer(config);

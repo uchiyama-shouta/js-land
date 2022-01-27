@@ -13,19 +13,25 @@ import type { BlogDataType } from "src/types/blog/blogDataType";
 
 import { createDescription } from "src/utils/createDescription";
 import { client, sampleThumbnailPath } from "src/lib/microCMS";
+import { formatDate } from "src/utils/formatDate";
 
 type Props = {
-  data: BlogContentDatatype;
+  id: string;
+  title: string;
+  updatedAt: string;
   body: string;
   description: string;
+  thumbnail: string;
 };
 
-const Post: NextPage<Props> = ({ data, body, description }) => {
-  const { id, title, updatedAt } = data;
-
-  const thumbnailPath = data.thumbnail
-    ? data.thumbnail.url
-    : sampleThumbnailPath;
+const Post: NextPage<Props> = ({
+  id,
+  title,
+  thumbnail,
+  description,
+  updatedAt,
+  body,
+}) => {
   return (
     <Layout title={title} description={description}>
       <Head>
@@ -36,7 +42,7 @@ const Post: NextPage<Props> = ({ data, body, description }) => {
             property="og:url"
             content={`https://learning-service.vercel.app/blog/${id}`}
           />
-          <meta property="og:image" content={thumbnailPath} />
+          <meta property="og:image" content={thumbnail} />
           <meta property="og:site_name" content="JS-land" />
           <meta property="og:description" content={description} />
           <meta name="twitter:card" content="summary" />
@@ -77,16 +83,23 @@ export const getStaticProps: GetStaticProps = async (context) => {
   });
 
   const description = `${data.title} | ${createDescription(data.content)}`;
+  const thumbnailPath = data.thumbnail
+    ? data.thumbnail.url
+    : sampleThumbnailPath;
 
   return {
     props: {
-      data: data,
-      body: $.html(),
+      id: data.id,
+      title: data.title,
       description,
+      updatedAt: formatDate(data.updatedAt),
+      body: $.html(),
+      thumbnail: thumbnailPath,
     },
     revalidate: 10,
   };
 };
+
 export const getStaticPaths: GetStaticPaths = async () => {
   const data = await client.get<BlogDataType>({
     endpoint: "blog-js",

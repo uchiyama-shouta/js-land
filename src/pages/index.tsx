@@ -8,7 +8,6 @@ import BlogLayout from "src/components/models/blog/BlogLayout";
 import ArticleGrid from "src/components/models/blog/ArticleGrid";
 import { client } from "src/lib/microCMS";
 
-
 type Props = {
   data: BlogContentDatatype[];
 };
@@ -28,9 +27,23 @@ export const getStaticProps: GetStaticProps = async () => {
     endpoint: "blog-js",
   });
 
+  const processData = data.contents.map((data) => {
+    const base = {
+      id: data.id,
+      updatedAt: data.updatedAt,
+      title: data.title,
+    };
+    return data.thumbnail
+      ? {
+          ...base,
+          thumbnail: data.thumbnail,
+        }
+      : base;
+  });
+
   return {
     props: {
-      data: data.contents,
+      data: processData,
     },
     revalidate: 10,
   };
