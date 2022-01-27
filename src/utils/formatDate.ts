@@ -1,3 +1,2 @@
-import "core-js/features/string/replace-all";
 export const formatDate = (date: string): string =>
-  date.replaceAll("-", "/").slice(0, 10);
+  date.replaceAll(/\-/g, "/").slice(0, 10);
