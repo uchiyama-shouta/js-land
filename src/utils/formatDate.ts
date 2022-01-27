@@ -1,2 +1,2 @@
 export const formatDate = (date: string): string =>
-  date.replaceAll(/\-/g, "/").slice(0, 10);
+  date.replace(/\-/g, "/").slice(0, 10);
