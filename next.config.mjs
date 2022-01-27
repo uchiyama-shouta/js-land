@@ -1,13 +1,18 @@
-const withBundleAnalyzer = require("@next/bundle-analyzer")({
+import BundleAnalyzer from "@next/bundle-analyzer";
+
+const withBundleAnalyzer = BundleAnalyzer({
   enabled: process.env.ANALYZE === "true",
 });
 
 /** @type {import('next').NextConfig} */
-module.exports = withBundleAnalyzer({
+const config = {
   swcMinify: true,
   reactStrictMode: true,
   images: {
     formats: ["image/avif", "image/webp"],
     domains: ["images.microcms-assets.io", "firebasestorage.googleapis.com"],
   },
-});
+  experimental: {}
+};
+
+export default withBundleAnalyzer(config);

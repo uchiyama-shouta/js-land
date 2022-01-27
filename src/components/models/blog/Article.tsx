@@ -1,7 +1,8 @@
 import type { VFC } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { BlogContentDatatype } from "src/types/blog/blogContentDataType";
+import type { BlogContentDatatype } from "src/types/blog/blogContentDataType";
+import { formatDate } from "src/utils/formatDate";
 
 type Props = {
   blog: BlogContentDatatype;
@@ -22,7 +23,7 @@ const Article: VFC<Props> = ({ blog }) => {
           />
           <div className="py-5 px-8 h-full min-h-[116px]">
             <h2 className="text-lg font-bold">{title}</h2>
-            <span>{updatedAt.replace(/-/g, "/").slice(0, 10)}</span>
+            <span>{formatDate(updatedAt)}</span>
           </div>
         </a>
       </Link>
