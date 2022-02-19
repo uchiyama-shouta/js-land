@@ -1,15 +1,20 @@
 import type { GetStaticProps, NextPage } from "next";
 
 import type { BlogDataType } from "src/types/blog/blogDataType";
-import type { BlogContentDatatype } from "src/types/blog/blogContentDataType";
 
 import Layout from "src/components/ui/Layout";
 import BlogLayout from "src/components/models/blog/BlogLayout";
 import ArticleGrid from "src/components/models/blog/ArticleGrid";
 import { client } from "src/lib/microCMS";
+import { formatDate } from "src/utils/formatDate";
 
 type Props = {
-  data: BlogContentDatatype[];
+  data: {
+    id: string;
+    updatedAt: string;
+    title: string;
+    thumbnail: string;
+  }[];
 };
 
 const Home: NextPage<Props> = ({ data }) => {
@@ -25,20 +30,18 @@ const Home: NextPage<Props> = ({ data }) => {
 export const getStaticProps: GetStaticProps = async () => {
   const data = await client.get<BlogDataType>({
     endpoint: "blog-js",
+    queries: { fields: "id,updatedAt,title,thumbnail" },
   });
 
   const processData = data.contents.map((data) => {
-    const base = {
+    return {
       id: data.id,
-      updatedAt: data.updatedAt,
+      updatedAt: formatDate(data.updatedAt),
       title: data.title,
+      thumbnail: data.thumbnail
+        ? data.thumbnail.url
+        : "/image/lesson-image.jpg",
     };
-    return data.thumbnail
-      ? {
-          ...base,
-          thumbnail: data.thumbnail,
-        }
-      : base;
   });
 
   return {

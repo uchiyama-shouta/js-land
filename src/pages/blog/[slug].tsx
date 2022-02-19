@@ -73,6 +73,9 @@ export const getStaticProps: GetStaticProps = async (context) => {
 
   const data = await client.get<BlogContentDatatype>({
     endpoint: `blog-js/${id}`,
+    queries: {
+      fields: "id,updatedAt,title,content,thumbnail",
+    },
   });
 
   const $ = cheerio.load(data.content);

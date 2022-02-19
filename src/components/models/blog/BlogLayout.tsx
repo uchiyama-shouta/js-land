@@ -16,8 +16,8 @@ const BlogLayout: VFC<Props> = (props) => {
     <meta name="description" content={description} />
   </Head>;
   return (
-    <div className="block sm:flex my-12 mx-auto w-11/12 sm:w-11/12">
-      <main className="sm:mx-auto w-full sm:w-[55%]">{children}</main>
+    <div className="block my-12 mx-auto w-11/12 sm:flex sm:w-11/12">
+      <main className="w-full sm:mx-auto sm:w-[55%]">{children}</main>
       <BlogAside />
     </div>
   );

@@ -3,7 +3,6 @@ import { createClient } from "microcms-js-sdk";
 export const client = createClient({
   serviceDomain: "shou-blog",
   apiKey: process.env.NEXT_PUBLIC_BLOG_APIKEY || "",
-  globalDraftKey: "",
 });
 
 export const sampleThumbnailPath =

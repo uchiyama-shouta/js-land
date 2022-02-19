@@ -4,8 +4,8 @@ import Image from "next/image";
 
 const Logo: VFC = () => {
   return (
-    <h1 className="flex-grow pt-1">
-      <Link href="/">
+    <h1 className="grow pt-1">
+      <Link href="/" prefetch={false}>
         <a>
           <Image
             id="logo"
